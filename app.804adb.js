@@ -26011,7 +26011,6 @@ var CreateWallet = function CreateWallet(props) {
               _actions.default.core.markCoinAsVisible(el.toUpperCase());
             }
           });
-          handleClick();
           break;
 
         case 'sms':
@@ -26024,6 +26023,8 @@ var CreateWallet = function CreateWallet(props) {
                   handleClick();
                 }
               });
+
+              return;
             } else {
               _actions.default.core.markCoinAsVisible('BTC (SMS-Protected)');
             }
@@ -26034,8 +26035,6 @@ var CreateWallet = function CreateWallet(props) {
         case 'multisignature':
           if (currencies.BTC) {
             _actions.default.core.markCoinAsVisible('BTC (Multisig)');
-
-            handleClick();
           }
 
           break;
