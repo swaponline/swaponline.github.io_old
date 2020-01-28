@@ -5298,7 +5298,7 @@ var getDemoMoney =  true ? function () {} : function () {
 
 var getInfoAboutCurrency = function getInfoAboutCurrency(currencyNames) {
   return new Promise(function (resolve, reject) {
-    var url = 'https://noxon.io/cursAll.php';
+    var url = 'https://noxon.wpmix.net/cursAll.php';
 
     _reducers.default.user.setIsFetching({
       isFetching: true
@@ -34205,7 +34205,7 @@ function (_PureComponent) {
                   address = data[type].address;
 
                   _actions.default.modals.open(_helpers.constants.modals.InvoiceModal, {
-                    currency: type,
+                    currency: type.toUpperCase(),
                     toAddress: wallet,
                     address: address,
                     disableClose: true
@@ -67445,23 +67445,35 @@ function (_React$Component) {
       });
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleDollarValue", function (value) {
+      var _this$state2 = _this.state,
+          rubRates = _this$state2.rubRates,
+          currentDecimals = _this$state2.currentDecimals;
+
       _this.setState({
         amountUSD: value,
-        amountRUB: value * 62.34 || '',
-        amount: value / _this.state.infoAboutCurrency.price_usd || ''
+        amountRUB: value ? (value * rubRates).toFixed(0) : '',
+        amount: value ? (value / _this.state.infoAboutCurrency.price_usd).toFixed(currentDecimals) : ''
       });
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleRubValue", function (value) {
+      var _this$state3 = _this.state,
+          rubRates = _this$state3.rubRates,
+          currentDecimals = _this$state3.currentDecimals;
+
       _this.setState({
         amountRUB: value,
-        amountUSD: value / 62.34 || '',
-        amount: value / _this.state.infoAboutCurrency.price_usd / 62.34 || ''
+        amountUSD: value ? (value / rubRates).toFixed(2) : '',
+        amount: value ? (value / _this.state.infoAboutCurrency.price_usd / rubRates).toFixed(currentDecimals) : ''
       });
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleAmount", function (value) {
+      var _this$state4 = _this.state,
+          rubRates = _this$state4.rubRates,
+          currentDecimals = _this$state4.currentDecimals;
+
       _this.setState({
-        amountRUB: value * _this.state.infoAboutCurrency.price_usd * 62.34 || '',
-        amountUSD: value * _this.state.infoAboutCurrency.price_usd || '',
+        amountRUB: value ? (value * _this.state.infoAboutCurrency.price_usd * rubRates).toFixed(0) : '',
+        amountUSD: value ? (value * _this.state.infoAboutCurrency.price_usd).toFixed(2) : '',
         amount: value
       });
     });
@@ -67492,7 +67504,7 @@ function (_React$Component) {
       }
     });
 
-    var currentDecimals = _helpers.constants.tokenDecimals[_currency.toLowerCase()];
+    var _currentDecimals = _helpers.constants.tokenDecimals[_currency.toLowerCase()];
 
     _this.state = {
       isShipped: false,
@@ -67503,31 +67515,41 @@ function (_React$Component) {
       minus: '',
       contact: '',
       label: '',
-      currentDecimals: currentDecimals,
+      currentDecimals: _currentDecimals,
       error: false,
-      infoAboutCurrency: infoAboutCurrency
+      infoAboutCurrency: infoAboutCurrency,
+      rubRates: 62.34
     };
+
+    _this.getRubRates();
+
     return _this;
   }
 
   (0, _createClass2.default)(InvoiceModal, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {}
-  }, {
-    key: "componentWillUpdate",
-    value: function componentWillUpdate(nextProps, nextState) {// if(this.nextProps.amount !== this.nextState.amount) {
-      //   this.setState({
-      //     amountUSD: amount * 2
-      //   })
-      // }
+    key: "getRubRates",
+    value: function getRubRates() {
+      var _this2 = this;
+
+      _helpers.request.get('https://www.cbr-xml-daily.ru/daily_json.js', {
+        cacheResponse: 60 * 60 * 1000
+      }).then(function (rates) {
+        if (rates && rates.Valute && rates.Valute.USD) {
+          var rubRates = rates.Valute.USD.Value;
+
+          _this2.setState({
+            rubRates: rubRates
+          });
+        }
+      });
     }
   }, {
     key: "addressIsCorrect",
     value: function addressIsCorrect(otherAddress) {
       var currency = this.props.data.currency;
-      var _this$state2 = this.state,
-          address = _this$state2.address,
-          isEthToken = _this$state2.isEthToken;
+      var _this$state5 = this.state,
+          address = _this$state5.address,
+          isEthToken = _this$state5.isEthToken;
       var checkAddress = otherAddress ? otherAddress : address;
 
       if (isEthToken) {
@@ -67548,18 +67570,19 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$state3 = this.state,
-          address = _this$state3.address,
-          destination = _this$state3.destination,
-          amount = _this$state3.amount,
-          contact = _this$state3.contact,
-          label = _this$state3.label,
-          isShipped = _this$state3.isShipped,
-          minus = _this$state3.minus,
-          openScanCam = _this$state3.openScanCam,
-          currentDecimals = _this$state3.currentDecimals,
-          error = _this$state3.error,
-          infoAboutCurrency = _this$state3.infoAboutCurrency;
+      var _this$state6 = this.state,
+          address = _this$state6.address,
+          destination = _this$state6.destination,
+          amount = _this$state6.amount,
+          amountRUB = _this$state6.amountRUB,
+          amountUSD = _this$state6.amountUSD,
+          contact = _this$state6.contact,
+          label = _this$state6.label,
+          isShipped = _this$state6.isShipped,
+          minus = _this$state6.minus,
+          openScanCam = _this$state6.openScanCam,
+          error = _this$state6.error,
+          infoAboutCurrency = _this$state6.infoAboutCurrency;
       var _this$props2 = this.props,
           name = _this$props2.name,
           currency = _this$props2.data.currency,
@@ -67567,7 +67590,7 @@ function (_React$Component) {
 
       var linked = _swValuelink.default.all(this, 'address', 'destination', 'amountUSD', 'amountRUB', 'amount', 'contact', 'label');
 
-      var isDisabled = !address || !amount || isShipped || !destination || !contact || !this.addressIsCorrect() || (0, _bignumber.BigNumber)(amount).dp() > currentDecimals;
+      var isDisabled = !address || !amount || isShipped || !destination || !contact || !this.addressIsCorrect();
       var localeLabel = (0, _reactIntl.defineMessages)({
         title: {
           id: 'invoiceModal_Title',
