@@ -5304,7 +5304,10 @@ var getInfoAboutCurrency = function getInfoAboutCurrency(currencyNames) {
       isFetching: true
     });
 
-    _helpers.request.get(url).then(function (data) {
+    _helpers.request.get(url, {
+      cacheResponse: 60 * 60 * 1000 // кеш 1 час
+
+    }).then(function (data) {
       data.map(function (currencyInfoItem) {
         if (currencyNames.includes(currencyInfoItem.symbol)) {
           switch (currencyInfoItem.symbol) {
@@ -28151,6 +28154,10 @@ exports.default = void 0;
 
 var _extends2 = _interopRequireDefault(__webpack_require__(68));
 
+var _regenerator = _interopRequireDefault(__webpack_require__(24));
+
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(25));
+
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(2));
 
 var _createClass2 = _interopRequireDefault(__webpack_require__(3));
@@ -28332,6 +28339,31 @@ function (_Component) {
       walletTitle: 'Wallet',
       editTitle: false
     });
+    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "getInfoAboutCurrency",
+    /*#__PURE__*/
+    (0, _asyncToGenerator2.default)(
+    /*#__PURE__*/
+    _regenerator.default.mark(function _callee() {
+      var currencies, currencyNames;
+      return _regenerator.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              currencies = _this.props.currencies;
+              currencyNames = currencies.map(function (_ref6) {
+                var name = _ref6.name;
+                return name;
+              });
+              _context.next = 4;
+              return _actions.default.user.getInfoAboutCurrency(currencyNames);
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    })));
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleNavItemClick", function (index) {
       if (index === 1) {
         // fetch actual tx list
@@ -28382,8 +28414,8 @@ function (_Component) {
       var allData = _this.props.allData;
       var address = params.address,
           amount = params.amount;
-      var item = allData.find(function (_ref5) {
-        var currency = _ref5.currency;
+      var item = allData.find(function (_ref7) {
+        var currency = _ref7.currency;
         return currency.toLowerCase() === params.currency.toLowerCase();
       });
 
@@ -28468,6 +28500,7 @@ function (_Component) {
         this.handleWithdraw(params);
       }
 
+      this.getInfoAboutCurrency();
       this.setLocalStorageItems();
     }
   }, {
@@ -28500,15 +28533,15 @@ function (_Component) {
       var usdBalance = 0;
       var changePercent = 0;
       var widgetCurrencies = isWidgetBuild ? ['BTC', 'ETH', _appConfig.default.erc20token.toUpperCase()] : [];
-      var tableRows = allData.filter(function (_ref6) {
-        var currency = _ref6.currency,
-            balance = _ref6.balance;
+      var tableRows = allData.filter(function (_ref8) {
+        var currency = _ref8.currency,
+            balance = _ref8.balance;
         return !hiddenCoinsList.includes(currency) || balance > 0;
       });
 
       if (isWidgetBuild) {
-        tableRows = allData.filter(function (_ref7) {
-          var currency = _ref7.currency;
+        tableRows = allData.filter(function (_ref9) {
+          var currency = _ref9.currency;
           return widgetCurrencies.includes(currency);
         });
       }
@@ -28543,9 +28576,9 @@ function (_Component) {
         handleNotifyBlockClose: this.handleNotifyBlockClose
       }, this.state)), _react.default.createElement("ul", {
         styleName: "walletNav"
-      }, walletNav.map(function (_ref8, index) {
-        var key = _ref8.key,
-            text = _ref8.text;
+      }, walletNav.map(function (_ref10, index) {
+        var key = _ref10.key,
+            text = _ref10.text;
         return _react.default.createElement("li", {
           key: key,
           styleName: "walletNavItem ".concat(activeView === index ? 'active' : ''),
@@ -34201,20 +34234,30 @@ function (_PureComponent) {
               case 0:
                 _this$props = this.props, _this$props$match$par = _this$props.match.params, type = _this$props$match$par.type, wallet = _this$props$match$par.wallet, history = _this$props.history, pathname = _this$props.location.pathname, data = _this$props.data;
 
-                if (type && wallet && ['btc', 'eth'].includes(type) && data[type]) {
-                  address = data[type].address;
-
-                  _actions.default.modals.open(_helpers.constants.modals.InvoiceModal, {
-                    currency: type.toUpperCase(),
-                    toAddress: wallet,
-                    address: address,
-                    disableClose: true
-                  });
-                } else {
-                  this.props.history.push((0, _locale.localisedUrl)(_helpers.links.notFound));
+                if (!(type && wallet && ['btc', 'eth'].includes(type) && data[type])) {
+                  _context.next = 8;
+                  break;
                 }
 
-              case 2:
+                address = data[type].address;
+                _context.next = 5;
+                return _actions.default.user.getInfoAboutCurrency([type.toUpperCase()]);
+
+              case 5:
+                _actions.default.modals.open(_helpers.constants.modals.InvoiceModal, {
+                  currency: type.toUpperCase(),
+                  toAddress: wallet,
+                  address: address,
+                  disableClose: true
+                });
+
+                _context.next = 9;
+                break;
+
+              case 8:
+                this.props.history.push((0, _locale.localisedUrl)(_helpers.links.notFound));
+
+              case 9:
               case "end":
                 return _context.stop();
             }
