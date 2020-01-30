@@ -560,19 +560,21 @@ var Button = function Button(props) {
       white = props.white,
       gray = props.gray,
       disabled = props.disabled,
+      big = props.big,
       onClick = props.onClick,
       _props$id = props.id,
-      id = _props$id === void 0 ? '' : _props$id,
+      id = _props$id === void 0 ? "" : _props$id,
       dataTut = props.dataTut;
-  var styleName = (0, _classnames.default)('button', {
-    'fullWidth': fullWidth,
-    'brand': brand,
-    'transparent': transparent,
-    'green': green,
-    'blue': blue,
-    'white': white,
-    'gray': gray,
-    'disabled': disabled
+  var styleName = (0, _classnames.default)("button", {
+    fullWidth: fullWidth,
+    brand: brand,
+    transparent: transparent,
+    green: green,
+    blue: blue,
+    white: white,
+    gray: gray,
+    big: big,
+    disabled: disabled
   });
   return _react.default.createElement("button", {
     "data-tut": dataTut,
@@ -929,6 +931,7 @@ function (_Component) {
           errorStyle = _this$props.errorStyle,
           openScan = _this$props.openScan,
           qr = _this$props.qr,
+          smallFontSize = _this$props.smallFontSize,
           error = _this$props.valueLink.error,
           valueLink = _this$props.valueLink,
           dontDisplayError = _this$props.dontDisplayError,
@@ -941,16 +944,17 @@ function (_Component) {
           type = _this$props.type,
           usd = _this$props.usd,
           srollingForm = _this$props.srollingForm,
-          rest = (0, _objectWithoutProperties2.default)(_this$props, ["className", "inputContainerClassName", "inputClassName", "errorStyle", "openScan", "qr", "valueLink", "valueLink", "dontDisplayError", "inputCustomStyle", "withMargin", "multiline", "focusOnInit", "disabled", "readOnly", "type", "usd", "srollingForm"]);
-      var inputContainerStyleName = (0, _classnames.default)('inputContainer', {
-        'withError': error,
-        'withMargin': withMargin
+          rest = (0, _objectWithoutProperties2.default)(_this$props, ["className", "inputContainerClassName", "inputClassName", "errorStyle", "openScan", "qr", "smallFontSize", "valueLink", "valueLink", "dontDisplayError", "inputCustomStyle", "withMargin", "multiline", "focusOnInit", "disabled", "readOnly", "type", "usd", "srollingForm"]);
+      var inputContainerStyleName = (0, _classnames.default)("inputContainer", {
+        withError: error,
+        withMargin: withMargin,
+        smallFontSize: smallFontSize
       });
       var focusEvent = !_reactDeviceDetect.isMobile ? {} : {
         onFocus: this.handleFocus,
         onBlur: this.handleBlur
       };
-      var style = errorStyle ? 'input inputError' : 'input ';
+      var style = errorStyle ? "input inputError" : "input ";
 
       if (srollingForm) {
         style = style + "srollingForm";
@@ -962,7 +966,7 @@ function (_Component) {
       }, _react.default.createElement("div", {
         styleName: inputContainerStyleName,
         className: inputContainerClassName
-      }, _react.default.createElement(multiline ? _TextArea.default : _swValuelink.Input, _objectSpread({}, (0, _helpers.ignoreProps)(rest, 'styles'), {
+      }, _react.default.createElement(multiline ? _TextArea.default : _swValuelink.Input, _objectSpread({}, (0, _helpers.ignoreProps)(rest, "styles"), {
         styleName: style,
         className: inputClassName,
         style: inputCustomStyle,
@@ -970,10 +974,10 @@ function (_Component) {
         type: type,
         disabled: disabled || readOnly,
         autoFocus: !!focusOnInit,
-        dir: 'auto',
-        autoComplete: 'off'
+        dir: "auto",
+        autoComplete: "off"
       }, focusEvent)), usd > 0 && _react.default.createElement("p", {
-        styleName: "rightEl"
+        styleName: "dollar"
       }, "~".concat(usd), "$"), qr && _react.default.createElement("p", {
         styleName: "rightEl qr"
       }, _react.default.createElement("i", {
@@ -1005,7 +1009,7 @@ function (_Component) {
   disabled: false,
   readOnly: false,
   required: false,
-  type: 'text'
+  type: "text"
 }), _temp)) || _class);
 exports.default = Input;
 
@@ -26578,7 +26582,7 @@ module.exports = {"Switch":"_3pDnueFHMs_q3ms8ZcXtEl"};
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"button":"qJheS4x3N5yUXEgqJMMi2","fullWidth":"_2GzkvzDse5f2S7wSKTt7z3","brand":"_3zY6WOp0vdU-IcEDHljcQB","green":"_s-GvI7ITu7bzDWQquosj","blue":"_2Zrhlm7HCo1uDgLKjMEF5J","transparent":"_19nF-whqtBsv5O0_eKRxTl","white":"ewAS276AGebKuctUnfzYm","gray":"_9dfBigL6jbARP8AnGeBkV","disabled":"_1WzQpiRfuKCdDivYmfsWVz"};
+module.exports = {"button":"qJheS4x3N5yUXEgqJMMi2","fullWidth":"_2GzkvzDse5f2S7wSKTt7z3","big":"_2j43p9qh2BH382gj9MiDgf","brand":"_3zY6WOp0vdU-IcEDHljcQB","green":"_s-GvI7ITu7bzDWQquosj","blue":"_2Zrhlm7HCo1uDgLKjMEF5J","transparent":"_19nF-whqtBsv5O0_eKRxTl","white":"ewAS276AGebKuctUnfzYm","gray":"_9dfBigL6jbARP8AnGeBkV","disabled":"_1WzQpiRfuKCdDivYmfsWVz"};
 
 /***/ }),
 /* 2064 */
@@ -26665,7 +26669,7 @@ module.exports = {"withdrawButton":"_2yf2SivjY11GsRTdk8ix_E","disable":"_1b3lTHx
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"srollingForm":"_1_yKhUghljUPKSv3ifOXQI","root":"_1aWblpUrBzrClI1oY6s76G","inputContainer":"_2di3Mb1vHQXnSlfzqVyYWS","withMargin":"yl8lA8e3pif_HhOu6snBv","disabled":"_3u8Uu26-jU0S70GCbAXViG","withError":"_3RwSrHQhQRYZTNNCHCp6Yn","input":"_3T0zd_zY0Dj0v1G-EwmYuR","label":"_3xlNvFGRpGNX8ZI__BR3ID","rightEl":"_3ksKHpdci2csw5eTlnoBF6","qr":"_2QPXgXnZW1JxddVukTy3SB","inputError":"FOCTIZqsTtqNYupWD7y6W","error":"_3LmV0i0qYS1GE0xjjzOll4"};
+module.exports = {"input":"_3T0zd_zY0Dj0v1G-EwmYuR","srollingForm":"_1_yKhUghljUPKSv3ifOXQI","root":"_1aWblpUrBzrClI1oY6s76G","inputContainer":"_2di3Mb1vHQXnSlfzqVyYWS","withMargin":"yl8lA8e3pif_HhOu6snBv","disabled":"_3u8Uu26-jU0S70GCbAXViG","withError":"_3RwSrHQhQRYZTNNCHCp6Yn","label":"_3xlNvFGRpGNX8ZI__BR3ID","rightEl":"_3ksKHpdci2csw5eTlnoBF6","dollar":"_35KexQtgkIYhQDiDZJdbmz","qr":"_2QPXgXnZW1JxddVukTy3SB","inputError":"FOCTIZqsTtqNYupWD7y6W","error":"_3LmV0i0qYS1GE0xjjzOll4","smallFontSize":"Dqm8yhtne67G7Kogpztzw"};
 
 /***/ }),
 /* 2081 */,
@@ -71110,7 +71114,7 @@ function (_React$Component) {
     (0, _classCallCheck2.default)(this, WithdrawModal);
     _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(WithdrawModal).call(this));
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "fixDecimalCountETH", function (amount) {
-      if (_this.props.data.currency === 'ETH' && (0, _bignumber.BigNumber)(amount).dp() > 18) {
+      if (_this.props.data.currency === "ETH" && (0, _bignumber.BigNumber)(amount).dp() > 18) {
         var amountInt = (0, _bignumber.BigNumber)(amount).integerValue();
         var amountDecimal = (0, _bignumber.BigNumber)(amount).mod(1);
         var amountIntStr = amountInt.toString();
@@ -71120,7 +71124,7 @@ function (_React$Component) {
         console.warn("To avoid [ethjs-unit]error: while converting number with more then 18 decimals to wei - you can't afford yourself add more than 18 decimals"); // eslint-disable-line
 
         if (regexr.test(result)) {
-          console.warn('And ofcourse you can not write number which can not be saved without an exponential notation in JS');
+          console.warn("And ofcourse you can not write number which can not be saved without an exponential notation in JS");
           return 0;
         }
 
@@ -71132,13 +71136,13 @@ function (_React$Component) {
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "getMinAmountForEthToken", function () {
       var currency = _this.props.data.currency;
       var currentDecimals = _this.state.currentDecimals;
-      var ethTokenMinAmount = '0.';
+      var ethTokenMinAmount = "0.";
 
       for (var a = 0; a < currentDecimals - 1; a++) {
-        ethTokenMinAmount += '0';
+        ethTokenMinAmount += "0";
       }
 
-      return ethTokenMinAmount += '1';
+      return ethTokenMinAmount += "1";
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "actualyMinAmount",
     /*#__PURE__*/
@@ -71162,8 +71166,8 @@ function (_React$Component) {
               _minAmount.default[currentCoin] = _this.getMinAmountForEthToken();
               _context.next = 7;
               return _helpers.default.eth.estimateFeeValue({
-                method: 'send',
-                speed: 'fast'
+                method: "send",
+                speed: "fast"
               });
 
             case 7:
@@ -71177,8 +71181,8 @@ function (_React$Component) {
 
               _context.next = 11;
               return _helpers.default[currentCoin].estimateFeeValue({
-                method: 'send',
-                speed: 'fast'
+                method: "send",
+                speed: "fast"
               });
 
             case 11:
@@ -71246,7 +71250,7 @@ function (_React$Component) {
             case 0:
               currency = _this.props.data.currency;
               _context3.next = 3;
-              return _actions.default.user.getExchangeRate(currency, 'usd');
+              return _actions.default.user.getExchangeRate(currency, "usd");
 
             case 3:
               exCurrencyRate = _context3.sent;
@@ -71289,7 +71293,7 @@ function (_React$Component) {
               sendOptions = {
                 to: to,
                 amount: amount,
-                speed: 'fast'
+                speed: "fast"
               };
 
               if (_helpers.default.ethToken.isEthToken({
@@ -71310,7 +71314,7 @@ function (_React$Component) {
               }
 
               _context5.next = 9;
-              return _actions.default.invoices.markInvoice(invoice.id, 'ready', ownTx);
+              return _actions.default.invoices.markInvoice(invoice.id, "ready", ownTx);
 
             case 9:
               _actions.default.loader.hide();
@@ -71358,7 +71362,7 @@ function (_React$Component) {
                           }
 
                           _context4.next = 5;
-                          return _actions.default.invoices.markInvoice(invoice.id, 'ready', txRaw);
+                          return _actions.default.invoices.markInvoice(invoice.id, "ready", txRaw);
 
                         case 5:
                           _this.setBalanceOnState(currency);
@@ -71394,26 +71398,26 @@ function (_React$Component) {
               }()).then(function () {
                 _actions.default.modals.close(name);
               }).catch(function (e) {
-                var errorText = e.res ? e.res.text : '';
+                var errorText = e.res ? e.res.text : "";
                 var error = {
                   name: {
-                    id: 'Withdraw218',
-                    defaultMessage: 'Withdrawal error'
+                    id: "Withdraw218",
+                    defaultMessage: "Withdrawal error"
                   },
                   message: {
-                    id: 'ErrorNotification12',
-                    defaultMessage: 'Oops, looks like something went wrong!'
+                    id: "ErrorNotification12",
+                    defaultMessage: "Oops, looks like something went wrong!"
                   }
                 };
 
                 if (/insufficient priority|bad-txns-inputs-duplicate/.test(errorText)) {
                   error.message = {
-                    id: 'Withdraw232',
-                    defaultMessage: 'There is not enough confirmation of the last transaction. Try later.'
+                    id: "Withdraw232",
+                    defaultMessage: "There is not enough confirmation of the last transaction. Try later."
                   };
                 }
 
-                console.error(error.name.defaultMessage, ':', e);
+                console.error(error.name.defaultMessage, ":", e);
 
                 _this.setState(function () {
                   return {
@@ -71444,7 +71448,7 @@ function (_React$Component) {
               _this$state2 = _this.state, amount = _this$state2.amount, balance = _this$state2.balance, currency = _this$state2.currency, isEthToken = _this$state2.isEthToken;
               data = _this.props.data;
               minFee = isEthToken ? 0 : _minAmount.default[data.currency.toLowerCase()];
-              balanceMiner = balance ? balance !== 0 ? new _bignumber.BigNumber(balance).minus(minFee).toString() : balance : 'Wait please. Loading...';
+              balanceMiner = balance ? balance !== 0 ? new _bignumber.BigNumber(balance).minus(minFee).toString() : balance : "Wait please. Loading...";
 
               _this.setState({
                 amount: balanceMiner
@@ -71471,8 +71475,8 @@ function (_React$Component) {
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleScan", function (data) {
       if (data) {
-        var address = data.split(':')[1].split('?')[0];
-        var amount = data.split('=')[1];
+        var address = data.split(":")[1].split("?")[0];
+        var amount = data.split("=")[1];
 
         _this.setState(function () {
           return {
@@ -71499,10 +71503,10 @@ function (_React$Component) {
     })[0];
     _this.state = {
       isShipped: false,
-      openScanCam: '',
-      address: toAddress ? toAddress : '',
-      amount: _amount ? _amount : '',
-      minus: '',
+      openScanCam: "",
+      address: toAddress ? toAddress : "",
+      amount: _amount ? _amount : "",
+      minus: "",
       balance: selectedItem.balance || 0,
       ethBalance: null,
       isEthToken: _helpers.default.ethToken.isEthToken({
@@ -71511,7 +71515,7 @@ function (_React$Component) {
       currentDecimals: _currentDecimals,
       getUsd: 0,
       error: false,
-      ownTx: ''
+      ownTx: ""
     };
     return _this;
   }
@@ -71583,13 +71587,13 @@ function (_React$Component) {
           items = _this$props3.items,
           intl = _this$props3.intl;
 
-      var linked = _swValuelink.default.all(this, 'address', 'amount', 'ownTx');
+      var linked = _swValuelink.default.all(this, "address", "amount", "ownTx");
 
       var min = _minAmount.default[currency.toLowerCase()];
 
-      var dataCurrency = isEthToken ? 'ETH' : currency.toUpperCase();
+      var dataCurrency = isEthToken ? "ETH" : currency.toUpperCase();
       var isDisabled = !address || !amount || isShipped || ownTx || !this.addressIsCorrect() || (0, _bignumber.BigNumber)(amount).isGreaterThan(balance) || (0, _bignumber.BigNumber)(amount).dp() > currentDecimals || this.isEthOrERC20();
-      var NanReplacement = balance || '...';
+      var NanReplacement = balance || "...";
       var getUsd = amount * exCurrencyRate;
 
       if (new _bignumber.BigNumber(amount).isGreaterThan(0)) {
@@ -71597,8 +71601,8 @@ function (_React$Component) {
           return new _bignumber.BigNumber(value).isLessThanOrEqualTo(balance);
         }, _react.default.createElement("div", {
           style: {
-            width: '340px',
-            fontSize: '12px'
+            width: "340px",
+            fontSize: "12px"
           }
         }, _react.default.createElement(_reactIntl.FormattedMessage, {
           id: "Withdrow170",
@@ -71612,24 +71616,24 @@ function (_React$Component) {
 
       if (this.state.amount < 0) {
         this.setState({
-          amount: '',
+          amount: "",
           minus: true
         });
       }
 
       var labels = (0, _reactIntl.defineMessages)({
         withdrowModal: {
-          id: 'withdrowTitle271',
+          id: "withdrowTitle271",
           defaultMessage: "Send"
         },
         ownTxPlaceholder: {
-          id: 'withdrawOwnTxPlaceholder',
-          defaultMessage: 'Если оплатили с другого источника'
+          id: "withdrawOwnTxPlaceholder",
+          defaultMessage: "Если оплатили с другого источника"
         }
       });
       return _react.default.createElement(_Modal.default, {
         name: name,
-        title: "".concat(intl.formatMessage(labels.withdrowModal), ' ').concat(currency.toUpperCase())
+        title: "".concat(intl.formatMessage(labels.withdrowModal), " ").concat(currency.toUpperCase())
       }, openScanCam && _react.default.createElement(_QrReader.default, {
         openScan: this.openScan,
         handleError: this.handleError,
@@ -71637,7 +71641,7 @@ function (_React$Component) {
       }), invoice && _react.default.createElement(_InvoiceInfoBlock.default, {
         invoiceData: invoice
       }), _react.default.createElement("p", {
-        styleName: isEthToken ? 'rednotes' : 'notice'
+        styleName: isEthToken ? "rednotes" : "notice"
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "Withdrow213",
         defaultMessage: "Please note: Fee is {minAmount} {data}.{br}Your balance must exceed this sum to perform transaction",
@@ -71649,16 +71653,16 @@ function (_React$Component) {
       })), _react.default.createElement("div", {
         styleName: "highLevel",
         style: {
-          marginBottom: '20px'
+          marginBottom: "20px"
         }
       }, _react.default.createElement(_FieldLabel.default, null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "Withdrow1194",
         defaultMessage: "Address "
-      }), ' ', _react.default.createElement(_Tooltip.default, {
+      }), " ", _react.default.createElement(_Tooltip.default, {
         id: "WtH203"
       }, _react.default.createElement("div", {
         style: {
-          textAlign: 'center'
+          textAlign: "center"
         }
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "WTH275",
@@ -71673,6 +71677,7 @@ function (_React$Component) {
         pattern: "0-9a-zA-Z:",
         placeholder: "Enter ".concat(currency.toUpperCase(), " address to transfer"),
         qr: true,
+        withMargin: true,
         openScan: this.openScan
       }), address && !this.addressIsCorrect() && _react.default.createElement("div", {
         styleName: "rednote"
@@ -71680,17 +71685,17 @@ function (_React$Component) {
         id: "WithdrawIncorectAddress",
         defaultMessage: "Your address not correct"
       }))), _react.default.createElement("div", {
-        styleName: "lowLevel"
+        styleName: "lowLevel",
+        style: {
+          marginBottom: "50px"
+        }
       }, _react.default.createElement("p", {
         styleName: "balance"
-      }, balance, ' ', currency.toUpperCase()), _react.default.createElement(_FieldLabel.default, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      }, balance, " ", currency.toUpperCase()), _react.default.createElement(_FieldLabel.default, null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "Withdrow118",
         defaultMessage: "Amount "
       })), _react.default.createElement("div", {
-        styleName: "group",
-        style: {
-          marginBottom: '20px'
-        }
+        styleName: "group"
       }, _react.default.createElement(_Input.default, {
         styleName: "input",
         valueLink: linked.amount,
@@ -71700,10 +71705,11 @@ function (_React$Component) {
         onKeyDown: _domUtils.inputReplaceCommaWithDot
       }), _react.default.createElement("div", {
         style: {
-          marginLeft: '15px'
+          marginLeft: "15px"
         }
       }, _react.default.createElement(_Button.default, {
         blue: true,
+        big: true,
         onClick: this.sellAllBalance,
         "data-tip": true,
         "data-for": "Withdrow134"
@@ -71718,15 +71724,15 @@ function (_React$Component) {
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "WithdrawButton32",
         defaultMessage: "when you click this button, in the field, an amount equal to your balance minus the miners commission will appear"
-      }))), !linked.amount.error && _react.default.createElement("div", {
-        styleName: minus ? 'rednote' : 'note'
+      })), !linked.amount.error && _react.default.createElement("div", {
+        styleName: minus ? "rednote" : "note"
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "WithdrawModal256",
         defaultMessage: "No less than {minAmount}",
         values: {
           minAmount: "".concat(min)
         }
-      })), this.isEthOrERC20() && _react.default.createElement("div", {
+      }))), this.isEthOrERC20() && _react.default.createElement("div", {
         styleName: "rednote"
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "WithdrawModal263",
@@ -71736,6 +71742,7 @@ function (_React$Component) {
         }
       }))), _react.default.createElement(_Button.default, {
         blue: true,
+        big: true,
         fullWidth: true,
         disabled: isDisabled,
         onClick: this.handleSubmit
@@ -71745,7 +71752,7 @@ function (_React$Component) {
       })) : _react.default.createElement(_react.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "WithdrawModal111",
         defaultMessage: "Withdraw"
-      }), ' ', "".concat(currency.toUpperCase()))), error && _react.default.createElement("div", {
+      }), " ", "".concat(currency.toUpperCase()))), error && _react.default.createElement("div", {
         styleName: "rednote"
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "WithdrawModalErrorSend",
@@ -77150,11 +77157,11 @@ function (_React$Component) {
 
               currency = data.currency.toUpperCase();
               _context.t0 = data.currency;
-              _context.next = _context.t0 === 'BTC (SMS-Protected)' ? 9 : _context.t0 === 'BTC (Multisig)' ? 9 : 11;
+              _context.next = _context.t0 === "BTC (SMS-Protected)" ? 9 : _context.t0 === "BTC (Multisig)" ? 9 : 11;
               break;
 
             case 9:
-              currency = 'BTC';
+              currency = "BTC";
               return _context.abrupt("break", 11);
 
             case 11:
@@ -77173,7 +77180,7 @@ function (_React$Component) {
             case 15:
               result = _context.sent;
 
-              if (result && result.answer && result.answer === 'ok') {
+              if (result && result.answer && result.answer === "ok") {
                 _actions.default.modals.close(name);
               }
 
@@ -77187,7 +77194,7 @@ function (_React$Component) {
             case 20:
               _context.prev = 20;
               _context.t1 = _context["catch"](11);
-              console.log('error', _context.t1);
+              console.log("error", _context.t1);
 
             case 23:
               _this.setState({
@@ -77217,8 +77224,8 @@ function (_React$Component) {
 
       _this.setState({
         amountUSD: value,
-        amountRUB: value ? (value * rubRates).toFixed(0) : '',
-        amount: value ? (value / _this.state.infoAboutCurrency.price_usd).toFixed(currentDecimals) : ''
+        amountRUB: value ? (value * rubRates).toFixed(0) : "",
+        amount: value ? (value / _this.state.infoAboutCurrency.price_usd).toFixed(currentDecimals) : ""
       });
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleRubValue", function (value) {
@@ -77228,8 +77235,8 @@ function (_React$Component) {
 
       _this.setState({
         amountRUB: value,
-        amountUSD: value ? (value / rubRates).toFixed(2) : '',
-        amount: value ? (value / _this.state.infoAboutCurrency.price_usd / rubRates).toFixed(currentDecimals) : ''
+        amountUSD: value ? (value / rubRates).toFixed(2) : "",
+        amount: value ? (value / _this.state.infoAboutCurrency.price_usd / rubRates).toFixed(currentDecimals) : ""
       });
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleAmount", function (value) {
@@ -77238,8 +77245,8 @@ function (_React$Component) {
           currentDecimals = _this$state4.currentDecimals;
 
       _this.setState({
-        amountRUB: value ? (value * _this.state.infoAboutCurrency.price_usd * rubRates).toFixed(0) : '',
-        amountUSD: value ? (value * _this.state.infoAboutCurrency.price_usd).toFixed(2) : '',
+        amountRUB: value ? (value * _this.state.infoAboutCurrency.price_usd * rubRates).toFixed(0) : "",
+        amountUSD: value ? (value * _this.state.infoAboutCurrency.price_usd).toFixed(2) : "",
         amount: value
       });
     });
@@ -77250,7 +77257,7 @@ function (_React$Component) {
       if (data) {
         _this.setState(function () {
           return {
-            address: data.includes(':') ? data.split(':')[1] : data
+            address: data.includes(":") ? data.split(":")[1] : data
           };
         });
 
@@ -77274,13 +77281,13 @@ function (_React$Component) {
 
     _this.state = {
       isShipped: false,
-      openScanCam: '',
-      address: toAddress ? toAddress : '',
+      openScanCam: "",
+      address: toAddress ? toAddress : "",
       destination: _address,
-      amount: '',
-      minus: '',
-      contact: '',
-      label: '',
+      amount: "",
+      minus: "",
+      contact: "",
+      label: "",
       currentDecimals: _currentDecimals,
       error: false,
       infoAboutCurrency: infoAboutCurrency,
@@ -77297,7 +77304,7 @@ function (_React$Component) {
     value: function getRubRates() {
       var _this2 = this;
 
-      _helpers.request.get('https://www.cbr-xml-daily.ru/daily_json.js', {
+      _helpers.request.get("https://www.cbr-xml-daily.ru/daily_json.js", {
         cacheResponse: 60 * 60 * 1000
       }).then(function (rates) {
         if (rates && rates.Valute && rates.Valute.USD) {
@@ -77325,9 +77332,9 @@ function (_React$Component) {
       var checkCurrency = currency.toUpperCase();
 
       switch (currency) {
-        case 'BTC (SMS-Protected)':
-        case 'BTC (Multisig)':
-          checkCurrency = 'BTC';
+        case "BTC (SMS-Protected)":
+        case "BTC (Multisig)":
+          checkCurrency = "BTC";
           break;
       }
 
@@ -77354,38 +77361,38 @@ function (_React$Component) {
           currency = _this$props2.data.currency,
           intl = _this$props2.intl;
 
-      var linked = _swValuelink.default.all(this, 'address', 'destination', 'amountUSD', 'amountRUB', 'amount', 'contact', 'label');
+      var linked = _swValuelink.default.all(this, "address", "destination", "amountUSD", "amountRUB", "amount", "contact", "label");
 
       var isDisabled = !address || !amount || isShipped || !destination || !contact || !this.addressIsCorrect();
       var localeLabel = (0, _reactIntl.defineMessages)({
         title: {
-          id: 'invoiceModal_Title',
-          defaultMessage: 'Выставление счета на пополнение'
+          id: "invoiceModal_Title",
+          defaultMessage: "Выставление счета на пополнение"
         },
         addressPlaceholder: {
-          id: 'invoiceModal_addressPlaceholder',
-          defaultMessage: 'Введите адрес {currency} кошелька'
+          id: "invoiceModal_addressPlaceholder",
+          defaultMessage: "Введите адрес {currency} кошелька"
         },
         destiAddressPlaceholder: {
-          id: 'invoiceModal_destiAddressPlaceholder',
-          defaultMessage: 'Введите адрес {currency} кошелька'
+          id: "invoiceModal_destiAddressPlaceholder",
+          defaultMessage: "Введите адрес {currency} кошелька"
         },
         amountPlaceholder: {
-          id: 'invoiceModal_amountPlaceholder',
-          defaultMessage: 'Введите сумму'
+          id: "invoiceModal_amountPlaceholder",
+          defaultMessage: "Введите сумму"
         },
         contactPlaceholder: {
-          id: 'invoiceModal_contactPlaceholder',
-          defaultMessage: 'Обязательное поле'
+          id: "invoiceModal_contactPlaceholder",
+          defaultMessage: "Обязательное поле"
         },
         labelPlaceholder: {
-          id: 'invoiceModal_labelPlaceholder',
-          defaultMessage: 'Укажите комментарий к счету'
+          id: "invoiceModal_labelPlaceholder",
+          defaultMessage: "Укажите комментарий к счету"
         }
       });
       return _react.default.createElement(_Modal.default, {
         name: name,
-        title: "".concat(intl.formatMessage(localeLabel.title), ' ').concat(currency.toUpperCase()),
+        title: "".concat(intl.formatMessage(localeLabel.title), " ").concat(currency.toUpperCase()),
         disableClose: this.props.data.disableClose
       }, openScanCam && _react.default.createElement(_QrReader.default, {
         openScan: this.openScan,
@@ -77397,14 +77404,11 @@ function (_React$Component) {
         styleName: "highLevel"
       }, _react.default.createElement(_FieldLabel.default, {
         label: true
-      }, _react.default.createElement("span", {
-        style: {
-          fontSize: '16px'
-        }
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "invoiceModal_Address",
         defaultMessage: "\u0410\u0434\u0440\u0435\u0441, \u043D\u0430 \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u0432\u044B\u0441\u0442\u0430\u0432\u043B\u044F\u0435\u043C \u0441\u0447\u0435\u0442"
-      }))), _react.default.createElement(_Input.default, {
+      })), _react.default.createElement(_Input.default, {
+        smallFontSize: true,
         withMargin: true,
         valueLink: linked.address,
         focusOnInit: true,
@@ -77423,17 +77427,14 @@ function (_React$Component) {
         styleName: "highLevel"
       }, _react.default.createElement(_FieldLabel.default, {
         label: true
-      }, _react.default.createElement("span", {
-        style: {
-          fontSize: '16px'
-        }
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "invoiceModal_destiAddress",
         defaultMessage: "\u0410\u0434\u0440\u0435\u0441, \u043A\u0443\u0434\u0430 \u0431\u0443\u0434\u0435\u0442 \u043F\u0440\u043E\u0438\u0437\u0432\u0435\u0434\u0435\u043D\u0430 \u043E\u043F\u043B\u0430\u0442\u0430"
-      }))), _react.default.createElement(_Input.default, {
-        withMargin: true,
+      })), _react.default.createElement(_Input.default, {
         valueLink: linked.destination,
         focusOnInit: true,
+        smallFontSize: true,
+        withMargin: true,
         pattern: "0-9a-zA-Z:",
         placeholder: intl.formatMessage(localeLabel.destiAddressPlaceholder, {
           currency: currency.toUpperCase()
@@ -77446,91 +77447,42 @@ function (_React$Component) {
         id: "invoiceModal_IncorrectDestiAddress",
         defaultMessage: "\u0412\u044B \u0432\u0432\u0435\u043B\u0438 \u043D\u0435 \u043A\u043E\u0440\u0435\u043A\u0442\u043D\u044B\u0439 \u0430\u0434\u0440\u0435\u0441"
       }))), _react.default.createElement("div", {
-        styleName: "lowLevel"
-      }, _react.default.createElement("div", {
-        styleName: "groupField"
-      }, _react.default.createElement("div", {
-        styleName: "highLevel"
-      }, _react.default.createElement(_FieldLabel.default, {
-        label: true
-      }, _react.default.createElement("span", null, _react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "invoiceModal_Amount_RUB",
-        defaultMessage: "\u0421\u0443\u043C\u043C\u0430 \u0432 \u0440\u0443\u0431\u043B\u044F\u0445"
-      }))))), _react.default.createElement(_Input.default, {
-        withMargin: true,
-        styleName: "input",
-        valueLink: linked.amountRUB.pipe(this.handleRubValue),
-        pattern: "0-9\\.",
-        placeholder: intl.formatMessage(localeLabel.amountPlaceholder),
-        onKeyDown: _domUtils.inputReplaceCommaWithDot
-      })), _react.default.createElement("div", {
-        styleName: "lowLevel"
-      }, _react.default.createElement("div", {
-        styleName: "groupField"
-      }, _react.default.createElement("div", {
-        styleName: "highLevel"
-      }, _react.default.createElement(_FieldLabel.default, {
-        label: true
-      }, _react.default.createElement("span", null, _react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "invoiceModal_Amount_Dollar",
-        defaultMessage: "\u0421\u0443\u043C\u043C\u0430 \u0432 \u0434\u043E\u043B\u043B\u0430\u0440\u0430\u0445"
-      }))))), _react.default.createElement(_Input.default, {
-        withMargin: true,
-        styleName: "input",
-        valueLink: linked.amountUSD.pipe(this.handleDollarValue),
-        pattern: "0-9\\.",
-        placeholder: intl.formatMessage(localeLabel.amountPlaceholder),
-        onKeyDown: _domUtils.inputReplaceCommaWithDot
-      })), _react.default.createElement("div", {
-        styleName: "lowLevel"
-      }, _react.default.createElement("div", {
-        styleName: "groupField"
-      }, _react.default.createElement("div", {
         styleName: "highLevel"
       }, _react.default.createElement(_FieldLabel.default, {
         label: true
       }, _react.default.createElement("span", null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "invoiceModal_Amount",
         defaultMessage: "\u0421\u0443\u043C\u043C\u0430"
-      }))))), _react.default.createElement(_Input.default, {
+      }))), _react.default.createElement(_Input.default, {
         withMargin: true,
-        styleName: "input",
         valueLink: linked.amount.pipe(this.handleAmount),
         pattern: "0-9\\.",
         placeholder: intl.formatMessage(localeLabel.amountPlaceholder),
         onKeyDown: _domUtils.inputReplaceCommaWithDot
       })), _react.default.createElement("div", {
-        styleName: "lowLevel"
-      }, _react.default.createElement("div", {
-        styleName: "groupField"
-      }, _react.default.createElement("div", {
         styleName: "highLevel"
       }, _react.default.createElement(_FieldLabel.default, {
         label: true
       }, _react.default.createElement("span", null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "invoiceModal_Contact",
         defaultMessage: "\u0412\u0430\u0448 \u043A\u043E\u043D\u0442\u0430\u043A\u0442 (\u0435\u043C\u0435\u0439\u043B \u0438\u043B\u0438 @\u043D\u0438\u043A\u043D\u0435\u0439\u043C)"
-      }))))), _react.default.createElement(_Input.default, {
-        styleName: "input",
-        withMargin: true,
+      }))), _react.default.createElement(_Input.default, {
         valueLink: linked.contact,
+        withMargin: true,
         placeholder: intl.formatMessage(localeLabel.contactPlaceholder)
       })), _react.default.createElement("div", {
         styleName: "lowLevel"
-      }, _react.default.createElement("div", {
-        styleName: "groupField"
-      }, _react.default.createElement("div", {
-        styleName: "highLevel"
       }, _react.default.createElement(_FieldLabel.default, {
         label: true
       }, _react.default.createElement("span", null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "invoiceModal_Label",
         defaultMessage: "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439"
-      }))))), _react.default.createElement("div", {
-        styleName: "group"
+      }))), _react.default.createElement("div", {
+        styleName: "group",
+        style: {
+          marginBottom: "25px"
+        }
       }, _react.default.createElement(_Input.default, {
-        styleName: "input",
-        withMargin: true,
         srollingForm: true,
         valueLink: linked.label,
         multiline: "true",
@@ -77538,6 +77490,7 @@ function (_React$Component) {
       }))), _react.default.createElement(_Button.default, {
         fullWidth: true,
         blue: true,
+        big: true,
         disabled: isDisabled,
         onClick: this.handleSubmit
       }, isShipped ? _react.default.createElement(_react.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
