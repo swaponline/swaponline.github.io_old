@@ -43743,12 +43743,7 @@ function (_Component) {
         settings: settings,
         isSigned: isSigned,
         handleNotifyBlockClose: this.handleNotifyBlockClose
-      }, this.state)), _react.default.createElement("h3", {
-        styleName: "title"
-      }, _react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "CurrencyWalletTitle",
-        defaultMessage: "\u0410\u043A\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u044C"
-      })), isWidgetBuild && !_appConfig.default.isFullBuild && _react.default.createElement("ul", {
+      }, this.state)), isWidgetBuild && !_appConfig.default.isFullBuild && _react.default.createElement("ul", {
         styleName: "widgetNav"
       }, _react.default.createElement("li", {
         styleName: "widgetNavItem",
