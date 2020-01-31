@@ -7239,7 +7239,7 @@ var _Switching = _interopRequireDefault(__webpack_require__(417));
 
 var _dec, _dec2, _class, _class2, _temp;
 
-var allowedCoins = ['BTC', 'ETH', 'BCH'];
+var allowedCoins = ["BTC", "ETH", "BCH"];
 
 var isExchangeAllowed = function isExchangeAllowed(currencies) {
   return currencies.filter(function (c) {
@@ -7387,9 +7387,9 @@ function (_Component) {
     _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(PartialClosure).call(this));
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "rmScrollAdvice", function () {
       if (window.scrollY > window.innerHeight * 0.7 && _this.scrollTrigger) {
-        _this.scrollTrigger.classList.add('hidden');
+        _this.scrollTrigger.classList.add("hidden");
 
-        document.removeEventListener('scroll', _this.rmScrollAdvice);
+        document.removeEventListener("scroll", _this.rmScrollAdvice);
       }
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "setEstimatedFeeValues",
@@ -7485,7 +7485,7 @@ function (_Component) {
           locale = _this$props.intl.locale,
           isOnlyForm = _this$props.isOnlyForm;
 
-      if (!_this.props.location.hash.includes('#widget') && !isOnlyForm) {
+      if (!_this.props.location.hash.includes("#widget") && !isOnlyForm) {
         _this.props.history.push((0, _locale2.localisedUrl)(locale, "".concat(_helpers.links.exchange, "/").concat(sell, "-to-").concat(buy)));
       }
     });
@@ -7545,7 +7545,7 @@ function (_Component) {
             case 13:
               _context2.next = 15;
               return _helpers.default[haveCurrency.toLowerCase()].estimateFeeValue({
-                method: 'swap'
+                method: "swap"
               });
 
             case 15:
@@ -7594,7 +7594,7 @@ function (_Component) {
 
             case 6:
               _context3.next = 8;
-              return _actions.default.user.getExchangeRate(haveCurrency, 'usd');
+              return _actions.default.user.getExchangeRate(haveCurrency, "usd");
 
             case 8:
               _context3.t0 = _context3.sent;
@@ -7613,7 +7613,7 @@ function (_Component) {
 
             case 14:
               _context3.next = 16;
-              return _actions.default.user.getExchangeRate(getCurrency, 'usd');
+              return _actions.default.user.getExchangeRate(getCurrency, "usd");
 
             case 16:
               _context3.t1 = _context3.sent;
@@ -7636,7 +7636,7 @@ function (_Component) {
             case 23:
               _context3.prev = 23;
               _context3.t2 = _context3["catch"](1);
-              console.log('usdRates', _this.usdRates);
+              console.log("usdRates", _this.usdRates);
               _exHaveRate = _this.usdRates && _this.usdRates[haveCurrency] !== undefined ? _this.usdRates[haveCurrency] : 0;
               _exGetRate = _this.usdRates && _this.usdRates[getCurrency] !== undefined ? _this.usdRates[getCurrency] : 0;
 
@@ -7647,7 +7647,7 @@ function (_Component) {
                 };
               });
 
-              console.warn('Cryptonator offline');
+              console.warn("Cryptonator offline");
 
             case 30:
             case "end":
@@ -7793,7 +7793,7 @@ function (_Component) {
         } else {
           _this.setState(function () {
             return {
-              haveCurrency: _appConfig.default && _appConfig.default.isWidget ? _appConfig.default.erc20token : 'swap'
+              haveCurrency: _appConfig.default && _appConfig.default.isWidget ? _appConfig.default.erc20token : "swap"
             };
           });
         }
@@ -7802,7 +7802,7 @@ function (_Component) {
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "setDeclinedOffer", function () {
       _this.setState(function () {
         return {
-          haveAmount: '',
+          haveAmount: "",
           isFetching: false,
           isDeclinedOffer: true
         };
@@ -7984,7 +7984,7 @@ function (_Component) {
 
       _this.setState({
         customWalletUse: newCustomWalletUse,
-        customWallet: newCustomWalletUse === false ? '' : _this.getSystemWallet()
+        customWallet: newCustomWalletUse === false ? "" : _this.getSystemWallet()
       });
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleSetGetValue", function (_ref8) {
@@ -8001,14 +8001,14 @@ function (_Component) {
           return {
             getCurrency: value,
             haveCurrency: haveCurrency,
-            customWallet: customWalletUse ? _this.getSystemWallet() : ''
+            customWallet: customWalletUse ? _this.getSystemWallet() : ""
           };
         });
 
         _this.additionalPathing(haveCurrency, value);
 
         _actions.default.analytics.dataEvent({
-          action: 'exchange-click-selector',
+          action: "exchange-click-selector",
           label: "".concat(haveCurrency, "-to-").concat(getCurrency)
         });
       }
@@ -8034,12 +8034,12 @@ function (_Component) {
                   _this.setState({
                     haveCurrency: value,
                     getCurrency: getCurrency,
-                    customWallet: customWalletUse ? _this.getSystemWallet() : ''
+                    customWallet: customWalletUse ? _this.getSystemWallet() : ""
                   }, function () {
                     _this.additionalPathing(value, getCurrency);
 
                     _actions.default.analytics.dataEvent({
-                      action: 'exchange-click-selector',
+                      action: "exchange-click-selector",
                       label: "".concat(haveCurrency, "-to-").concat(getCurrency)
                     });
 
@@ -8062,7 +8062,7 @@ function (_Component) {
       };
     }());
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleGoDeclimeFaq", function () {
-      var faqLink = _helpers.links.getFaqLink('requestDeclimed');
+      var faqLink = _helpers.links.getFaqLink("requestDeclimed");
 
       if (faqLink) {
         window.location.href = faqLink;
@@ -8088,10 +8088,10 @@ function (_Component) {
               _this.setState({
                 haveCurrency: getCurrency,
                 getCurrency: haveCurrency,
-                customWallet: customWalletUse ? _this.getSystemWallet(haveCurrency) : ''
+                customWallet: customWalletUse ? _this.getSystemWallet(haveCurrency) : ""
               }, function () {
                 _actions.default.analytics.dataEvent({
-                  action: 'exchange-click-selector',
+                  action: "exchange-click-selector",
                   label: "".concat(haveCurrency, "-to-").concat(getCurrency)
                 });
 
@@ -8116,10 +8116,10 @@ function (_Component) {
       var currency = haveCurrency.toLowerCase();
 
       var pair = _helpers.constants.tradeTicker.filter(function (ticker) {
-        ticker = ticker.split('-');
+        ticker = ticker.split("-");
         return currency === ticker[0].toLowerCase() ? ticker[0].toLowerCase() === currency : ticker[1].toLowerCase() === currency;
       }).map(function (pair) {
-        pair = pair.split('-');
+        pair = pair.split("-");
         return {
           from: pair[0],
           to: pair[1]
@@ -8134,7 +8134,7 @@ function (_Component) {
       });
       var tradeTicker = "".concat(sendLinkFrom[0].from.toLowerCase(), "-").concat(sendLinkTo[0].to.toLowerCase());
       var hostname = window.location.origin;
-      var pathname = _helpers.constants.tradeTicker.includes(tradeTicker.toUpperCase()) ? tradeTicker : tradeTicker.split('-').reverse().join('-');
+      var pathname = _helpers.constants.tradeTicker.includes(tradeTicker.toUpperCase()) ? tradeTicker : tradeTicker.split("-").reverse().join("-");
 
       if (isWidget) {
         window.parent.location.replace("".concat(hostname, "/").concat(pathname));
@@ -8152,14 +8152,14 @@ function (_Component) {
           haveAmount: 0,
           haveUsd: 0,
           getUsd: 0,
-          getAmount: '',
+          getAmount: "",
           maxAmount: 0,
           maxBuyAmount: (0, _bignumber.BigNumber)(0),
-          peer: '',
+          peer: "",
           isNonOffers: false,
           isFetching: false,
           isDeclinedOffer: false,
-          customWallet: customWalletUse ? _this.wallets[getCurrency.toUpperCase()] : ''
+          customWallet: customWalletUse ? _this.wallets[getCurrency.toUpperCase()] : ""
         };
       });
     });
@@ -8171,7 +8171,7 @@ function (_Component) {
       var _this$state12 = _this.state,
           getCurrency = _this$state12.getCurrency,
           haveCurrency = _this$state12.haveCurrency;
-      var noPairToken = _appConfig.default && _appConfig.default.isWidget ? _appConfig.default.erc20token : 'swap';
+      var noPairToken = _appConfig.default && _appConfig.default.isWidget ? _appConfig.default.erc20token : "swap";
       var checkingValue = _this.props.allCurrencyies.map(function (item) {
         return item.name;
       }).includes(haveCurrency.toUpperCase()) ? haveCurrency : noPairToken;
@@ -8208,7 +8208,7 @@ function (_Component) {
         while (1) {
           switch (_context7.prev = _context7.next) {
             case 0:
-              console.log('updateAllowedBalance', _this.state.haveCurrency);
+              console.log("updateAllowedBalance", _this.state.haveCurrency);
               _context7.next = 3;
               return _actions.default[_this.state.haveCurrency].getBalance(_this.state.haveCurrency);
 
@@ -8229,7 +8229,7 @@ function (_Component) {
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "extendedControlsSet", function (value) {
       var extendedControls = _this.state.extendedControls;
 
-      if (typeof value !== 'boolean') {
+      if (typeof value !== "boolean") {
         return _this.setState({
           extendedControls: false
         });
@@ -8250,13 +8250,13 @@ function (_Component) {
           haveCurrency = _this$state13.haveCurrency,
           getCurrency = _this$state13.getCurrency,
           estimatedFeeValues = _this$state13.estimatedFeeValues;
-      var isBtcHere = haveCurrency === 'btc' || getCurrency === 'btc';
+      var isBtcHere = haveCurrency === "btc" || getCurrency === "btc";
 
       if (!isBtcHere) {
         return false;
       }
 
-      var btcAmount = (0, _bignumber.BigNumber)(haveCurrency === 'btc' ? haveAmount : getAmount);
+      var btcAmount = (0, _bignumber.BigNumber)(haveCurrency === "btc" ? haveAmount : getAmount);
 
       if (btcAmount.isGreaterThan(estimatedFeeValues.btc)) {
         return false;
@@ -8268,7 +8268,7 @@ function (_Component) {
       var _this$props3 = _this.props,
           decline = _this$props3.decline,
           swapHistory = _this$props3.swapHistory;
-      var localSavedOrdersString = localStorage.getItem('savedOrders');
+      var localSavedOrdersString = localStorage.getItem("savedOrders");
       if (!localSavedOrdersString) return;
       var localSavedOrders = JSON.parse(localSavedOrdersString);
 
@@ -8317,7 +8317,7 @@ function (_Component) {
       if (data) {
         _this.setState(function () {
           return {
-            customWallet: data.includes(':') ? data.split(':')[1] : data
+            customWallet: data.includes(":") ? data.split(":")[1] : data
           };
         });
 
@@ -8327,12 +8327,12 @@ function (_Component) {
 
     _this.onRequestAnswer = function (newOrder, isAccepted) {};
 
-    var isRootPage = history.location.pathname === '/' || history.location.pathname === '/ru';
+    var isRootPage = history.location.pathname === "/" || history.location.pathname === "/ru";
 
     var _ref13 = match || {
       params: {
-        buy: 'btc',
-        sell: 'usdt'
+        buy: "btc",
+        sell: "usdt"
       }
     },
         url = _ref13.url,
@@ -8350,13 +8350,13 @@ function (_Component) {
       }
     }
 
-    var _sellToken = _sell || (!isWidgetBuild ? 'btc' : 'btc');
+    var _sellToken = _sell || (!isWidgetBuild ? "btc" : "btc");
 
-    var _buyToken = _buy || (!isWidgetBuild ? 'usdt' : _appConfig.default.erc20token);
+    var _buyToken = _buy || (!isWidgetBuild ? "usdt" : _appConfig.default.erc20token);
 
     _this.returnNeedCurrency(_sellToken, _buyToken);
 
-    if (!(_buy && _sell) && !props.location.hash.includes('#widget') && !isRootPage) {
+    if (!(_buy && _sell) && !props.location.hash.includes("#widget") && !isRootPage) {
       if (url !== "/wallet") {
         history.push((0, _locale2.localisedUrl)(_locale, "".concat(_helpers.links.exchange, "/").concat(_sellToken, "-to-").concat(_buyToken)));
       }
@@ -8377,12 +8377,12 @@ function (_Component) {
       haveAmount: 0,
       haveUsd: 0,
       getUsd: 0,
-      getAmount: '',
+      getAmount: "",
       isShowBalance: true,
       isLowAmount: false,
       maxAmount: 0,
       maxBuyAmount: new _bignumber.BigNumber(0),
-      peer: '',
+      peer: "",
       goodRate: 0,
       filteredOrders: [],
       isNonOffers: false,
@@ -8445,13 +8445,13 @@ function (_Component) {
 
       timerProcess();
 
-      _swap.default.shared().services.room.on('new orders', function () {
+      _swap.default.shared().services.room.on("new orders", function () {
         return _this2.checkPair();
       });
 
       this.customWalletAllowed();
       this.setEstimatedFeeValues(estimatedFeeValues);
-      document.addEventListener('scroll', this.rmScrollAdvice);
+      document.addEventListener("scroll", this.rmScrollAdvice);
     }
   }, {
     key: "componentWillUnmount",
@@ -8466,7 +8466,7 @@ function (_Component) {
           getCurrency = _this$state15.getCurrency,
           customWallet = _this$state15.customWallet;
       if (!this.customWalletAllowed()) return true;
-      if (getCurrency === 'btc') return _swap.util.typeforce.isCoinAddress.BTC(customWallet);
+      if (getCurrency === "btc") return _swap.util.typeforce.isCoinAddress.BTC(customWallet);
       return _swap.util.typeforce.isCoinAddress.ETH(customWallet);
     }
   }, {
@@ -8476,21 +8476,21 @@ function (_Component) {
           haveCurrency = _this$state16.haveCurrency,
           getCurrency = _this$state16.getCurrency;
 
-      if (haveCurrency === 'btc') {
+      if (haveCurrency === "btc") {
         // btc-token
         if (_appConfig.default.erc20[getCurrency] !== undefined) return true; // btc-eth
 
-        if (getCurrency === 'eth') return true;
+        if (getCurrency === "eth") return true;
       }
 
       if (_appConfig.default.erc20[haveCurrency] !== undefined) {
         // token-btc
-        if (getCurrency === 'btc') return true;
+        if (getCurrency === "btc") return true;
       }
 
-      if (haveCurrency === 'eth') {
+      if (haveCurrency === "eth") {
         // eth-btc
-        if (getCurrency === 'btc') return true;
+        if (getCurrency === "btc") return true;
       }
 
       return false;
@@ -8565,9 +8565,9 @@ function (_Component) {
       var currentCurrencyGet = getCurrencyData || getTokenData;
       var oneCryptoCost = maxBuyAmount.isLessThanOrEqualTo(0) ? (0, _bignumber.BigNumber)(0) : (0, _bignumber.BigNumber)(goodRate);
 
-      var linked = _swValuelink.default.all(this, 'haveAmount', 'getAmount', 'customWallet');
+      var linked = _swValuelink.default.all(this, "haveAmount", "getAmount", "customWallet");
 
-      var isWidgetLink = this.props.location.pathname.includes('/exchange') && this.props.location.hash === '#widget';
+      var isWidgetLink = this.props.location.pathname.includes("/exchange") && this.props.location.hash === "#widget";
       var isWidget = isWidgetBuild || isWidgetLink;
       var availableAmount = estimatedFeeValues[haveCurrency.toLowerCase()] > 0 ? (0, _bignumber.BigNumber)(haveAmount).plus(estimatedFeeValues[haveCurrency.toLowerCase()]) : 0;
 
@@ -8597,25 +8597,25 @@ function (_Component) {
         ticker_name2: getCurrency.toUpperCase()
       };
       var TitleTagString = formatMessage({
-        id: 'PartialClosureTitleTag',
-        defaultMessage: 'Atomic Swap {full_name1} ({ticker_name1}) to {full_name2} ({ticker_name2}) Instant Exchange'
+        id: "PartialClosureTitleTag",
+        defaultMessage: "Atomic Swap {full_name1} ({ticker_name1}) to {full_name2} ({ticker_name2}) Instant Exchange"
       }, SeoValues);
       var MetaDescriptionString = formatMessage({
-        id: 'PartialClosureMetaDescrTag',
-        defaultMessage: 'Best exchange rate for {full_name1} ({ticker_name1}) to {full_name2} ({ticker_name2}). Swap.Online wallet provides instant exchange using Atomic Swap Protocol.' // eslint-disable-line
+        id: "PartialClosureMetaDescrTag",
+        defaultMessage: "Best exchange rate for {full_name1} ({ticker_name1}) to {full_name2} ({ticker_name2}). Swap.Online wallet provides instant exchange using Atomic Swap Protocol." // eslint-disable-line
 
       }, SeoValues);
 
       var Form = _react.default.createElement("div", {
-        styleName: "".concat(isSingleForm ? '' : 'section'),
-        className: isWidgetLink ? 'section' : ''
+        styleName: "".concat(isSingleForm ? "" : "section"),
+        className: isWidgetLink ? "section" : ""
       }, _react.default.createElement("div", {
         styleName: "mobileDubleHeader"
       }, _react.default.createElement(_PromoText.default, {
         subTitle: subTitle(sellTokenFullName, haveCurrency.toUpperCase(), buyTokenFullName, getCurrency.toUpperCase())
       })), _react.default.createElement("div", {
-        styleName: isSingleForm ? 'formExchange_widgetBuild' : "formExchange ".concat(isWidget ? 'widgetFormExchange' : ''),
-        className: isWidget ? 'formExchange' : ''
+        styleName: isSingleForm ? "formExchange_widgetBuild" : "formExchange ".concat(isWidget ? "widgetFormExchange" : ""),
+        className: isWidget ? "formExchange" : ""
       }, desclineOrders.length ? _react.default.createElement("h5", {
         role: "presentation",
         styleName: "informAbt",
@@ -8643,7 +8643,7 @@ function (_Component) {
         placeholder: "0.00000000",
         usd: maxAmount > 0 && isNonOffers ? 0 : haveUsd,
         currencies: currencies,
-        className: isWidget ? 'SelGroup' : '',
+        className: isWidget ? "SelGroup" : "",
         onFocus: function onFocus() {
           return _this3.extendedControlsSet(true);
         },
@@ -8653,7 +8653,7 @@ function (_Component) {
           }, 200);
         }
       })), isShowBalance && _react.default.createElement("p", {
-        className: isWidget ? 'advice' : '',
+        className: isWidget ? "advice" : "",
         styleName: "maxAmount"
       }, (0, _bignumber.BigNumber)(balance).toNumber() === 0 ? _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "partial766",
@@ -8661,14 +8661,17 @@ function (_Component) {
       }) : _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "partial767",
         defaultMessage: "Your balance: "
-      }), (0, _bignumber.BigNumber)(balance).dp(5, _bignumber.BigNumber.ROUND_FLOOR).toString(), '  ', haveCurrency.toUpperCase())), _react.default.createElement("div", {
+      }), (0, _bignumber.BigNumber)(balance).dp(5, _bignumber.BigNumber.ROUND_FLOOR).toString(), "  ", haveCurrency.toUpperCase())), _react.default.createElement("div", {
         styleName: "switchButton"
       }, _react.default.createElement(_Switching.default, {
         noneBorder: true,
         onClick: this.handleFlipCurrency
       })), _react.default.createElement("div", {
         className: "data-tut-get",
-        styleName: "selectWrap"
+        styleName: "selectWrap",
+        style: {
+          marginBottom: "-25px"
+        }
       }, _react.default.createElement(_SelectGroup.default, {
         dataTut: "get",
         switchBalanceFunc: this.switchBalance,
@@ -8687,7 +8690,7 @@ function (_Component) {
         currencies: addSelectedItems,
         usd: getUsd,
         error: isLowAmount,
-        className: isWidget ? 'SelGroup' : ''
+        className: isWidget ? "SelGroup" : ""
       }), oneCryptoCost.isGreaterThan(0) && oneCryptoCost.isFinite() && !isNonOffers && _react.default.createElement("div", {
         styleName: "price"
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -8700,7 +8703,7 @@ function (_Component) {
       }))), _react.default.createElement("div", {
         className: "data-tut-status"
       }, (isSearching || isNonOffers && maxAmount === 0) && _react.default.createElement("span", {
-        className: isWidget ? 'searching' : '',
+        className: isWidget ? "searching" : "",
         styleName: "IsSearching"
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "PartialPriceSearch",
@@ -8714,25 +8717,25 @@ function (_Component) {
         defaultMessage: "Calc price"
       }), maxAmount > 0 && isNonOffers && linked.haveAmount.value > 0 && _react.default.createElement(_react.Fragment, null, _react.default.createElement("p", {
         styleName: "error",
-        className: isWidget ? 'error' : ''
+        className: isWidget ? "error" : ""
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "PartialPriceNoOrdersReduce",
         defaultMessage: "No orders found, try to reduce the amount"
       })), _react.default.createElement("p", {
         styleName: "error",
-        className: isWidget ? 'error' : ''
+        className: isWidget ? "error" : ""
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "PartialPriceReduceMin",
         defaultMessage: "Maximum available amount for buy: "
-      }), maxAmount, ' ', getCurrency.toUpperCase()), _react.default.createElement("p", {
+      }), maxAmount, " ", getCurrency.toUpperCase()), _react.default.createElement("p", {
         styleName: "error",
-        className: isWidget ? 'error' : ''
+        className: isWidget ? "error" : ""
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "PartialPriceSellMax",
         defaultMessage: "Maximum available amount for sell: "
-      }), maxBuyAmount.toNumber(), ' ', haveCurrency.toUpperCase())), isDeclinedOffer && _react.default.createElement("p", {
+      }), maxBuyAmount.toNumber(), " ", haveCurrency.toUpperCase())), isDeclinedOffer && _react.default.createElement("p", {
         styleName: "error link",
-        className: isWidget ? 'error' : '',
+        className: isWidget ? "error" : "",
         onClick: function onClick() {
           return _this3.handleGoDeclimeFaq();
         }
@@ -8754,23 +8757,23 @@ function (_Component) {
         }
       })), this.doesComissionPreventThisOrder() && (0, _bignumber.BigNumber)(getAmount).isGreaterThan(0) && this.state.haveAmount && this.state.getAmount && _react.default.createElement("p", {
         styleName: "error",
-        className: isWidget ? 'error' : ''
+        className: isWidget ? "error" : ""
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "ErrorBtcLowAmount",
         defaultMessage: "This amount is too low",
         values: {
-          btcAmount: this.state.haveCurrency === 'btc' ? this.state.haveAmount : this.state.getAmount
+          btcAmount: this.state.haveCurrency === "btc" ? this.state.haveAmount : this.state.getAmount
         }
       })), (0, _bignumber.BigNumber)(estimatedFeeValues[haveCurrency]).isGreaterThan(0) && (0, _bignumber.BigNumber)(haveAmount).isGreaterThan(0) && (0, _bignumber.BigNumber)(haveAmount).isLessThanOrEqualTo(balance) && _react.default.createElement("div", {
         styleName: "notifyThat",
-        className: isWidget ? 'feeValue' : ''
+        className: isWidget ? "feeValue" : ""
       }, _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "PartialFeeValueWarn",
         defaultMessage: "The maximum amount you can sell is {maximumAmount}. Since will have to pay an additional miner fee up to {estimatedFeeValue} {haveCurrency}",
         values: {
           haveCurrency: haveCurrency.toUpperCase(),
           estimatedFeeValue: estimatedFeeValues[haveCurrency],
-          maximumAmount: (0, _bignumber.BigNumber)(balance).minus(estimatedFeeValues[haveCurrency]).minus(0.00000600).toString()
+          maximumAmount: (0, _bignumber.BigNumber)(balance).minus(estimatedFeeValues[haveCurrency]).minus(0.000006).toString()
         }
       }), (0, _bignumber.BigNumber)(estimatedFeeValues[getCurrency]).isGreaterThan(0) && (0, _bignumber.BigNumber)(getAmount).isGreaterThan(0) ? _react.default.createElement(_react.Fragment, null, " ", _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "PartialFeeValueWarn1",
@@ -8793,14 +8796,14 @@ function (_Component) {
         }
       })), " ", _react.default.createElement("a", {
         style: {
-          whiteSpace: 'nowrap'
+          whiteSpace: "nowrap"
         },
         href: "https://wiki.swaponline.io/faq/is-there-fee-for-trade/"
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "PartialFeeValueWarnInfo",
         defaultMessage: "[About fees]"
       })))), isFetching && _react.default.createElement("span", {
-        className: isWidget ? 'wait' : ''
+        className: isWidget ? "wait" : ""
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "partial291",
         defaultMessage: "Waiting for another participant (30 sec): "
@@ -8822,12 +8825,12 @@ function (_Component) {
         id: "UseAnotherWallet",
         defaultMessage: "Specify the receiving wallet address"
       }))), _react.default.createElement("div", {
-        styleName: !customWalletUse ? 'anotherRecepient anotherRecepient_active' : 'anotherRecepient'
+        styleName: !customWalletUse ? "anotherRecepient anotherRecepient_active" : "anotherRecepient"
       }, _react.default.createElement("div", {
         styleName: "walletInput"
       }, _react.default.createElement(_Input.default, {
         inputCustomStyle: {
-          fontSize: '15px'
+          fontSize: "15px"
         },
         required: true,
         disabled: customWalletUse,
@@ -8840,7 +8843,7 @@ function (_Component) {
         onClick: this.openScan
       }))))), _react.default.createElement("div", {
         styleName: "rowBtn",
-        className: isWidget ? 'rowBtn' : ''
+        className: isWidget ? "rowBtn" : ""
       }, _react.default.createElement(_controls.Button, {
         className: "data-tut-Exchange",
         styleName: "button",
@@ -8871,7 +8874,7 @@ function (_Component) {
       }))));
 
       return isSingleForm ? Form : _react.default.createElement("div", {
-        styleName: "exchangeWrap ".concat(isWidget ? 'widgetExchangeWrap' : '')
+        styleName: "exchangeWrap ".concat(isWidget ? "widgetExchangeWrap" : "")
       }, _react.default.createElement("div", {
         styleName: "promoContainer",
         ref: function ref(_ref15) {
@@ -32238,7 +32241,7 @@ exports.default = _default;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"label":"_1AbkiCL9CrP6_6QArMzouS","inRow":"_2Hogerq8npJRJx7t4zYt3g","inDropDown":"_3yoZKXKiXZnisSa9-5jDVZ"};
+module.exports = {"label":"_1AbkiCL9CrP6_6QArMzouS","inDropDown":"_3yoZKXKiXZnisSa9-5jDVZ","inRow":"_2Hogerq8npJRJx7t4zYt3g"};
 
 /***/ }),
 /* 2165 */
@@ -76582,15 +76585,15 @@ function (_React$Component) {
               result = _context.sent;
               console.log(result);
 
-              if (result && result.answer && result.answer == 'ok') {
+              if (result && result.answer && result.answer == "ok") {
                 _this.setState({
                   isShipped: false,
-                  step: 'enterCode'
+                  step: "enterCode"
                 });
               } else {
                 _this.setState({
                   isShipped: false,
-                  error: result.error ? result.error : 'Unknown error'
+                  error: result.error ? result.error : "Unknown error"
                 });
               }
 
@@ -76622,21 +76625,21 @@ function (_React$Component) {
             case 3:
               result = _context2.sent;
 
-              if (result && result.answer && result.answer == 'ok') {
+              if (result && result.answer && result.answer == "ok") {
                 _this.setState({
                   isShipped: false,
-                  step: 'ready'
+                  step: "ready"
                 });
               } else {
-                if (result.error == 'Already registered') {
+                if (result.error == "Already registered") {
                   _this.setState({
                     isShipped: false,
-                    step: 'ready'
+                    step: "ready"
                   });
                 } else {
                   _this.setState({
                     isShipped: false,
-                    error: result.error ? result.error : 'Unknown error'
+                    error: result.error ? result.error : "Unknown error"
                   });
                 }
               }
@@ -76676,10 +76679,10 @@ function (_React$Component) {
       }, _callee3);
     })));
     _this.state = {
-      phone: '',
-      step: 'enterPhone',
+      phone: "",
+      step: "enterPhone",
       error: false,
-      smsCode: '',
+      smsCode: "",
       smsConfirmed: false,
       isShipped: false
     };
@@ -76700,38 +76703,34 @@ function (_React$Component) {
           name = _this$props.name,
           intl = _this$props.intl;
 
-      var linked = _swValuelink.default.all(this, 'phone', 'smsCode');
+      var linked = _swValuelink.default.all(this, "phone", "smsCode");
 
       var title = (0, _reactIntl.defineMessages)({
         registerSMSModal: {
-          id: 'registerSMSProtectedTitle',
+          id: "registerSMSProtectedTitle",
           defaultMessage: "Activate SMS Protected Wallet"
         }
       });
       return _react.default.createElement(_Modal.default, {
         name: name,
         title: "".concat(intl.formatMessage(title.registerSMSModal))
-      }, step === 'enterPhone' && _react.default.createElement(_react.Fragment, null, _react.default.createElement("div", {
+      }, step === "enterPhone" && _react.default.createElement(_react.Fragment, null, _react.default.createElement("div", {
         styleName: "highLevel"
       }, _react.default.createElement(_FieldLabel.default, {
         label: true
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "registerSMSModalReady",
+        id: "registerSMSModalPhone",
         defaultMessage: "Your phone:"
-      })), _react.default.createElement("span", {
-        style: {
-          marginBottom: '20px'
-        }
-      }, _react.default.createElement(_Input.default, {
+      })), _react.default.createElement(_Input.default, {
         styleName: "input inputMargin25",
         valueLink: linked.phone,
         placeholder: "Enter your phone",
         focusOnInit: true
-      })), error && _react.default.createElement("div", {
+      }), error && _react.default.createElement("div", {
         styleName: "rednote"
       }, "`$", error, "`")), _react.default.createElement(_Button.default, {
-        styleName: "button",
         blue: true,
+        big: true,
         fullWidth: true,
         disabled: isShipped,
         onClick: this.handleSendSMS
@@ -76741,11 +76740,14 @@ function (_React$Component) {
       })) : _react.default.createElement(_react.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "registerSMSModalSendSMS",
         defaultMessage: "Send SMS"
-      })))), step === 'enterCode' && _react.default.createElement(_react.Fragment, null, _react.default.createElement("div", {
+      })))), step === "enterCode" && _react.default.createElement(_react.Fragment, null, _react.default.createElement("div", {
         styleName: "highLevel"
-      }, _react.default.createElement("label", {
-        styleName: "label"
-      }, "Enter code from SMS:"), _react.default.createElement(_Input.default, {
+      }, _react.default.createElement(_FieldLabel.default, {
+        label: true
+      }, _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "registerSMSModalCode",
+        defaultMessage: "Enter code from SMS:"
+      })), _react.default.createElement(_Input.default, {
         styleName: "input inputMargin25",
         valueLink: linked.smsCode,
         focusOnInit: true,
@@ -76753,7 +76755,7 @@ function (_React$Component) {
       }), error && _react.default.createElement("div", {
         styleName: "rednote"
       }, error)), _react.default.createElement(_Button.default, {
-        styleName: "button",
+        big: true,
         blue: true,
         fullWidth: true,
         disabled: isShipped,
@@ -76764,20 +76766,21 @@ function (_React$Component) {
       })) : _react.default.createElement(_react.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "registerSMSModalSendSMS165",
         defaultMessage: "Confirm"
-      })))), step === 'ready' && _react.default.createElement(_react.Fragment, null, _react.default.createElement("div", {
+      })))), step === "ready" && _react.default.createElement(_react.Fragment, null, _react.default.createElement("div", {
         styleName: "highLevel"
-      }, _react.default.createElement(_FieldLabel.default, {
-        inRow: true
       }, _react.default.createElement("span", {
         style: {
-          fontSize: '16px'
+          fontSize: "25px",
+          display: "block",
+          textAlign: "center",
+          marginBottom: "40px"
         }
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "registerSMSModalReady",
         defaultMessage: "Your protected wallet activated"
-      })))), _react.default.createElement(_Button.default, {
-        styleName: "buttonFull",
-        brand: true,
+      }))), _react.default.createElement(_Button.default, {
+        big: true,
+        blue: true,
         fullWidth: true,
         onClick: this.handleFinish
       }, _react.default.createElement(_react.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
