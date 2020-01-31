@@ -68236,7 +68236,9 @@ var nav = [{
 var SocialMenu = function SocialMenu() {
   return _react.default.createElement("ul", {
     styleName: "social-menu"
-  }, nav.map(function (item, index) {
+  }, nav.filter(function (item) {
+    return item.links !== '#';
+  }).map(function (item, index) {
     return _react.default.createElement("li", {
       key: index
     }, _react.default.createElement("a", {
