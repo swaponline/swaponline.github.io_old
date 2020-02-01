@@ -9111,6 +9111,7 @@ function (_PureComponent) {
     key: "render",
     value: function render() {
       var orders = this.props.orders;
+      console.log('orders', orders);
 
       if (orders === null || orders.length === 0) {
         return null;
@@ -12342,10 +12343,10 @@ function (_Component) {
 
       _actions.default.comments.setComment(obj);
     });
-    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "rowRender", function (row, rowIndex) {
+    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "rowRender", function (row) {
       var commentsList = _this.state.commentsList;
       return _react.default.createElement(_Row.default, (0, _extends2.default)({
-        key: rowIndex,
+        key: row.hash - row.type,
         hiddenList: commentsList,
         onSubmit: _this.onSubmit
       }, row));
@@ -12476,45 +12477,15 @@ function (_React$PureComponent) {
 
     (0, _classCallCheck2.default)(this, Row);
     _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Row).call(this));
-    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "getUsdBalance",
-    /*#__PURE__*/
-    function () {
-      var _ref = (0, _asyncToGenerator2.default)(
-      /*#__PURE__*/
-      _regenerator.default.mark(function _callee(type) {
-        return _regenerator.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _actions.default.user.getExchangeRate(type, 'usd').then(function (exCurrencyRate) {
-                  _this.setState(function () {
-                    return {
-                      exCurrencyRate: exCurrencyRate
-                    };
-                  });
-                });
-
-              case 1:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
-
-      return function (_x) {
-        return _ref.apply(this, arguments);
-      };
-    }());
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handlePayInvoice",
     /*#__PURE__*/
     (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee2() {
+    _regenerator.default.mark(function _callee() {
       var invoiceData, withdrawModalType, data, btcData, currency, ethData;
-      return _regenerator.default.wrap(function _callee2$(_context2) {
+      return _regenerator.default.wrap(function _callee$(_context) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context.prev = _context.next) {
             case 0:
               invoiceData = _this.props.invoiceData;
               withdrawModalType = null;
@@ -12555,20 +12526,20 @@ function (_React$PureComponent) {
 
             case 8:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
         }
-      }, _callee2);
+      }, _callee);
     })));
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleCancelInvoice",
     /*#__PURE__*/
     (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee4() {
+    _regenerator.default.mark(function _callee3() {
       var invoiceData;
-      return _regenerator.default.wrap(function _callee4$(_context4) {
+      return _regenerator.default.wrap(function _callee3$(_context3) {
         while (1) {
-          switch (_context4.prev = _context4.next) {
+          switch (_context3.prev = _context3.next) {
             case 0:
               invoiceData = _this.props.invoiceData;
 
@@ -12576,12 +12547,12 @@ function (_React$PureComponent) {
                 onAccept: function () {
                   var _onAccept = (0, _asyncToGenerator2.default)(
                   /*#__PURE__*/
-                  _regenerator.default.mark(function _callee3() {
-                    return _regenerator.default.wrap(function _callee3$(_context3) {
+                  _regenerator.default.mark(function _callee2() {
+                    return _regenerator.default.wrap(function _callee2$(_context2) {
                       while (1) {
-                        switch (_context3.prev = _context3.next) {
+                        switch (_context2.prev = _context2.next) {
                           case 0:
-                            _context3.next = 2;
+                            _context2.next = 2;
                             return _actions.default.invoices.cancelInvoice(invoiceData.id);
 
                           case 2:
@@ -12591,10 +12562,10 @@ function (_React$PureComponent) {
 
                           case 3:
                           case "end":
-                            return _context3.stop();
+                            return _context2.stop();
                         }
                       }
-                    }, _callee3);
+                    }, _callee2);
                   }));
 
                   function onAccept() {
@@ -12607,10 +12578,10 @@ function (_React$PureComponent) {
 
             case 2:
             case "end":
-              return _context4.stop();
+              return _context3.stop();
           }
         }
-      }, _callee4);
+      }, _callee3);
     })));
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "toggleComment", function (val) {
       _this.setState(function () {
@@ -12678,9 +12649,6 @@ function (_React$PureComponent) {
       cancelled: false,
       payed: false
     };
-
-    _this.getUsdBalance(_type);
-
     return _this;
   }
 
@@ -12805,8 +12773,8 @@ function (_React$PureComponent) {
         commentCancel: this.commentCancel,
         ind: ind,
         submit: onSubmit,
-        changeComment: function changeComment(_ref4) {
-          var target = _ref4.target;
+        changeComment: function changeComment(_ref3) {
+          var target = _ref3.target;
           return _this2.changeComment(target.value, ind);
         },
         toggleComment: this.toggleComment
@@ -20135,12 +20103,6 @@ var getTransaction = function getTransaction(ownAddress, ownType) {
     var checkAddress = ownAddress ? ownAddress : address;
     var type = ownType ? ownType : 'btc (sms-protected)';
     var url = "/txs/?address=".concat(checkAddress);
-
-    if (checkAddress === 'Not jointed') {
-      resolve([]);
-      return;
-    }
-
     return _helpers.apiLooper.get('bitpay', url, {
       checkStatus: function checkStatus(answer) {
         try {
@@ -23332,6 +23294,7 @@ var addInvoice = function addInvoice(data) {
       btcData = _getState.user.btcData;
 
   if (!validateData(data)) return false;
+  console.log(_helpers.btc.network);
   var requestData = {
     currency: data.currency,
     toAddress: data.toAddress,
@@ -23380,12 +23343,6 @@ var markInvoice = function markInvoice(invoiceId, mark, txid) {
 
 var getInvoices = function getInvoices(data) {
   if (_appConfig.default && _appConfig.default.isWidget) {
-    return new Promise(function (resolve) {
-      resolve([]);
-    });
-  }
-
-  if (data.address === 'Not jointed') {
     return new Promise(function (resolve) {
       resolve([]);
     });
@@ -37394,9 +37351,7 @@ function (_Component) {
       var linkToTheSwap = "".concat((0, _locale.localisedUrl)(locale, _helpers.links.swap), "/").concat(sellCurrency, "-").concat(buyCurrency, "/").concat(id);
       buyAmount = (0, _bignumber.default)(buyAmount);
       sellAmount = (0, _bignumber.default)(sellAmount);
-      return _react.default.createElement("tr", {
-        key: id
-      }, _react.default.createElement("td", null, _react.default.createElement("span", null, "You buy"), isMy ? "".concat(sellAmount.toFixed(5), " ").concat(sellCurrency.toUpperCase()) : "".concat(buyAmount.toFixed(5), " ").concat(buyCurrency.toUpperCase())), _react.default.createElement("td", null, _react.default.createElement("span", null, "You sell"), isMy ? "".concat(buyAmount.toFixed(5), " ").concat(buyCurrency.toUpperCase()) : "".concat(sellAmount.toFixed(5), " ").concat(sellCurrency.toUpperCase())), _react.default.createElement("td", null, _react.default.createElement("span", null, "Status order"), _react.default.createElement("p", null, isFinished && _react.default.createElement(_reactIntl.FormattedMessage, {
+      return _react.default.createElement("tr", null, _react.default.createElement("td", null, _react.default.createElement("span", null, "You buy"), isMy ? "".concat(sellAmount.toFixed(5), " ").concat(sellCurrency.toUpperCase()) : "".concat(buyAmount.toFixed(5), " ").concat(buyCurrency.toUpperCase())), _react.default.createElement("td", null, _react.default.createElement("span", null, "You sell"), isMy ? "".concat(buyAmount.toFixed(5), " ").concat(buyCurrency.toUpperCase()) : "".concat(sellAmount.toFixed(5), " ").concat(sellCurrency.toUpperCase())), _react.default.createElement("td", null, _react.default.createElement("span", null, "Status order"), _react.default.createElement("p", null, isFinished && _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "RowHistory94",
         defaultMessage: "Finished"
       }), isRefunded && _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -43654,9 +43609,9 @@ function (_Component) {
           locale = _this$props3.intl.locale;
       history.push((0, _locale.localisedUrl)(locale, _helpers.links.pointOfSell));
     });
-    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "rowRender", function (row, rowIndex) {
+    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "rowRender", function (row) {
       return _react.default.createElement(_Row.default, (0, _extends2.default)({
-        key: rowIndex
+        key: row.hash
       }, row));
     });
     _this.state = {
