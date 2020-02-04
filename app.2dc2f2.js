@@ -1377,12 +1377,15 @@ var _FieldLabel = _interopRequireDefault(__webpack_require__(2153));
 var FieldLabel = function FieldLabel(_ref) {
   var children = _ref.children,
       inRow = _ref.inRow,
-      inDropDown = _ref.inDropDown;
+      inDropDown = _ref.inDropDown,
+      positionStatic = _ref.positionStatic;
   return _react.default.createElement("div", {
     styleName: (0, _classnames.default)('label', {
       'inRow': inRow
     }, {
       'inDropDown': inDropDown
+    }, {
+      'positionStatic': positionStatic
     })
   }, children);
 };
@@ -32584,7 +32587,7 @@ exports.default = _default;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"label":"_1AbkiCL9CrP6_6QArMzouS","inDropDown":"_3yoZKXKiXZnisSa9-5jDVZ","inRow":"_2Hogerq8npJRJx7t4zYt3g"};
+module.exports = {"label":"_1AbkiCL9CrP6_6QArMzouS","positionStatic":"_12SOiSOMOcAyPZ4C5RB2cz","inDropDown":"_3yoZKXKiXZnisSa9-5jDVZ","inRow":"_2Hogerq8npJRJx7t4zYt3g"};
 
 /***/ }),
 /* 2154 */
@@ -74136,6 +74139,8 @@ function (_Component) {
           isImportedEth: true,
           isDisabled: false
         });
+
+        _actions.default.core.markCoinAsVisible('ETH');
       } catch (e) {
         _this.setState({
           isSubmittedEth: true
@@ -74170,6 +74175,8 @@ function (_Component) {
           isImportedBtc: true,
           isDisabled: false
         });
+
+        _actions.default.core.markCoinAsVisible('BTC');
       } catch (e) {
         _this.setState({
           isSubmittedBtc: true
@@ -74206,6 +74213,8 @@ function (_Component) {
           isImportedBch: true,
           isDisabled: false
         });
+
+        _actions.default.core.markCoinAsVisible('BCH');
       } catch (e) {
         console.error(e);
 
@@ -74242,6 +74251,8 @@ function (_Component) {
           isImportedLtc: true,
           isDisabled: false
         });
+
+        _actions.default.core.markCoinAsVisible('LTC');
       } catch (e) {
         _this.setState({
           isSubmittedLtc: true
@@ -74252,7 +74263,8 @@ function (_Component) {
       _this.handleCloseModal();
 
       localStorage.setItem(_helpers.constants.localStorage.testnetSkipPKCheck, true);
-      window.location.reload();
+      localStorage.setItem(_helpers.constants.localStorage.isWalletCreate, true);
+      window.location.assign('/');
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleCloseModal", function () {
       var _this$props = _this.props,
@@ -74420,7 +74432,9 @@ function (_Component) {
       }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "ImportKeys107",
         defaultMessage: "This procedure will rewrite your private key. If you are not sure about it, we recommend to press cancel"
-      })), _react.default.createElement(_forms.FieldLabel, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      })), _react.default.createElement(_forms.FieldLabel, {
+        positionStatic: true
+      }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "ImportKeys110",
         defaultMessage: "Please enter ETH private key"
       })), _react.default.createElement(_Group.default, {
@@ -74428,7 +74442,9 @@ function (_Component) {
         placeholder: "Key",
         disabled: isImportedEth,
         onClick: this.handleEthImportKey
-      }), _react.default.createElement(_forms.FieldLabel, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      }), _react.default.createElement(_forms.FieldLabel, {
+        positionStatic: true
+      }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "ImportKeys120",
         defaultMessage: "Please enter BTC private key in WIF format"
       })), _react.default.createElement(_Group.default, {
@@ -74436,7 +74452,9 @@ function (_Component) {
         placeholder: "Key in WIF format",
         disabled: isImportedBtc,
         onClick: this.handleBtcImportKey
-      }), _react.default.createElement(_forms.FieldLabel, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      }), _react.default.createElement(_forms.FieldLabel, {
+        positionStatic: true
+      }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "ImportKeys280",
         defaultMessage: "Please enter BCH private key in WIF format"
       })), _react.default.createElement(_Group.default, {
@@ -74448,7 +74466,9 @@ function (_Component) {
         id: "ImportKeys205",
         defaultMessage: "Please enter LTC private key in WIF format"
       }, function (message) {
-        return _react.default.createElement(_forms.FieldLabel, null, message);
+        return _react.default.createElement(_forms.FieldLabel, {
+          positionStatic: true
+        }, message);
       }), _react.default.createElement(_Group.default, {
         inputLink: linked.ltcKey,
         placeholder: "Key in WIF format",
