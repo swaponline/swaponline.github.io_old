@@ -13203,7 +13203,7 @@ var _default = function _default(props) {
       defaultMessage: "I saved my keys"
     }),
     secondFunc: handleSaveKeys
-  }), (host === "localhost" || host === "swaponline.io") && _react.default.createElement(_NotifyBock.default, {
+  }), (host === "localhost" || host === "swaponline.github.io") && _react.default.createElement(_NotifyBock.default, {
     className: "notifyBlockBanner",
     descr: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "descr295",
@@ -13218,7 +13218,7 @@ var _default = function _default(props) {
     secondFunc: function secondFunc() {
       return handleNotifyBlockClose("isClosedNotifyBlockSignUp");
     }
-  }), (host === "localhost" || host === "swaponline.io") && _react.default.createElement(_NotifyBock.default, {
+  }), (host === "localhost" || host === "swaponline.github.io") && _react.default.createElement(_NotifyBock.default, {
     className: "notifyBlockBanner",
     descr: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "descr297",
@@ -13233,7 +13233,7 @@ var _default = function _default(props) {
     secondFunc: function secondFunc() {
       return handleNotifyBlockClose("isClosedNotifyBlockSignUp");
     }
-  }), (host === "localhost" || host === "swaponline.io") && _react.default.createElement(_NotifyBock.default, {
+  }), (host === "localhost" || host === "swaponline.github.io") && _react.default.createElement(_NotifyBock.default, {
     className: "notifyBlockBanner",
     descr: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "descr299",
@@ -13248,7 +13248,7 @@ var _default = function _default(props) {
     secondFunc: function secondFunc() {
       return handleNotifyBlockClose("isClosedNotifyBlockSignUp");
     }
-  }), (host === "localhost" || host === "swaponline.io") && _react.default.createElement(_NotifyBock.default, {
+  }), (host === "localhost" || host === "swaponline.github.io") && _react.default.createElement(_NotifyBock.default, {
     className: "notifyBlockBanner",
     descr: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "descr304",
@@ -13262,24 +13262,6 @@ var _default = function _default(props) {
     firstFunc: handleSignUp,
     secondFunc: function secondFunc() {
       return handleNotifyBlockClose("isClosedNotifyBlockSignUp");
-    }
-  }), !isClosedNotifyBlockBanner && _react.default.createElement(_NotifyBock.default, {
-    descr: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "descr301",
-      defaultMessage: "Updates"
-    }),
-    tooltip: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "descr302",
-      defaultMessage: "Let us notify you that the main domain name for Swap.online exchange service will be changed from swap.online to swaponline.io."
-    }),
-    secondBtn: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "descr303",
-      defaultMessage: "Close"
-    }),
-    className: "notifyBlockBanner",
-    icon: _infoSolid.default,
-    secondFunc: function secondFunc() {
-      return handleNotifyBlockClose("isClosedNotifyBlockBanner");
     }
   }));
 };
