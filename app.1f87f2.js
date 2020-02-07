@@ -12893,7 +12893,7 @@ exports.default = _default;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"status":"B1fidjHPLhyGcoH8F5fGa","in":"_2WudR1frvBnj9kRO3FA9uG","arrowWrap":"_2ZtiIK3MNLzfrPdj9NR9bH","amount":"z9kssebSLkb8mADtAMWnq","out":"_3MGYaPvMhKsrx0_2-cz4vY","self":"_3MS0sH9FgE888Im5g8g2xg","cell":"_3iy6qiQe218Jih154eQVqE","confirm":"_38S3z2lx-rEz9afrkb9EwC","unconfirmed":"_2NV1PPhBfGGuyaPXmSlHdC","red":"_3EitOOo1lRyTU_A8XwnFZK","green":"_1RCXF-OwSr7B1HY7mxNdci","date":"_3qRLEPOS08JmoONhhzwZEV","address":"qb31A4v3_wPcuRk6u7OaR","amountUsd":"vYdnMoTrMzp21MwqWA9rf","historyInfo":"_8DegK4QSt4Uge7u8tvQVq","info":"YgKzn1hJy3aGY2rWbwSF1","noButtons":"_1CAEtY29lKIjqGgn1A9vfY","comment":"_2xEACUYkNDCkFn1razTQHj","btnWrapper":"_21DXC0zbdv8AGQ3A19RwM_","icon":"_3pEEj8MTTYSzn-t4UI3wER","wrapButtonShare":"_2AQLD8gr4ugAd4usvW_EM6","historyRow":"dtzaHAhIbDqlX5-GVeT2g","smallTooltip":"_1VWtNWrdRIpFguVbFFjSjt","input":"_1m9GCgCW0S2t8QjfalrCbA","submit":"_242JysLjCqRwNfH_8yfbw-","close":"_3WwpAw7B9lJw_hTslXlfDO","historyInvoiceInfo":"_12ebNK544EWCm0wA59ow84","circleIcon":"_2baEQItv0tI6OS12JdH4sE"};
+module.exports = {"status":"B1fidjHPLhyGcoH8F5fGa","in":"_2WudR1frvBnj9kRO3FA9uG","arrowWrap":"_2ZtiIK3MNLzfrPdj9NR9bH","amount":"z9kssebSLkb8mADtAMWnq","out":"_3MGYaPvMhKsrx0_2-cz4vY","self":"_3MS0sH9FgE888Im5g8g2xg","commentTextarea":"_2oe2EUcAkUqazCvSX1Z2R_","cell":"_3iy6qiQe218Jih154eQVqE","confirm":"_38S3z2lx-rEz9afrkb9EwC","unconfirmed":"_2NV1PPhBfGGuyaPXmSlHdC","red":"_3EitOOo1lRyTU_A8XwnFZK","green":"_1RCXF-OwSr7B1HY7mxNdci","date":"_3qRLEPOS08JmoONhhzwZEV","address":"qb31A4v3_wPcuRk6u7OaR","amountUsd":"vYdnMoTrMzp21MwqWA9rf","historyInfo":"_8DegK4QSt4Uge7u8tvQVq","info":"YgKzn1hJy3aGY2rWbwSF1","noButtons":"_1CAEtY29lKIjqGgn1A9vfY","comment":"_2xEACUYkNDCkFn1razTQHj","btnWrapper":"_21DXC0zbdv8AGQ3A19RwM_","icon":"_3pEEj8MTTYSzn-t4UI3wER","wrapButtonShare":"_2AQLD8gr4ugAd4usvW_EM6","historyRow":"dtzaHAhIbDqlX5-GVeT2g","smallTooltip":"_1VWtNWrdRIpFguVbFFjSjt","input":"_1m9GCgCW0S2t8QjfalrCbA","submit":"_242JysLjCqRwNfH_8yfbw-","close":"_3WwpAw7B9lJw_hTslXlfDO","historyInvoiceInfo":"_12ebNK544EWCm0wA59ow84","circleIcon":"_2baEQItv0tI6OS12JdH4sE"};
 
 /***/ }),
 /* 970 */
@@ -37563,6 +37563,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(2));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(3));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(6));
+
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(5));
+
+var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(12));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(7));
+
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(10));
 
 var _react = _interopRequireDefault(__webpack_require__(4));
@@ -37573,71 +37585,99 @@ var _reactCssModules = _interopRequireDefault(__webpack_require__(8));
 
 var _momentWithLocalesEs = _interopRequireDefault(__webpack_require__(600));
 
-var _actions = _interopRequireDefault(__webpack_require__(16));
-
 var _Row = _interopRequireDefault(__webpack_require__(969));
+
+var _dec, _class, _class2, _temp;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-var submitComment = function submitComment(e, props) {
-  var comment = props.comment,
-      toggleComment = props.toggleComment,
-      onSubmit = props.onSubmit,
-      hiddenList = props.hiddenList,
-      ind = props.ind;
-  e.preventDefault();
-
-  var comments = _objectSpread({}, hiddenList, (0, _defineProperty2.default)({}, ind, comment));
-
-  onSubmit(comments);
-  toggleComment(false);
-};
-
-var CommentRow = function CommentRow(props) {
-  var comment = props.comment,
-      label = props.label,
-      toggleComment = props.toggleComment,
-      changeComment = props.changeComment,
-      date = props.date,
-      isOpen = props.isOpen,
-      commentCancel = props.commentCancel;
-  return isOpen ? _react.default.createElement("form", {
-    styleName: "input",
-    onSubmit: function onSubmit(e) {
-      return submitComment(e, props);
-    }
-  }, _react.default.createElement("textarea", {
-    onChange: changeComment
-  }, comment || "".concat((0, _momentWithLocalesEs.default)(date).format('LLLL'), "  ").concat(label)), _react.default.createElement("span", {
-    styleName: "submit",
-    onClick: function onClick(e) {
-      return submitComment(e, props);
-    }
-  }, "\u2714"), _react.default.createElement("span", {
-    styleName: "close",
-    onClick: commentCancel
-  }, "\xD7")) : _react.default.createElement("div", {
-    styleName: "date",
-    onDoubleClick: function onDoubleClick() {
-      return toggleComment(true);
-    }
-  }, comment || "".concat((0, _momentWithLocalesEs.default)(date).format('LLLL'), "  ").concat(label));
-};
-
-CommentRow.defaultProps = {
-  label: ''
-};
-CommentRow.propTypes = {
-  label: _propTypes.default.string.isRequired
-};
-
-var _default = (0, _reactCssModules.default)(CommentRow, _Row.default, {
+var CommentRow = (_dec = (0, _reactCssModules.default)(_Row.default, {
   allowMultiple: true
-});
+}), _dec(_class = (_temp = _class2 =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(CommentRow, _React$Component);
 
-exports.default = _default;
+  function CommentRow(_props) {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, CommentRow);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(CommentRow).call(this, _props));
+    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "submitComment", function (e, props) {
+      var comment = props.comment,
+          toggleComment = props.toggleComment,
+          onSubmit = props.onSubmit,
+          hiddenList = props.hiddenList,
+          ind = props.ind;
+      e.preventDefault();
+
+      var comments = _objectSpread({}, hiddenList, (0, _defineProperty2.default)({}, ind, comment));
+
+      onSubmit(comments);
+      toggleComment(false);
+    });
+    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleKeyUp", function () {
+      _this.commentTextarea.current.style.cssText = 'height:' + _this.commentTextarea.current.scrollHeight + 'px;';
+    });
+    _this.commentTextarea = _react.default.createRef();
+    return _this;
+  }
+
+  (0, _createClass2.default)(CommentRow, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.isOpen && this.props.isOpen !== prevProps.isOpen) {
+        this.handleKeyUp();
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          comment = _this$props.comment,
+          label = _this$props.label,
+          toggleComment = _this$props.toggleComment,
+          changeComment = _this$props.changeComment,
+          date = _this$props.date,
+          isOpen = _this$props.isOpen,
+          commentCancel = _this$props.commentCancel;
+      return isOpen ? _react.default.createElement("form", {
+        styleName: "input",
+        onSubmit: function onSubmit(e) {
+          return _this2.submitComment(e, _this2.props);
+        }
+      }, _react.default.createElement("textarea", {
+        ref: this.commentTextarea,
+        styleName: "commentTextarea",
+        id: "commentTextarea",
+        onKeyUp: this.handleKeyUp,
+        onChange: changeComment,
+        value: comment || "".concat((0, _momentWithLocalesEs.default)(date).format('LLLL'), "  ").concat(label)
+      }), _react.default.createElement("span", {
+        styleName: "submit",
+        onClick: function onClick(e) {
+          return _this2.submitComment(e, _this2.props);
+        }
+      }, "\u2714"), _react.default.createElement("span", {
+        styleName: "close",
+        onClick: commentCancel
+      }, "\xD7")) : _react.default.createElement("div", {
+        styleName: "date",
+        onDoubleClick: function onDoubleClick() {
+          return toggleComment(true);
+        }
+      }, comment || "".concat((0, _momentWithLocalesEs.default)(date).format('LLLL'), "  ").concat(label));
+    }
+  }]);
+  return CommentRow;
+}(_react.default.Component), (0, _defineProperty2.default)(_class2, "propTypes", {
+  label: _propTypes.default.string.isRequired
+}), _temp)) || _class);
+exports.default = CommentRow;
 
 /***/ }),
 /* 2275 */
