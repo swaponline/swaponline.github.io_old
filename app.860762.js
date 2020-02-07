@@ -23883,6 +23883,7 @@ var _default = {
   enter: 'enter',
   reject: 'reject',
   switch: 'switch',
+  preventSwitch: 'preventSwitch',
   wasOnWallet: 'wasOnWallet',
   savedOrders: 'savedOrders',
   deletedOrders: 'deletedOrders',
@@ -68855,6 +68856,8 @@ var _Button = _interopRequireDefault(__webpack_require__(46));
 
 var _appConfig = _interopRequireDefault(__webpack_require__(19));
 
+var _helpers = __webpack_require__(20);
+
 var isWidgetBuild = _appConfig.default && _appConfig.default.isWidget;
 
 var PreventMultiTabs =
@@ -68870,17 +68873,30 @@ function (_Component) {
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleSwitchClick", function () {
       var onSwitchTab = _this.props.onSwitchTab;
 
+      _helpers.localStorage.setItem(_helpers.constants.localStorage.preventSwitch, "1");
+
+      setTimeout(function () {
+        _helpers.localStorage.removeItem(_helpers.constants.localStorage.preventSwitch);
+      }, 5000);
+
       if (onSwitchTab instanceof Function) {
         onSwitchTab();
       }
     });
+
+    var preventSwitch = _helpers.localStorage.getItem(_helpers.constants.localStorage.preventSwitch);
+
+    if (!preventSwitch) {
+      // auto switch
+      setTimeout(_this.handleSwitchClick, 100);
+    }
+
     return _this;
   }
 
   (0, _createClass2.default)(PreventMultiTabs, [{
     key: "render",
     value: function render() {
-      console.log(this.props);
       return _react.default.createElement(_WidthContainer.default, null, _react.default.createElement("h1", null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "PreventMultiTabs",
         defaultMessage: "Such error, many tabs"
