@@ -13201,28 +13201,7 @@ var _default = function _default(props) {
       isClosedNotifyBlockBanner = props.isClosedNotifyBlockBanner,
       handleNotifyBlockClose = props.handleNotifyBlockClose,
       host = props.host;
-  return _react.default.createElement(_reactSlick.default, settings, !isPrivateKeysSaved && _react.default.createElement(_NotifyBock.default, {
-    className: "notifyBlockSaveKeys",
-    descr: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "descr279",
-      defaultMessage: "Before you continue be sure to save your private keys!"
-    }),
-    tooltip: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "descr280",
-      defaultMessage: "We do not store your private keys and will not be able to restore them"
-    }),
-    icon: _security.default,
-    firstBtn: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "descr282",
-      defaultMessage: "Show my keys"
-    }),
-    firstFunc: handleShowKeys,
-    secondBtn: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "descr284",
-      defaultMessage: "I saved my keys"
-    }),
-    secondFunc: handleSaveKeys
-  }), (host === "localhost" || host === "swaponline.github.io") && _react.default.createElement(_NotifyBock.default, {
+  return _react.default.createElement(_reactSlick.default, settings, (host === "localhost" || host === "swaponline.github.io") && _react.default.createElement(_NotifyBock.default, {
     className: "notifyBlockBanner",
     descr: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "descr295",
@@ -13324,21 +13303,12 @@ var NotifyBlock = function NotifyBlock(_ref) {
       firstFunc = _ref.firstFunc,
       secondFunc = _ref.secondFunc;
   return _react.default.createElement("div", {
-    styleName: "notifyBlock ".concat(className)
-  }, _react.default.createElement("div", null, _react.default.createElement("div", {
-    styleName: "notifyBlockIcon"
-  }, _react.default.createElement("img", {
-    src: icon,
-    alt: ""
-  })), _react.default.createElement("div", {
+    styleName: "notifyBlock"
+  }, _react.default.createElement("div", {
+    styleName: "notifyBlockImg ".concat(className)
+  }), _react.default.createElement("div", {
     styleName: "notifyBlockDescr"
-  }, _react.default.createElement("p", null, descr), _react.default.createElement("p", null, tooltip))), _react.default.createElement("div", null, firstBtn && _react.default.createElement(_Button.default, {
-    white: true,
-    onClick: firstFunc
-  }, firstBtn), secondBtn && _react.default.createElement(_Button.default, {
-    transparent: true,
-    onClick: secondFunc
-  }, secondBtn)));
+  }, _react.default.createElement("p", null, descr)));
 };
 
 var _default = (0, _reactCssModules.default)(NotifyBlock, _NotifyBlock.default, {
@@ -39508,11 +39478,11 @@ function (_Component) {
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "checkBalance", function () {
       // that is for noxon, dont delete it :)
-      var now = (0, _moment.default)().format('HH:mm:ss DD/MM/YYYY');
+      var now = (0, _moment.default)().format("HH:mm:ss DD/MM/YYYY");
       var lastCheck = localStorage.getItem(_helpers.constants.localStorage.lastCheckBalance) || now;
-      var lastCheckMoment = (0, _moment.default)(lastCheck, 'HH:mm:ss DD/MM/YYYY');
-      var isFirstCheck = (0, _moment.default)(now, 'HH:mm:ss DD/MM/YYYY').isSame(lastCheckMoment);
-      var isOneHourAfter = (0, _moment.default)(now, 'HH:mm:ss DD/MM/YYYY').isAfter(lastCheckMoment.add(1, 'hours'));
+      var lastCheckMoment = (0, _moment.default)(lastCheck, "HH:mm:ss DD/MM/YYYY");
+      var isFirstCheck = (0, _moment.default)(now, "HH:mm:ss DD/MM/YYYY").isSame(lastCheckMoment);
+      var isOneHourAfter = (0, _moment.default)(now, "HH:mm:ss DD/MM/YYYY").isAfter(lastCheckMoment.add(1, "hours"));
       var _this$props$tokensDat = _this.props.tokensData,
           ethData = _this$props$tokensDat.ethData,
           btcData = _this$props$tokensDat.btcData,
@@ -39592,9 +39562,7 @@ function (_Component) {
         speed: 500,
         autoplay: true,
         autoplaySpeed: 6000,
-        fade: true,
-        slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToShow: 3
       };
       var btcBalance = 0;
       var usdBalance = 0;
@@ -39756,7 +39724,7 @@ module.exports = "https://swaponline.github.io/images/info-solid_cf8465.svg";
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"notifyBlock":"_2N8HWXf57N_4o376HYRSDl","notifyBlockSaveKeys":"f4QCZyUr5wVGeUflbheCQ","notifyBlockSignUp":"_32Jp7yBPK3xDSymwucETe7","notifyBlockBanner":"pvtFNb0zX36_j8izH-Bfj","notifyBlockIcon":"_1RDsLNLsATr3fWm3SFcb-z","notifyBlockDescr":"_3VjxxmFI3Zjvy2vD31aQVp"};
+module.exports = {"notifyBlock":"_2N8HWXf57N_4o376HYRSDl","notifyBlockImg":"_1mE8j3-Wr_hWK3ogMhsshr","notifyBlockSaveKeys":"f4QCZyUr5wVGeUflbheCQ","notifyBlockSignUp":"_32Jp7yBPK3xDSymwucETe7","notifyBlockBanner":"pvtFNb0zX36_j8izH-Bfj","notifyBlockIcon":"_1RDsLNLsATr3fWm3SFcb-z","notifyBlockDescr":"_3VjxxmFI3Zjvy2vD31aQVp"};
 
 /***/ }),
 /* 2316 */
