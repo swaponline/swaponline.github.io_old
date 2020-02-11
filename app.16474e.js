@@ -9066,22 +9066,26 @@ function (_Component) {
           href = _window$location.href;
       var file = Object.keys(srcFiles).find(function (el) {
         return window.location.href.includes(el);
-      }) || 'base';
+      }) || "base";
 
-      var imgNode = _react.default.createElement('img', {
-        styleName: !withLink && 'logo',
+      var imgNode = _react.default.createElement("img", {
+        styleName: !withLink && "logo",
         src: srcFiles[file],
         alt: "".concat(host)
       });
 
-      return _react.default.createElement(_react.Fragment, null, withLink ? _react.default.createElement(_reactRouterDom.Link, {
-        styleName: "".concat(mobile ? 'mobile' : 'logo'),
+      return _react.default.createElement(_react.Fragment, null, window.location.hostname === "localhost" || window.location.hostname === "swaponline.github.io" || window.location.hostname === "swaponline.io" ? _react.default.createElement(_reactRouterDom.Link, {
+        styleName: "".concat(mobile ? "mobile" : "logo"),
         "data-tip": true,
         "data-for": "logo",
         to: (0, _locale.localisedUrl)(locale, _helpers.links.home)
-      }, imgNode) : _react.default.createElement("div", {
-        styleName: "".concat(!isExchange && 'whiteFill')
-      }, imgNode));
+      }, imgNode) : _react.default.createElement("div", null, _react.default.createElement("img", {
+        style: {
+          maxWidth: "55px"
+        },
+        src: window.logoUrl,
+        alt: "logo"
+      })));
     }
   }]);
   return Logo;
@@ -13201,7 +13205,28 @@ var _default = function _default(props) {
       isClosedNotifyBlockBanner = props.isClosedNotifyBlockBanner,
       handleNotifyBlockClose = props.handleNotifyBlockClose,
       host = props.host;
-  return _react.default.createElement(_reactSlick.default, settings, (host === "localhost" || host === "swaponline.github.io") && _react.default.createElement(_NotifyBock.default, {
+  return _react.default.createElement(_reactSlick.default, settings, !isPrivateKeysSaved && _react.default.createElement(_NotifyBock.default, {
+    className: "notifyBlockSaveKeys",
+    descr: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "descr279",
+      defaultMessage: "Before you continue be sure to save your private keys!"
+    }),
+    tooltip: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "descr280",
+      defaultMessage: "We do not store your private keys and will not be able to restore them"
+    }),
+    icon: _security.default,
+    firstBtn: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "descr282",
+      defaultMessage: "Show my keys"
+    }),
+    firstFunc: handleShowKeys,
+    secondBtn: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "descr284",
+      defaultMessage: "I saved my keys"
+    }),
+    secondFunc: handleSaveKeys
+  }), (host === "localhost" || host === "swaponline.github.io") && _react.default.createElement(_NotifyBock.default, {
     className: "notifyBlockBanner",
     descr: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "descr295",
@@ -66850,9 +66875,6 @@ function (_Component) {
         alt: "logo"
       })), _react.default.createElement(_Nav.default, {
         menu: menuItems
-      }), _react.default.createElement(_Logo.default, {
-        withLink: true,
-        mobile: true
       }), isPartialTourOpen && isExchange && _react.default.createElement(_TourPartial.default, {
         isTourOpen: isPartialTourOpen,
         closeTour: this.closePartialTour
