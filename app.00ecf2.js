@@ -76482,6 +76482,12 @@ function (_React$Component) {
           }
         }
 
+        var renderIcon = _images.default[iconName];
+
+        if (_appConfig.default && _appConfig.default.erc20 && _appConfig.default.erc20[item.currency.toLowerCase()] && _appConfig.default.erc20[item.currency.toLowerCase()].icon) {
+          renderIcon = _appConfig.default.erc20[item.currency.toLowerCase()].icon;
+        }
+
         return _react.default.createElement("div", {
           styleName: "card",
           key: item,
@@ -76491,7 +76497,7 @@ function (_React$Component) {
         }, _react.default.createElement("div", {
           styleName: "circle ".concat(iconName)
         }, _react.default.createElement("img", {
-          src: _images.default[iconName],
+          src: renderIcon,
           alt: "".concat(name, " icon"),
           role: "image"
         })), _react.default.createElement("b", null, itemTitle), _react.default.createElement("span", null, itemFullTitle));
