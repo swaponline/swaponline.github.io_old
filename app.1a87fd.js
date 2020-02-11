@@ -71835,7 +71835,7 @@ function (_React$Component) {
                           _actions.default.modals.open(_helpers.constants.modals.InfoPay, {
                             amount: amount,
                             currency: currency,
-                            tx: txRaw.getId(),
+                            txRaw: txRaw,
                             address: to
                           });
 
@@ -79518,9 +79518,20 @@ function (_React$Component) {
           amount = _this$props$data.amount,
           currency = _this$props$data.currency,
           address = _this$props$data.address,
-          tx = _this$props$data.tx;
+          txRaw = _this$props$data.txRaw;
       var name = 'InfoPay';
-      var link = currency === 'BTC' ? "https://www.blockchain.com/ru/btc/tx/".concat(tx) : "https://etherscan.io/tx/".concat(tx);
+      var link = null;
+
+      switch (currency) {
+        case 'BTC':
+          link = "https://www.blockchain.com/ru/btc/tx/".concat(txRaw.getId());
+          break;
+
+        case 'ETH':
+          link = "https://etherscan.io/tx/".concat(txRaw.transactionHash);
+          break;
+      }
+
       return _react.default.createElement(_modal.Modal, {
         name: name,
         title: intl.formatMessage(labels.Title)
