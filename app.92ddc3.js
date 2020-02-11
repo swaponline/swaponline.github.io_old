@@ -13201,7 +13201,7 @@ var _default = function _default(props) {
       isClosedNotifyBlockBanner = props.isClosedNotifyBlockBanner,
       handleNotifyBlockClose = props.handleNotifyBlockClose,
       host = props.host;
-  return _react.default.createElement(_reactSlick.default, settings, (host === "localhost" || host === "swaponline.github.io") && _react.default.createElement(_NotifyBock.default, {
+  return _react.default.createElement(_reactSlick.default, settings, (host === "localhost" || host === "swaponline.github.io" || host === "swaponline.io") && _react.default.createElement(_NotifyBock.default, {
     className: "notifyBlockBanner",
     descr: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "descr295",
@@ -13216,7 +13216,7 @@ var _default = function _default(props) {
     secondFunc: function secondFunc() {
       return handleNotifyBlockClose("isClosedNotifyBlockSignUp");
     }
-  }), (host === "localhost" || host === "swaponline.github.io") && _react.default.createElement(_NotifyBock.default, {
+  }), (host === "localhost" || host === "swaponline.github.io" || host === "swaponline.io") && _react.default.createElement(_NotifyBock.default, {
     className: "notifyBlockBanner",
     descr: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "descr297",
@@ -13231,7 +13231,7 @@ var _default = function _default(props) {
     secondFunc: function secondFunc() {
       return handleNotifyBlockClose("isClosedNotifyBlockSignUp");
     }
-  }), (host === "localhost" || host === "swaponline.github.io") && _react.default.createElement(_NotifyBock.default, {
+  }), (host === "localhost" || host === "swaponline.github.io" || host === "swaponline.io") && _react.default.createElement(_NotifyBock.default, {
     className: "notifyBlockBanner",
     descr: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "descr299",
@@ -13246,7 +13246,22 @@ var _default = function _default(props) {
     secondFunc: function secondFunc() {
       return handleNotifyBlockClose("isClosedNotifyBlockSignUp");
     }
-  }), (host === "localhost" || host === "swaponline.github.io") && _react.default.createElement(_NotifyBock.default, {
+  }), (host === "localhost" || host === "swaponline.github.io" || host === "swaponline.io") && _react.default.createElement(_NotifyBock.default, {
+    className: "notifyBlockBanner",
+    descr: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "descr304",
+      defaultMessage: "Store Bitcoin and other cryptocurrencies without installing a wallet"
+    }),
+    tooltip: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "descr305",
+      defaultMessage: "Secured transactions with SMS verification. Exchange cryptocurrencies with no threat of hold (Atomic Swap). [Start exchanging]"
+    }),
+    icon: _infoSolid.default,
+    firstFunc: handleSignUp,
+    secondFunc: function secondFunc() {
+      return handleNotifyBlockClose("isClosedNotifyBlockSignUp");
+    }
+  }), (host === "localhost" || host === "swaponline.github.io" || host === "swaponline.io") && _react.default.createElement(_NotifyBock.default, {
     className: "notifyBlockBanner",
     descr: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "descr304",
@@ -13303,10 +13318,8 @@ var NotifyBlock = function NotifyBlock(_ref) {
       firstFunc = _ref.firstFunc,
       secondFunc = _ref.secondFunc;
   return _react.default.createElement("div", {
-    styleName: "notifyBlock"
+    styleName: "notifyBlock ".concat(className)
   }, _react.default.createElement("div", {
-    styleName: "notifyBlockImg ".concat(className)
-  }), _react.default.createElement("div", {
     styleName: "notifyBlockDescr"
   }, _react.default.createElement("p", null, descr)));
 };
@@ -39562,7 +39575,7 @@ function (_Component) {
         speed: 500,
         autoplay: true,
         autoplaySpeed: 6000,
-        slidesToShow: 3
+        slidesToShow: 4
       };
       var btcBalance = 0;
       var usdBalance = 0;
@@ -39724,7 +39737,7 @@ module.exports = "https://swaponline.github.io/images/info-solid_cf8465.svg";
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"notifyBlock":"_2N8HWXf57N_4o376HYRSDl","notifyBlockImg":"_1mE8j3-Wr_hWK3ogMhsshr","notifyBlockSaveKeys":"f4QCZyUr5wVGeUflbheCQ","notifyBlockSignUp":"_32Jp7yBPK3xDSymwucETe7","notifyBlockBanner":"pvtFNb0zX36_j8izH-Bfj","notifyBlockIcon":"_1RDsLNLsATr3fWm3SFcb-z","notifyBlockDescr":"_3VjxxmFI3Zjvy2vD31aQVp"};
+module.exports = {"notifyBlock":"_2N8HWXf57N_4o376HYRSDl","notifyBlockSaveKeys":"f4QCZyUr5wVGeUflbheCQ","notifyBlockSignUp":"_32Jp7yBPK3xDSymwucETe7","notifyBlockBanner":"pvtFNb0zX36_j8izH-Bfj","notifyBlockBannerInvest":"_2Fu8XttsFKTdfRe42BvWDz","notifyBlockIcon":"_1RDsLNLsATr3fWm3SFcb-z","notifyBlockDescr":"_3VjxxmFI3Zjvy2vD31aQVp"};
 
 /***/ }),
 /* 2316 */
@@ -66825,7 +66838,7 @@ function (_Component) {
       })), _react.default.createElement(_WidthContainer.default, {
         styleName: "container",
         className: "data-tut-preview"
-      }, window.location.hostname === "localhost" || window.location.hostname === "swaponline.io" ? _react.default.createElement(_LogoTooltip.default, {
+      }, window.location.hostname === "localhost" || window.location.hostname === "swaponline.github.io" || window.location.hostname === "swaponline.io" ? _react.default.createElement(_LogoTooltip.default, {
         withLink: true,
         isColored: true,
         isExchange: isWalletPage
