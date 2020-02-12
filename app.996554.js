@@ -16102,7 +16102,7 @@ if (_appConfig.default.isWidget) {
     fullTitle: 'bitcoin'
   }]; // Мульти валюта с обратной совместимостью одиночного билда
 
-  var multiTokenNames = window.widgetERC20Tokens ? Object.keys(window.widgetERC20Tokens) : [];
+  var multiTokenNames = Object.keys(window.widgetERC20Tokens);
 
   if (multiTokenNames.length > 0) {
     // First token in list - is main - fill single-token erc20 config
@@ -45815,7 +45815,7 @@ var repo = _helpers.utils.createRepo();
 _helpers.utils.exitListener();
 
 if (_appConfig.default && _appConfig.default.isWidget) {
-  var multiTokenNames = window.widgetERC20Tokens ? Object.keys(window.widgetERC20Tokens) : [];
+  var multiTokenNames = Object.keys(window.widgetERC20Tokens);
 
   if (multiTokenNames.length) {
     // Multi token mode
