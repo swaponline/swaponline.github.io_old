@@ -1804,6 +1804,10 @@ var linksManager = {
   newPage: '/+NewPage',
   multisign: '/multisign',
   createInvoice: '/createinvoice',
+  BchWallet: '/#/BitcoinCash-wallet',
+  BtcWallet: '/#/Bitcoin-wallet',
+  EthWallet: '/#/Ethereum-wallet',
+  LtcWallet: '/#/Litecoin-wallet',
   // social networks
   medium: '#',
   twitter: 'https://twitter.com/SwapOnlineTeam',
@@ -9084,7 +9088,7 @@ function (_Component) {
           maxWidth: "55px"
         },
         src: window.logoUrl,
-        alt: "logo"
+        alt: "Wallet"
       })));
     }
   }]);
@@ -38396,7 +38400,7 @@ var CreateWallet = function CreateWallet(props) {
   var steps = [1, 2];
 
   var goHome = function goHome() {
-    history.push((0, _locale.localisedUrl)(locale, _links.default.wallet));
+    history.push((0, _locale.localisedUrl)(locale, _links.default.home));
   };
 
   var handleClick = function handleClick() {
@@ -74080,7 +74084,10 @@ function (_Component) {
       isImportedLtc: false,
       // isImportedXlm: false,
       isDisabled: true,
-      keySave: false
+      keySave: false,
+      onClose: function onClose() {
+        return null;
+      }
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleEthImportKey", function () {
       var ethKey = _this.state.ethKey;
@@ -74108,6 +74115,12 @@ function (_Component) {
         });
 
         _actions.default.core.markCoinAsVisible('ETH');
+
+        _this.setState({
+          onClose: function onClose() {
+            window.location.assign(_helpers.links.EthWallet);
+          }
+        });
       } catch (e) {
         _this.setState({
           isSubmittedEth: true
@@ -74144,6 +74157,12 @@ function (_Component) {
         });
 
         _actions.default.core.markCoinAsVisible('BTC');
+
+        _this.setState({
+          onClose: function onClose() {
+            window.location.assign(_helpers.links.BtcWallet);
+          }
+        });
       } catch (e) {
         _this.setState({
           isSubmittedBtc: true
@@ -74182,6 +74201,12 @@ function (_Component) {
         });
 
         _actions.default.core.markCoinAsVisible('BCH');
+
+        _this.setState({
+          onClose: function onClose() {
+            window.location.assign(_helpers.links.BchWallet);
+          }
+        });
       } catch (e) {
         console.error(e);
 
@@ -74220,6 +74245,12 @@ function (_Component) {
         });
 
         _actions.default.core.markCoinAsVisible('LTC');
+
+        _this.setState({
+          onClose: function onClose() {
+            window.location.assign(_helpers.links.LtcWallet);
+          }
+        });
       } catch (e) {
         _this.setState({
           isSubmittedLtc: true
@@ -74237,6 +74268,21 @@ function (_Component) {
       var _this$props = _this.props,
           name = _this$props.name,
           data = _this$props.data;
+      var _this$state = _this.state,
+          isImportedBch = _this$state.isImportedBch,
+          isImportedBtc = _this$state.isImportedBtc,
+          isImportedEth = _this$state.isImportedEth,
+          isImportedLtc = _this$state.isImportedLtc;
+
+      if ([isImportedBch, isImportedBtc, isImportedEth, isImportedLtc].filter(function (i) {
+        return i;
+      }).length > 1) {
+        _this.setState({
+          onClose: function onClose() {
+            window.location.assign('/');
+          }
+        });
+      }
 
       _actions.default.modals.close(name);
 
@@ -74245,11 +74291,11 @@ function (_Component) {
       }
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "checkAnyImport", function () {
-      var _this$state = _this.state,
-          isSubmittedEth = _this$state.isSubmittedEth,
-          isSubmittedBtc = _this$state.isSubmittedBtc,
-          isSubmittedBch = _this$state.isSubmittedBch,
-          isSubmittedLtc = _this$state.isSubmittedLtc;
+      var _this$state2 = _this.state,
+          isSubmittedEth = _this$state2.isSubmittedEth,
+          isSubmittedBtc = _this$state2.isSubmittedBtc,
+          isSubmittedBch = _this$state2.isSubmittedBch,
+          isSubmittedLtc = _this$state2.isSubmittedLtc;
 
       if (isSubmittedEth || isSubmittedBtc || isSubmittedBch || isSubmittedLtc
       /* || isSubmittedXlm */
@@ -74287,17 +74333,17 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var _this$state2 = this.state,
-          isSubmittedEth = _this$state2.isSubmittedEth,
-          isSubmittedBtc = _this$state2.isSubmittedBtc,
-          isSubmittedBch = _this$state2.isSubmittedBch,
-          isSubmittedLtc = _this$state2.isSubmittedLtc,
-          isImportedEth = _this$state2.isImportedEth,
-          isImportedBtc = _this$state2.isImportedBtc,
-          isImportedBch = _this$state2.isImportedBch,
-          isImportedLtc = _this$state2.isImportedLtc,
-          isDisabled = _this$state2.isDisabled,
-          keySave = _this$state2.keySave;
+      var _this$state3 = this.state,
+          isSubmittedEth = _this$state3.isSubmittedEth,
+          isSubmittedBtc = _this$state3.isSubmittedBtc,
+          isSubmittedBch = _this$state3.isSubmittedBch,
+          isSubmittedLtc = _this$state3.isSubmittedLtc,
+          isImportedEth = _this$state3.isImportedEth,
+          isImportedBtc = _this$state3.isImportedBtc,
+          isImportedBch = _this$state3.isImportedBch,
+          isImportedLtc = _this$state3.isImportedLtc,
+          isDisabled = _this$state3.isDisabled,
+          keySave = _this$state3.keySave;
       var _this$props2 = this.props,
           intl = _this$props2.intl,
           data = _this$props2.data;
@@ -74393,7 +74439,8 @@ function (_Component) {
       return _react.default.createElement(_modal.Modal, {
         name: this.props.name,
         title: intl.formatMessage(title.Import),
-        data: data
+        data: data,
+        onClose: this.state.onClose
       }, _react.default.createElement("div", {
         styleName: "modal"
       }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {

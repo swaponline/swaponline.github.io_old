@@ -1,7 +1,7 @@
 {
-  "name": "swap.online",
-  "short_name": "swap.online",
-  "description": "swap.online",
+  "name": "Wallet",
+  "short_name": "Wallet",
+  "description": "Hot wallet",
   "dir": "auto",
   "lang": "en-US",
   "display": "standalone",
