@@ -2315,6 +2315,13 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
+var defaultCurrencyColors = {
+  'btc': 'orange',
+  'btc (multisig)': 'orange',
+  'btc (sms-protected)': 'orange',
+  'usdt': '#33a681'
+};
+
 var Coin = function Coin(_ref) {
   var className = _ref.className,
       size = _ref.size,
@@ -2332,6 +2339,14 @@ var Coin = function Coin(_ref) {
 
   if (_appConfig.default && _appConfig.default.erc20 && _appConfig.default.erc20[name.toLowerCase()] && _appConfig.default.erc20[name.toLowerCase()].icon) {
     isIconConfigExist = true;
+  }
+
+  if (defaultCurrencyColors[name.toLowerCase()]) {
+    style.backgroundColor = defaultCurrencyColors[name.toLowerCase()];
+  }
+
+  if (_appConfig.default && _appConfig.default.erc20 && _appConfig.default.erc20[name.toLowerCase()] && _appConfig.default.erc20[name.toLowerCase()].iconBgColor) {
+    style.backgroundColor = _appConfig.default.erc20[name.toLowerCase()].iconBgColor;
   }
 
   if (isIconExist || isIconConfigExist) {
@@ -32389,6 +32404,7 @@ var _eurs = _interopRequireDefault(__webpack_require__(2149));
 var _default = {
   btc: _btc.default,
   'btc (multisig)': _btc.default,
+  'btc (sms-protected)': _btc.default,
   dcn: _dcn.default,
   bxb: _bxb.default,
   kn: _kn.default,
@@ -39625,6 +39641,11 @@ function (_Component) {
           var currency = _ref9.currency,
               balance = _ref9.balance;
           return !hiddenCoinsList.includes(currency);
+        }); // Отфильтруем валюты, исключив те, которые не используются в этом билде
+
+        tableRows = allData.filter(function (_ref10) {
+          var currency = _ref10.currency;
+          return widgetCurrencies.includes(currency);
         });
       }
 
@@ -39655,9 +39676,9 @@ function (_Component) {
         defaultMessage: "\u041A\u043E\u0448\u0435\u043B\u0435\u043A"
       })), _react.default.createElement("ul", {
         styleName: "walletNav"
-      }, walletNav.map(function (_ref10, index) {
-        var key = _ref10.key,
-            text = _ref10.text;
+      }, walletNav.map(function (_ref11, index) {
+        var key = _ref11.key,
+            text = _ref11.text;
         return _react.default.createElement("li", {
           key: key,
           styleName: "walletNavItem ".concat(activeView === index ? 'active' : ''),
@@ -76305,9 +76326,14 @@ function (_React$Component) {
         }
 
         var renderIcon = _images.default[iconName];
+        var renderStyle = {};
 
-        if (_appConfig.default && _appConfig.default.erc20 && _appConfig.default.erc20[item.currency.toLowerCase()] && _appConfig.default.erc20[item.currency.toLowerCase()].icon) {
-          renderIcon = _appConfig.default.erc20[item.currency.toLowerCase()].icon;
+        if (_appConfig.default && _appConfig.default.erc20 && _appConfig.default.erc20[item.currency.toLowerCase()]) {
+          if (_appConfig.default.erc20[item.currency.toLowerCase()].icon) renderIcon = _appConfig.default.erc20[item.currency.toLowerCase()].icon;
+
+          if (_appConfig.default.erc20[item.currency.toLowerCase()].iconBgColor) {
+            renderStyle.backgroundColor = _appConfig.default.erc20[item.currency.toLowerCase()].iconBgColor;
+          }
         }
 
         return _react.default.createElement("div", {
@@ -76317,7 +76343,8 @@ function (_React$Component) {
             return _this2.handleClickCurrency(item);
           }
         }, _react.default.createElement("div", {
-          styleName: "circle ".concat(iconName)
+          styleName: "circle ".concat(iconName),
+          style: renderStyle
         }, _react.default.createElement("img", {
           src: renderIcon,
           alt: "".concat(name, " icon"),
