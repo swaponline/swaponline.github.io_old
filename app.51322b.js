@@ -12442,10 +12442,10 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       // actions.analytics.dataEvent('open-page-history')
-      var _this$props$match$par = this.props.match.params.address,
-          address = _this$props$match$par === void 0 ? null : _this$props$match$par;
+      if (this.props.match && this.props.match.params && this.props.match.params.address) {
+        var _this$props$match$par = this.props.match.params.address,
+            address = _this$props$match$par === void 0 ? null : _this$props$match$par;
 
-      if (address) {
         _actions.default.history.setTransactions(address);
       } else {
         _actions.default.user.setTransactions();
