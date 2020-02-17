@@ -39651,7 +39651,7 @@ function (_Component) {
           return !hiddenCoinsList.includes(currency);
         }); // Отфильтруем валюты, исключив те, которые не используются в этом билде
 
-        tableRows = allData.filter(function (_ref10) {
+        tableRows = tableRows.filter(function (_ref10) {
           var currency = _ref10.currency;
           return widgetCurrencies.includes(currency);
         });
