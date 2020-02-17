@@ -12442,9 +12442,16 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       // actions.analytics.dataEvent('open-page-history')
-      _actions.default.user.setTransactions();
+      var _this$props$match$par = this.props.match.params.address,
+          address = _this$props$match$par === void 0 ? null : _this$props$match$par;
 
-      _actions.default.core.getSwapHistory();
+      if (address) {
+        _actions.default.history.setTransactions(address);
+      } else {
+        _actions.default.user.setTransactions();
+
+        _actions.default.core.getSwapHistory();
+      }
     }
   }, {
     key: "render",
@@ -15123,7 +15130,7 @@ var routes = _react.default.createElement(_ScrollToTop.default, null, _react.def
   path: "".concat(_locale.localisePrefix).concat(_helpers.links.wallet),
   component: _Wallet2.default
 }), _react.default.createElement(_reactRouter.Route, {
-  path: "".concat(_locale.localisePrefix).concat(_helpers.links.history),
+  path: "".concat(_locale.localisePrefix).concat(_helpers.links.history, "/(btc)?/:address?"),
   component: _History.default
 }), _react.default.createElement(_reactRouter.Route, {
   exact: true,
