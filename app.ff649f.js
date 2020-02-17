@@ -45440,6 +45440,13 @@ function (_React$Component) {
         };
       });
       window.prerenderReady = true;
+
+      var appInstalled = function appInstalled(e) {
+        alert(userLanguage === 'ru' ? 'Подождите пока приложение устанавливается' : 'Wait while application is installing');
+        window.removeEventListener('appinstalled', appInstalled);
+      };
+
+      window.addEventListener('appinstalled', appInstalled);
     }
   }, {
     key: "componentDidUpdate",
