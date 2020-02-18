@@ -1809,10 +1809,10 @@ var linksManager = {
   newPage: '/+NewPage',
   multisign: '/multisign',
   createInvoice: '/createinvoice',
-  BchWallet: '/#/BitcoinCash-wallet',
-  BtcWallet: '/#/Bitcoin-wallet',
-  EthWallet: '/#/Ethereum-wallet',
-  LtcWallet: '/#/Litecoin-wallet',
+  BchWallet: '/BitcoinCash-wallet',
+  BtcWallet: '/Bitcoin-wallet',
+  EthWallet: '/Ethereum-wallet',
+  LtcWallet: '/Litecoin-wallet',
   // social networks
   medium: '#',
   twitter: 'https://twitter.com/SwapOnlineTeam',
@@ -14904,7 +14904,9 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var modals = this.props.modals;
+      var _this$props = this.props,
+          modals = _this$props.modals,
+          history = _this$props.history;
       var modalNames = Object.keys(modals);
       var areModalsExist = Boolean(modalNames.length);
       return areModalsExist && _react.default.createElement("div", {
@@ -14919,6 +14921,7 @@ function (_Component) {
           key: name,
           name: name,
           data: data,
+          history: history,
           style: {
             zIndex: zIndex
           }
@@ -45409,14 +45412,18 @@ function (_React$Component) {
         });
       }
 
-      var mainContent = (isWidget || isCalledFromIframe) && !isWidgetBuild ? _react.default.createElement(_react.Fragment, null, children, _react.default.createElement(_Core.default, null), _react.default.createElement(_RequestLoader.default, null), _react.default.createElement(_ModalConductor.default, null), _react.default.createElement(_NotificationConductor.default, {
+      var mainContent = (isWidget || isCalledFromIframe) && !isWidgetBuild ? _react.default.createElement(_react.Fragment, null, children, _react.default.createElement(_Core.default, null), _react.default.createElement(_RequestLoader.default, null), _react.default.createElement(_ModalConductor.default, {
+        history: history
+      }), _react.default.createElement(_NotificationConductor.default, {
         history: history
       })) : _react.default.createElement(_react.Fragment, null, _react.default.createElement(_Seo.default, {
         location: history.location
       }), _react.default.createElement(_Header.default, null), _react.default.createElement(_Wrapper.default, null, _react.default.createElement(_WidthContainer.default, {
         id: "swapComponentWrapper",
         styleName: isWidgetBuild ? "main main_widget" : "main"
-      }, _react.default.createElement("main", null, children))), _react.default.createElement(_Core.default, null), _react.default.createElement(_Footer.default, null), _react.default.createElement(_RequestLoader.default, null), _react.default.createElement(_ModalConductor.default, null), _react.default.createElement(_NotificationConductor.default, {
+      }, _react.default.createElement("main", null, children))), _react.default.createElement(_Core.default, null), _react.default.createElement(_Footer.default, null), _react.default.createElement(_RequestLoader.default, null), _react.default.createElement(_ModalConductor.default, {
+        history: history
+      }), _react.default.createElement(_NotificationConductor.default, {
         history: history
       }));
       return _react.default.createElement(_reactRouterDom.HashRouter, null, mainContent);
@@ -73995,6 +74002,8 @@ var _controls = __webpack_require__(66);
 
 var _reactIntl = __webpack_require__(11);
 
+var _locale = __webpack_require__(45);
+
 var _dec, _class, _temp;
 
 var title = (0, _reactIntl.defineMessages)({
@@ -74038,9 +74047,12 @@ function (_Component) {
       // isImportedXlm: false,
       isDisabled: true,
       keySave: false,
-      onClose: function onClose() {
-        return null;
-      }
+      onCloseLink: _helpers.links.wallet
+    });
+    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleGoTo", function (goToLink) {
+      var locale = _this.props.intl.locale;
+      window.location.hash = (0, _locale.localisedUrl)(locale, goToLink);
+      window.location.reload();
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleEthImportKey", function () {
       var ethKey = _this.state.ethKey;
@@ -74070,9 +74082,7 @@ function (_Component) {
         _actions.default.core.markCoinAsVisible('ETH');
 
         _this.setState({
-          onClose: function onClose() {
-            window.location.assign(_helpers.links.EthWallet);
-          }
+          onCloseLink: _helpers.links.EthWallet
         });
       } catch (e) {
         _this.setState({
@@ -74112,11 +74122,11 @@ function (_Component) {
         _actions.default.core.markCoinAsVisible('BTC');
 
         _this.setState({
-          onClose: function onClose() {
-            window.location.assign(_helpers.links.BtcWallet);
-          }
+          onCloseLink: _helpers.links.BtcWallet
         });
       } catch (e) {
+        console.log(e);
+
         _this.setState({
           isSubmittedBtc: true
         });
@@ -74156,9 +74166,7 @@ function (_Component) {
         _actions.default.core.markCoinAsVisible('BCH');
 
         _this.setState({
-          onClose: function onClose() {
-            window.location.assign(_helpers.links.BchWallet);
-          }
+          onCloseLink: _helpers.links.BchWallet
         });
       } catch (e) {
         console.error(e);
@@ -74200,9 +74208,7 @@ function (_Component) {
         _actions.default.core.markCoinAsVisible('LTC');
 
         _this.setState({
-          onClose: function onClose() {
-            window.location.assign(_helpers.links.LtcWallet);
-          }
+          onCloseLink: _helpers.links.LtcWallet
         });
       } catch (e) {
         _this.setState({
@@ -74215,27 +74221,27 @@ function (_Component) {
 
       localStorage.setItem(_helpers.constants.localStorage.testnetSkipPKCheck, true);
       localStorage.setItem(_helpers.constants.localStorage.isWalletCreate, true);
-      window.location.assign('/');
+      setTimeout(function () {
+        var onCloseLink = _this.state.onCloseLink;
+        var _this$state = _this.state,
+            isImportedBch = _this$state.isImportedBch,
+            isImportedBtc = _this$state.isImportedBtc,
+            isImportedEth = _this$state.isImportedEth,
+            isImportedLtc = _this$state.isImportedLtc;
+
+        if ([isImportedBch, isImportedBtc, isImportedEth, isImportedLtc].filter(function (i) {
+          return i;
+        }).length > 1) {
+          _this.handleGoTo(_helpers.links.home);
+        } else {
+          _this.handleGoTo(onCloseLink);
+        }
+      }, 500);
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleCloseModal", function () {
       var _this$props = _this.props,
           name = _this$props.name,
           data = _this$props.data;
-      var _this$state = _this.state,
-          isImportedBch = _this$state.isImportedBch,
-          isImportedBtc = _this$state.isImportedBtc,
-          isImportedEth = _this$state.isImportedEth,
-          isImportedLtc = _this$state.isImportedLtc;
-
-      if ([isImportedBch, isImportedBtc, isImportedEth, isImportedLtc].filter(function (i) {
-        return i;
-      }).length > 1) {
-        _this.setState({
-          onClose: function onClose() {
-            window.location.assign('/');
-          }
-        });
-      }
 
       _actions.default.modals.close(name);
 
