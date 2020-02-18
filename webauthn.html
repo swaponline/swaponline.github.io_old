@@ -1,4 +1,6 @@
-<script>if (!window.PublicKeyCredential) { /* Client not capable. Handle error. */ }
+<html>
+  
+  <script>if (!window.PublicKeyCredential) { /* Client not capable. Handle error. */ }
 
 var publicKey = {
   // The challenge is produced by the server; see the Security Considerations
@@ -49,3 +51,5 @@ navigator.credentials.create({ publicKey })
     // No acceptable authenticator or user refused consent. Handle appropriately.
   });
   </script>
+  
+</html>
