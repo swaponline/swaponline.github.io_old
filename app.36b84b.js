@@ -270,12 +270,6 @@ Object.defineProperty(exports, "paddingForSwapList", {
     return _paddingForSwapList.default;
   }
 });
-Object.defineProperty(exports, "transactions", {
-  enumerable: true,
-  get: function get() {
-    return _transactions.default;
-  }
-});
 Object.defineProperty(exports, "migrate", {
   enumerable: true,
   get: function get() {
@@ -373,6 +367,7 @@ var _default = {
   ethToken: _ethToken.default,
   ltc: _ltc.default,
   handleGoTrade: _handleGoTrade.default,
+  transactions: _transactions.default,
   estimateFeeValue: _estimateFeeValue.default
 };
 exports.default = _default;
@@ -25637,8 +25632,10 @@ var getInfo = function getInfo(currency, txRaw) {
     prefix = 'btc';
   }
 
-  tx = _helpers.default[prefix].getTx(txRaw);
-  link = _helpers.default[prefix].getLinkToInfo(tx);
+  var tx = _helpers.default[prefix].getTx(txRaw);
+
+  var link = _helpers.default[prefix].getLinkToInfo(tx);
+
   return {
     tx: tx,
     link: link
