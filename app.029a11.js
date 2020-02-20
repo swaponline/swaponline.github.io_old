@@ -19636,6 +19636,7 @@ var getTransaction = function getTransaction(address) {
         return {
           type: 'btc',
           hash: item.txid,
+          canEdit: address === userAddress,
           confirmations: item.confirmations,
           value: isSelf ? item.fees : item.vout.filter(function (item) {
             var currentAddress = item.scriptPubKey.addresses[0];
@@ -21498,6 +21499,7 @@ var getTransaction = function getTransaction(address) {
         return {
           type: 'bch',
           hash: item.txid,
+          canEdit: address === userAddress,
           confirmations: item.confirmations,
           value: value,
           date: item.time * 1000,
@@ -21859,6 +21861,7 @@ var getTransaction = function getTransaction(address) {
         return {
           type: 'ltc',
           hash: item.txid,
+          canEdit: address === userAddress,
           confirmations: item.confirmations,
           value: isSelf ? item.fees : item.vout.filter(function (item) {
             var currentAddress = item.scriptPubKey.addresses[0];
@@ -22216,6 +22219,7 @@ var getTransaction = function getTransaction(address) {
           status: item.blockHash != null ? 1 : 0,
           value: _web.default.utils.fromWei(item.value),
           address: item.to,
+          canEdit: address === userAddress,
           date: item.timeStamp * 1000,
           direction: address.toLowerCase() === item.to.toLowerCase() ? 'in' : 'out'
         };
@@ -37717,7 +37721,8 @@ function (_React$Component) {
           changeComment = _this$props.changeComment,
           date = _this$props.date,
           isOpen = _this$props.isOpen,
-          commentCancel = _this$props.commentCancel;
+          commentCancel = _this$props.commentCancel,
+          canEdit = _this$props.canEdit;
       return isOpen && onSubmit ? _react.default.createElement("form", {
         styleName: "input",
         onSubmit: function onSubmit(e) {
@@ -37741,7 +37746,7 @@ function (_React$Component) {
       }, "\xD7")) : _react.default.createElement("div", {
         styleName: "date",
         onDoubleClick: function onDoubleClick() {
-          return toggleComment(true);
+          return canEdit ? toggleComment(true) : false;
         }
       }, (0, _momentWithLocalesEs.default)(date).format('LLLL'), " ", _react.default.createElement("br", null), comment || label);
     }
