@@ -32,19 +32,9 @@
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
-      integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
-      crossorigin="anonymous"
-    />
       
     <meta name="google" content="notranslate">
     <meta property="og:url" content="https://swaponline.io" />
-    <!-- External packages -->
-    <script type="text/javascript" src="https://unpkg.com/react@16.10.2/umd/react.production.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/react-dom@16.10.2/umd/react-dom.production.min.js"></script>
-    <!-- / -->
     <!-- ERC20 Tokens hot plug for widget-build (Dont remove this) -->
     <script src="erc20tokens.js"></script>
     <!-- Google Analytics -->
@@ -224,12 +214,29 @@
         left: auto;
         margin-right: 15px;
       }
-      .swiper-button-prev > i {
-        margin-right: 10px;
-      }
-      .swiper-button-next > i {
-        margin-left: 10px;
-      }
+      .swiper-button-prev > i,
+	.swiper-button-next > i {
+		display: inline-block;
+		vertical-align: middle;
+		width: 10px;
+		height: 10px;
+		border: 2px solid #7371ff;
+		transform: rotate(45deg);
+	}
+	.swiper-button-prev > i {
+	  margin-right: 10px;
+		border-top: 0;
+		border-right: 0;
+	}
+	.swiper-button-next > i {
+	  margin-left: 10px;
+		border-left: 0;
+		border-bottom: 0;
+	}
+	.swiper-button-prev:hover > i,
+	.swiper-button-next:hover > i{
+		border-color: #e91db4;
+	}
       .swiper-button-next.swiper-button-disabled,
       .swiper-button-prev.swiper-button-disabled {
         opacity: 0.2;
@@ -347,7 +354,7 @@
       }
     </style>
     <!-- End Modal Style -->
-  <link rel="shortcut icon" href="https://swaponline.github.io/assets/favicon.ico"><link rel="icon" type="image/png" sizes="16x16" href="https://swaponline.github.io/assets/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="https://swaponline.github.io/assets/favicon-32x32.png"><link rel="manifest" href="https://swaponline.github.io/assets/manifest.json"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#fff"><meta name="application-name" content="Wallet"><link rel="apple-touch-icon" sizes="57x57" href="https://swaponline.github.io/assets/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="https://swaponline.github.io/assets/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="https://swaponline.github.io/assets/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="https://swaponline.github.io/assets/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="https://swaponline.github.io/assets/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="https://swaponline.github.io/assets/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="https://swaponline.github.io/assets/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="https://swaponline.github.io/assets/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="167x167" href="https://swaponline.github.io/assets/apple-touch-icon-167x167.png"><link rel="apple-touch-icon" sizes="180x180" href="https://swaponline.github.io/assets/apple-touch-icon-180x180.png"><link rel="apple-touch-icon" sizes="1024x1024" href="https://swaponline.github.io/assets/apple-touch-icon-1024x1024.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Wallet"><link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" href="https://swaponline.github.io/assets/apple-touch-startup-image-320x460.png"><link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" href="https://swaponline.github.io/assets/apple-touch-startup-image-640x920.png"><link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="https://swaponline.github.io/assets/apple-touch-startup-image-640x1096.png"><link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="https://swaponline.github.io/assets/apple-touch-startup-image-750x1294.png"><link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="https://swaponline.github.io/assets/apple-touch-startup-image-1182x2208.png"><link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="https://swaponline.github.io/assets/apple-touch-startup-image-1242x2148.png"><link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="https://swaponline.github.io/assets/apple-touch-startup-image-748x1024.png"><link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" href="https://swaponline.github.io/assets/apple-touch-startup-image-768x1004.png"><link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" href="https://swaponline.github.io/assets/apple-touch-startup-image-1496x2048.png"><link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="https://swaponline.github.io/assets/apple-touch-startup-image-1536x2008.png"><link rel="icon" type="image/png" sizes="228x228" href="https://swaponline.github.io/assets/coast-228x228.png"><meta name="msapplication-TileColor" content="#fff"><meta name="msapplication-TileImage" content="https://swaponline.github.io/assets/mstile-144x144.png"><meta name="msapplication-config" content="https://swaponline.github.io/assets/browserconfig.xml"><link rel="yandex-tableau-widget" href="https://swaponline.github.io/assets/yandex-browser-manifest.json"><link href="https://swaponline.github.io/app.b88727.css" rel="stylesheet"></head>
+  <link rel="shortcut icon" href="https://swaponline.github.io/assets/favicon.ico"><link rel="icon" type="image/png" sizes="16x16" href="https://swaponline.github.io/assets/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="https://swaponline.github.io/assets/favicon-32x32.png"><link rel="manifest" href="https://swaponline.github.io/assets/manifest.json"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#fff"><meta name="application-name" content="Wallet"><link rel="apple-touch-icon" sizes="57x57" href="https://swaponline.github.io/assets/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="https://swaponline.github.io/assets/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="https://swaponline.github.io/assets/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="https://swaponline.github.io/assets/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="https://swaponline.github.io/assets/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="https://swaponline.github.io/assets/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="https://swaponline.github.io/assets/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="https://swaponline.github.io/assets/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="167x167" href="https://swaponline.github.io/assets/apple-touch-icon-167x167.png"><link rel="apple-touch-icon" sizes="180x180" href="https://swaponline.github.io/assets/apple-touch-icon-180x180.png"><link rel="apple-touch-icon" sizes="1024x1024" href="https://swaponline.github.io/assets/apple-touch-icon-1024x1024.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Wallet"><link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" href="https://swaponline.github.io/assets/apple-touch-startup-image-320x460.png"><link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" href="https://swaponline.github.io/assets/apple-touch-startup-image-640x920.png"><link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="https://swaponline.github.io/assets/apple-touch-startup-image-640x1096.png"><link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="https://swaponline.github.io/assets/apple-touch-startup-image-750x1294.png"><link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="https://swaponline.github.io/assets/apple-touch-startup-image-1182x2208.png"><link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="https://swaponline.github.io/assets/apple-touch-startup-image-1242x2148.png"><link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="https://swaponline.github.io/assets/apple-touch-startup-image-748x1024.png"><link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" href="https://swaponline.github.io/assets/apple-touch-startup-image-768x1004.png"><link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" href="https://swaponline.github.io/assets/apple-touch-startup-image-1496x2048.png"><link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="https://swaponline.github.io/assets/apple-touch-startup-image-1536x2008.png"><link rel="icon" type="image/png" sizes="228x228" href="https://swaponline.github.io/assets/coast-228x228.png"><meta name="msapplication-TileColor" content="#fff"><meta name="msapplication-TileImage" content="https://swaponline.github.io/assets/mstile-144x144.png"><meta name="msapplication-config" content="https://swaponline.github.io/assets/browserconfig.xml"><link rel="yandex-tableau-widget" href="https://swaponline.github.io/assets/yandex-browser-manifest.json"><link href="https://swaponline.github.io/app.887b67.css" rel="stylesheet"></head>
 
   <body>
     <!-- Start Modal -->
@@ -445,12 +452,12 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAwUAAAMZCAMAAABmr2irAAAA3lBMV
 
           <div class="swiper-nav w-100">
             <div class="swiper-button-prev btn-prev">
-              <i class="fas fa-chevron-left"></i>
+              <i></i>
               <span></span>
             </div>
             <div class="swiper-button-next btn-next">
               <span></span>
-              <i class="fas fa-chevron-right"></i>
+              <i></i>
             </div>
           </div>
         </div>
@@ -749,6 +756,16 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAwUAAAMZCAMAAABmr2irAAAA3lBMV
       </script>
       <!-- End Modal Scripts -->
     </div>
+	<link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+      integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+      crossorigin="anonymous"
+    />
+   <!-- External packages -->
+    <script type="text/javascript" src="https://unpkg.com/react@16.10.2/umd/react.production.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/react-dom@16.10.2/umd/react-dom.production.min.js"></script>
+    <!-- / -->
     <div id="portal"></div>
-  <script type="text/javascript" src="https://swaponline.github.io/vendor.b88727.js"></script><script type="text/javascript" src="https://swaponline.github.io/app.b88727.js"></script></body>
+  <script type="text/javascript" src="https://swaponline.github.io/vendor.887b67.js"></script><script type="text/javascript" src="https://swaponline.github.io/app.887b67.js"></script></body>
 </html>
