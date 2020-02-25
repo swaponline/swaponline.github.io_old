@@ -11770,7 +11770,7 @@ exports.default = _default;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"dropDown":"_3TGsDmw0niNpF5eydAfwNK","active":"_241k3DGouXSC6HO-eflc9t","arrow":"_4VDBhEMoFl9-k9Qo0Gl3_","closeBtn":"_3UZ8pwHXQpFuPJJu0L5awi","searchInput":"_13nuul1tZMonPyVTP8POTk","selectedItem":"_30-6Ojh2YmsrpBV9ky3L1p","arrowDropDown":"_1Z80-ZTXUOGMU-ZCUwPHWJ","simpleDropdown":"oSX-YIrl6iX3L1FCn11DZ","fullTitle":"_2dO_XDsjd9Ur37Sl1vTb1y","smallTooltip":"_3ihp--jFWezsGMHfnzIX6P","dropDownLabel":"_27kyCU7xToyqJLUVhGfZsp","activeLabel":"OGTV5zg1p0wl7ueo2_DMe","listName":"MiVNStb15ldkTYDq1HbuP","range":"_1QL2eID8yjJp064dPvPOUs","rangeUp":"_1ty0y7hqlPVUlCpJoNqO5","rangeDown":"yHo5oJftoPo5fM98Qo9B_","currencyLogo":"_3XD9d-XDWvULQXac8_zCqa","shortTitle":"_3YbO9SKzjl3oBVhCCaLQaT","selectedItem_disableIteract":"_20uJO1b7zgBtR563MW9KXb","select":"_2ukQw74LE0L6b9gOQeFpOX","option":"_1fOZbQF2KgXFGrlyGHHyQa","invoiceCurrencySelect":"_13qX2WpLcv0YG-NPx23cIS"};
+module.exports = {"dropDown":"_3TGsDmw0niNpF5eydAfwNK","active":"_241k3DGouXSC6HO-eflc9t","arrow":"_4VDBhEMoFl9-k9Qo0Gl3_","closeBtn":"_3UZ8pwHXQpFuPJJu0L5awi","searchInput":"_13nuul1tZMonPyVTP8POTk","selectedItem":"_30-6Ojh2YmsrpBV9ky3L1p","arrowDropDown":"_1Z80-ZTXUOGMU-ZCUwPHWJ","simpleDropdown":"oSX-YIrl6iX3L1FCn11DZ","fullTitle":"_2dO_XDsjd9Ur37Sl1vTb1y","select":"_2ukQw74LE0L6b9gOQeFpOX","smallTooltip":"_3ihp--jFWezsGMHfnzIX6P","dropDownLabel":"_27kyCU7xToyqJLUVhGfZsp","activeLabel":"OGTV5zg1p0wl7ueo2_DMe","listName":"MiVNStb15ldkTYDq1HbuP","range":"_1QL2eID8yjJp064dPvPOUs","rangeUp":"_1ty0y7hqlPVUlCpJoNqO5","rangeDown":"yHo5oJftoPo5fM98Qo9B_","currencyLogo":"_3XD9d-XDWvULQXac8_zCqa","shortTitle":"_3YbO9SKzjl3oBVhCCaLQaT","selectedItem_disableIteract":"_20uJO1b7zgBtR563MW9KXb","option":"_1fOZbQF2KgXFGrlyGHHyQa","invoiceCurrencySelect":"_13qX2WpLcv0YG-NPx23cIS"};
 
 /***/ }),
 /* 953 */,
@@ -13277,7 +13277,7 @@ var _default = function _default(props) {
       isClosedNotifyBlockBanner = props.isClosedNotifyBlockBanner,
       handleNotifyBlockClose = props.handleNotifyBlockClose,
       host = props.host;
-  return isWidgetBuild ? null : _react.default.createElement(_react.Fragment, null, !isPrivateKeysSaved && (host === 'localhost' || host === 'swaponline.github.io') && _react.default.createElement(_NotifyBock.default, {
+  return isWidgetBuild ? null : _react.default.createElement(_react.Fragment, null, !isPrivateKeysSaved && _react.default.createElement(_NotifyBock.default, {
     className: "notifyBlockSaveKeys",
     descr: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "descr279",
@@ -79209,7 +79209,9 @@ function (_React$Component) {
       }, _react.default.createElement("span", null, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "invoiceModal_Amount",
         defaultMessage: "\u0421\u0443\u043C\u043C\u0430"
-      }))), this.state.selectedValue === 'BTC' ? _react.default.createElement(_Input.default, {
+      }))), _react.default.createElement("span", {
+        styleName: "amountTooltip"
+      }, amount > 0 ? "~ ".concat(amount, " BTC") : ''), this.state.selectedValue === 'BTC' ? _react.default.createElement(_Input.default, {
         withMargin: true,
         className: _InvoiceModal.default.input,
         valueLink: linked.amount.pipe(this.handleAmount),
@@ -79323,7 +79325,7 @@ exports.default = InvoiceModal;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"invoiceModalHolder":"_7UWUcgOLWvPZUxafPZB9y"};
+module.exports = {"invoiceModalHolder":"_7UWUcgOLWvPZUxafPZB9y","amountTooltip":"JYDzyq_rbHdm9ruofYuIa"};
 
 /***/ }),
 /* 3653 */
