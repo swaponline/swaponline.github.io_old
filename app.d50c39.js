@@ -13567,7 +13567,7 @@ var _default = function _default(props) {
       id: "descr284",
       defaultMessage: "I saved my keys"
     }),
-    secondFunc: handleSaveKeys
+    secondFunc: handleNotifyBlockClose
   }));
 };
 
@@ -24936,6 +24936,7 @@ var _default = {
   startSwap: 'startSwap',
   didProtectedBtcCreated: 'protectedBtcCreated',
   didProtectedBtcG2FACreated: 'protectedBtcG2FA',
+  isPrivateKeysSaved: 'isPrivateKeysSaved',
   isClosedNotifyBlockSignUp: 'isClosedNotifyBlockSignUp',
   isClosedNotifyBlockBanner: 'isClosedNotifyBlockBanner',
   walletTitle: 'walletTitle',
@@ -33689,31 +33690,6 @@ function (_Component) {
 
       return item.title;
     });
-    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "showPercentChange1H", function () {
-      var items = _this.props.items;
-      var infoAboutCurrency = [];
-      fetch('https://noxon.io/cursAll.php').then(function (res) {
-        return res.json();
-      }).then(function (result) {
-        var itemsName = items.map(function (el) {
-          return el.name;
-        });
-        result.map(function (res) {
-          if (itemsName.includes(res.symbol)) {
-            infoAboutCurrency.push({
-              name: res.symbol,
-              change: res.percent_change_1h
-            });
-          }
-        });
-
-        _this.setState({
-          infoAboutCurrency: infoAboutCurrency
-        });
-      }, function (error) {
-        console.log('error on fetch data from api');
-      });
-    });
     _this.state = {
       selectedValue: initialValue || _selectedValue || 0,
       inputValue: '',
@@ -33727,10 +33703,6 @@ function (_Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       var isToggleActive = this.props.isToggleActive;
-
-      if (prevProps.isToggleActive !== isToggleActive && isToggleActive) {
-        this.showPercentChange1H();
-      }
     }
   }, {
     key: "render",
@@ -40549,7 +40521,7 @@ function (_Component) {
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "setLocalStorageItems", function () {
       var isClosedNotifyBlockBanner = localStorage.getItem(_helpers.constants.localStorage.isClosedNotifyBlockBanner);
       var isClosedNotifyBlockSignUp = localStorage.getItem(_helpers.constants.localStorage.isClosedNotifyBlockSignUp);
-      var isPrivateKeysSaved = localStorage.getItem(_helpers.constants.localStorage.privateKeysSaved);
+      var isPrivateKeysSaved = localStorage.getItem(_helpers.constants.localStorage.isPrivateKeysSaved);
       var walletTitle = localStorage.getItem(_helpers.constants.localStorage.walletTitle);
 
       _this.setState({
@@ -40567,6 +40539,8 @@ function (_Component) {
       fn();
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleNotifyBlockClose", function (state) {
+      console.log('state', state);
+
       _this.setState((0, _defineProperty2.default)({}, state, true));
 
       localStorage.setItem(_helpers.constants.localStorage[state], 'true');
@@ -40790,7 +40764,9 @@ function (_Component) {
         settings: settings,
         isSigned: isSigned,
         host: window.location.hostname,
-        handleNotifyBlockClose: this.handleNotifyBlockClose
+        handleNotifyBlockClose: function handleNotifyBlockClose(state) {
+          return _this2.handleNotifyBlockClose('isPrivateKeysSaved');
+        }
       }, this.state)), _react.default.createElement("h3", {
         styleName: "walletHeading"
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
