@@ -45193,22 +45193,26 @@ var Btc = (_dec = (0, _redaction.connect)(function (_ref) {
                   txRaw: _context5.t4
                 };
 
-                _context5.t0.setState.call(_context5.t0, _context5.t5);
+                _context5.t6 = function () {
+                  setTimeout(function () {
+                    _actions.default.modals.open(_helpers.constants.modals.BtcMultisignConfirmTx, {
+                      txData: txRaw,
+                      showCloseButton: false,
+                      onClose: function onClose() {
+                        history.push((0, _locale.localisedUrl)(locale, _helpers.links.home));
+                      }
+                    });
+                  }, 100);
+                };
 
-                _actions.default.modals.open(_helpers.constants.modals.BtcMultisignConfirmTx, {
-                  txData: txRaw,
-                  showCloseButton: false,
-                  onClose: function onClose() {
-                    history.push((0, _locale.localisedUrl)(locale, _helpers.links.home));
-                  }
-                });
+                _context5.t0.setState.call(_context5.t0, _context5.t5, _context5.t6);
 
                 _context5.next = 39;
                 break;
 
               case 36:
                 _context5.prev = 36;
-                _context5.t6 = _context5["catch"](23);
+                _context5.t7 = _context5["catch"](23);
                 console.log('Bad tx raw data');
 
               case 39:
