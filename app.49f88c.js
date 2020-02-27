@@ -5859,6 +5859,14 @@ function (_PureComponent) {
           network = _this$props.network,
           address = _this$props.address,
           size = _this$props.size;
+
+      switch (network.toLowerCase()) {
+        case 'btc (multisig)':
+        case 'btc (sms-protected)':
+          network = 'btc';
+          break;
+      }
+
       var addressHasNetwork = /:/.test(address);
       var networkValue = addressHasNetwork ? '' : "".concat(network, ":");
       return _react.default.createElement("img", {
