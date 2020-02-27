@@ -44283,6 +44283,7 @@ var CurrencyWallet = (_dec = (0, _redaction.connect)(function (_ref) {
     var _props$match$params = props.match.params,
         fullName = _props$match$params.fullName,
         _address = _props$match$params.address;
+    console.log('In address', _address);
     _this.state = {
       currency: null,
       address: null,
@@ -44311,7 +44312,8 @@ var CurrencyWallet = (_dec = (0, _redaction.connect)(function (_ref) {
         _actions.default.token.getBalance(currency.toLowerCase());
       }
 
-      this.setLocalStorageItems(); // if address is null, take transactions from current user
+      this.setLocalStorageItems();
+      console.log('componentDidMount', address); // if address is null, take transactions from current user
 
       address ? _actions.default.history.setTransactions(address) : _actions.default.user.setTransactions();
       if (!address) _actions.default.core.getSwapHistory();
@@ -44466,7 +44468,7 @@ var CurrencyWallet = (_dec = (0, _redaction.connect)(function (_ref) {
         leftSideContent: true
       })), _react.default.createElement("div", {
         styleName: "currencyWalletActivityWrapper"
-      }, swapHistory.filter(function (item) {
+      }, !_actions.default.btcmultisig.isBTCSMSAddress("".concat(address)) && !_actions.default.btcmultisig.isBTCMSUserAddress("".concat(address)) && (swapHistory.filter(function (item) {
         return item.step >= 4;
       }).length > 0 ? _react.default.createElement("div", {
         styleName: "currencyWalletSwapHistory"
@@ -44474,7 +44476,7 @@ var CurrencyWallet = (_dec = (0, _redaction.connect)(function (_ref) {
         orders: swapHistory.filter(function (item) {
           return item.step >= 4;
         })
-      })) : '', txHistory ? _react.default.createElement("div", {
+      })) : ''), txHistory ? _react.default.createElement("div", {
         styleName: "currencyWalletActivity"
       }, _react.default.createElement("h3", null, address ? "Address: ".concat(address) : _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "historyActivity",
@@ -44501,7 +44503,13 @@ var CurrencyWallet = (_dec = (0, _redaction.connect)(function (_ref) {
           items = _ref3.items,
           history = _ref3.history,
           tokens = _ref3.tokens;
+
       // looking for an alias
+      if (!address) {
+        console.log('no address - return');
+        return;
+      }
+
       fullName = _links.aliases[fullName.toLowerCase()] ? _links.aliases[fullName.toLowerCase()] : fullName.toLowerCase();
       var item = items.map(function (item) {
         return item.fullName.toLowerCase();
@@ -44514,15 +44522,40 @@ var CurrencyWallet = (_dec = (0, _redaction.connect)(function (_ref) {
         var itemCurrency = items.filter(function (item) {
           return item.fullName.toLowerCase() === fullName.toLowerCase();
         })[0];
-        var currency = itemCurrency.currency,
-            contractAddress = itemCurrency.contractAddress,
-            decimals = itemCurrency.decimals,
-            balance = itemCurrency.balance,
-            infoAboutCurrency = itemCurrency.infoAboutCurrency;
+
+        if (_actions.default.btcmultisig.isBTCSMSAddress("".concat(_address2))) {
+          console.log('Is sms');
+          itemCurrency = items.filter(function (item) {
+            return item.fullName.toLowerCase() === 'btc (sms-protected)';
+          })[0];
+
+          if (!itemCurrency.length) {
+            history.push((0, _locale.localisedUrl)(locale, "".concat(_helpers.links.notFound)));
+          } else itemCurrency = itemCurrency[0];
+        }
+
+        if (_actions.default.btcmultisig.isBTCMSUserAddress("".concat(_address2))) {
+          console.log('Is ms');
+          itemCurrency = items.filter(function (item) {
+            return item.fullName.toLowerCase() === 'btc (multisig)';
+          })[0];
+
+          if (!itemCurrency.length) {
+            history.push((0, _locale.localisedUrl)(locale, "".concat(_helpers.links.notFound)));
+          } else itemCurrency = itemCurrency[0];
+        }
+
+        var _itemCurrency = itemCurrency,
+            currency = _itemCurrency.currency,
+            _address2 = _itemCurrency.address,
+            contractAddress = _itemCurrency.contractAddress,
+            decimals = _itemCurrency.decimals,
+            balance = _itemCurrency.balance,
+            infoAboutCurrency = _itemCurrency.infoAboutCurrency;
         return {
           token: token,
           currency: currency,
-          address: address,
+          address: _address2,
           fullName: fullName,
           contractAddress: contractAddress,
           decimals: decimals,
@@ -44531,7 +44564,7 @@ var CurrencyWallet = (_dec = (0, _redaction.connect)(function (_ref) {
           isBalanceEmpty: balance === 0
         };
         this.setState({
-          address: address
+          address: _address2
         });
       }
 
