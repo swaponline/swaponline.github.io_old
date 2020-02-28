@@ -12664,10 +12664,6 @@ var _Comment = _interopRequireDefault(__webpack_require__(2288));
 
 var _Tooltip = _interopRequireDefault(__webpack_require__(81));
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 var Row = /*#__PURE__*/function (_React$PureComponent) {
   (0, _inherits2.default)(Row, _React$PureComponent);
 
@@ -12813,19 +12809,6 @@ var Row = /*#__PURE__*/function (_React$PureComponent) {
       });
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "commentCancel", function () {
-      var _this$props = _this.props,
-          date = _this$props.date,
-          hiddenList = _this$props.hiddenList,
-          onSubmit = _this$props.onSubmit,
-          invoiceData = _this$props.invoiceData;
-      var ind = _this.state.ind;
-      var commentDate = (0, _momentWithLocalesEs.default)(date).format('LLLL');
-      var commentLabel = invoiceData && invoiceData.label;
-      var fullComment = "".concat(commentDate, "  ").concat(commentLabel);
-      onSubmit(_objectSpread({}, hiddenList, (0, _defineProperty2.default)({}, ind, fullComment)));
-
-      _this.changeComment(fullComment);
-
       _this.toggleComment(false);
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "parseFloat", function (direction, value, directionType, type) {
@@ -12851,16 +12834,14 @@ var Row = /*#__PURE__*/function (_React$PureComponent) {
     });
     var hash = props.hash,
         _type = props.type,
-        _hiddenList = props.hiddenList,
+        hiddenList = props.hiddenList,
         _invoiceData = props.invoiceData;
     var dataInd = _invoiceData && _invoiceData.id;
-
-    var _ind = "".concat(dataInd || hash, "-").concat(_type);
-
+    var ind = "".concat(dataInd || hash, "-").concat(_type);
     _this.state = {
-      ind: _ind,
+      ind: ind,
       exCurrencyRate: 0,
-      comment: _actions.default.comments.returnDefaultComment(_hiddenList, _ind),
+      comment: _actions.default.comments.returnDefaultComment(hiddenList, ind),
       cancelled: false,
       payed: false
     };
@@ -12875,14 +12856,14 @@ var Row = /*#__PURE__*/function (_React$PureComponent) {
     value: function render() {
       var _this2 = this;
 
-      var _this$props2 = this.props,
-          type = _this$props2.type,
-          direction = _this$props2.direction,
-          value = _this$props2.value,
-          confirmations = _this$props2.confirmations,
-          txType = _this$props2.txType,
-          invoiceData = _this$props2.invoiceData,
-          onSubmit = _this$props2.onSubmit;
+      var _this$props = this.props,
+          type = _this$props.type,
+          direction = _this$props.direction,
+          value = _this$props.value,
+          confirmations = _this$props.confirmations,
+          txType = _this$props.txType,
+          invoiceData = _this$props.invoiceData,
+          onSubmit = _this$props.onSubmit;
       var ind = this.state.ind;
       var _this$state = this.state,
           exCurrencyRate = _this$state.exCurrencyRate,
@@ -15177,7 +15158,7 @@ var routes = _react.default.createElement(_ScrollToTop.default, null, _react.def
   path: "".concat(_locale.localisePrefix).concat(_helpers.links.swap, "/:buy-:sell/:orderId"),
   component: _Swap.default
 }), _react.default.createElement(_reactRouter.Route, {
-  path: "".concat(_locale.localisePrefix, "/:fullName(btc|eth)/:address"),
+  path: "".concat(_locale.localisePrefix, "/:fullName(btc|eth|swap)/:address"),
   component: _CurrencyWallet.default
 }), _react.default.createElement(_reactRouter.Route, {
   path: "".concat(_locale.localisePrefix, "/:fullName-wallet/:address?"),
@@ -17315,9 +17296,17 @@ var getText = function getText() {
   return text;
 };
 
-var isOwner = function isOwner(addr) {
+var isOwner = function isOwner(addr, currency) {
+  var name = "".concat(currency.toLowerCase(), "Data");
+
   var _getState3 = (0, _core.getState)(),
-      address = _getState3.user.btcData.address;
+      user = _getState3.user;
+
+  if (!user[name]) {
+    return false;
+  }
+
+  var address = user[name].address;
 
   if (!address) {
     return false;
@@ -17431,7 +17420,7 @@ var setTransactions = /*#__PURE__*/function () {
             return _context.abrupt("break", 8);
 
           case 6:
-            reducer = 'etc';
+            reducer = 'eth';
             return _context.abrupt("break", 8);
 
           case 8:
@@ -44245,13 +44234,16 @@ var CurrencyWallet = (_dec = (0, _redaction.connect)(function (_ref) {
         key: rowIndex
       }, row));
     });
+
     var _props$match$params = props.match.params,
         fullName = _props$match$params.fullName,
-        _address = _props$match$params.address,
+        _props$match$params$a = _props$match$params.address,
+        _address = _props$match$params$a === void 0 ? null : _props$match$params$a,
         _locale = props.intl.locale,
         items = props.items,
         _history = props.history,
         tokens = props.tokens;
+
     var walletAddress = _address;
     var fullNameCheck = _links.aliases[fullName.toLowerCase()] ? _links.aliases[fullName.toLowerCase()] : fullName.toLowerCase();
     var item = items.map(function (item) {
@@ -44414,15 +44406,7 @@ var CurrencyWallet = (_dec = (0, _redaction.connect)(function (_ref) {
         fade: true,
         slidesToShow: 1,
         slidesToScroll: 1
-      }; // set all show by default
-
-      var showButtons = true; // is address is exits check access to button
-
-      if (address) {
-        // check if current user is owner the address
-        showButtons = _actions.default.user.isOwner(address);
-      }
-
+      };
       return _react.default.createElement("div", {
         styleName: "root"
       }, _react.default.createElement(_PageSeo.default, {
@@ -44474,7 +44458,7 @@ var CurrencyWallet = (_dec = (0, _redaction.connect)(function (_ref) {
         handleReceive: this.handleReceive,
         handleWithdraw: this.handleWithdraw,
         handleExchange: this.handleGoTrade,
-        showButtons: showButtons,
+        showButtons: _actions.default.user.isOwner(address, currency),
         currency: currency.toLowerCase()
       }) : _react.default.createElement(_ContentLoader.default, {
         leftSideContent: true
@@ -67969,7 +67953,7 @@ var Footer = function Footer(props) {
     styleName: "footer"
   }, _react.default.createElement(_WidthContainer.default, {
     styleName: "container"
-  }, _react.default.createElement(_SwitchLang.default, props), !_appConfig.default.isWidget && _react.default.createElement(_SocialMenu.default, null), !_reactDeviceDetect.isMobile && _react.default.createElement(_Info.default, props), _react.default.createElement("span", {
+  }, _react.default.createElement(_SwitchLang.default, props), !_appConfig.default.isWidget && _react.default.createElement(_SocialMenu.default, null), !_reactDeviceDetect.isMobile && 0 && _react.default.createElement(_Info.default, props), _react.default.createElement("span", {
     styleName: "date"
   }, _appConfig.default.time))));
 };
