@@ -39697,7 +39697,7 @@ var CreateWallet = function CreateWallet(props) {
   }))), _react.default.createElement("button", {
     styleName: "continue",
     onClick: onClick,
-    disabled: error
+    disabled: error || border.selected === ''
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "createWalletButton3",
     defaultMessage: "Create Wallet"
