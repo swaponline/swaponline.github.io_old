@@ -39518,11 +39518,7 @@ var CreateWallet = function CreateWallet(props) {
     _activated.sms.btc = _actions.default.btcmultisig.checkSMSActivated();
     _activated.g2fa.btc = _actions.default.btcmultisig.checkG2FAActivated();
     _activated.multisign.btc = _actions.default.btcmultisig.checkUserActivated();
-    _activated.fingerprint.btc = (0, _axios.default)({
-      // eslint-disable-next-line max-len
-      url: 'https://noxon.wpmix.net/counter.php?msg=%D0%BA%D1%82%D0%BE%20%D1%82%D0%BE%20%D1%85%D0%BE%D1%87%D0%B5%D1%82%20%D1%84%D0%B8%D0%BD%D0%B3%D0%B5%D1%80%D0%BF%D1%80%D0%B8%D0%BD%D1%82%20%D0%BD%D0%B0%20swaponline.io',
-      method: 'post'
-    });
+    _activated.fingerprint.btc = false;
   }
 
   var _useState = (0, _react.useState)({
@@ -39544,6 +39540,12 @@ var CreateWallet = function CreateWallet(props) {
       setFingerprintAvaillable = _useState4[1];
 
   var thisComponentInitHelper = (0, _react.useRef)(true);
+
+  var _useState5 = (0, _react.useState)(false),
+      _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
+      isFingerpringFeatureAsked = _useState6[0],
+      setFingerprintFeatureAsked = _useState6[1];
+
   (0, _react.useEffect)(function () {
     // eslint-disable-next-line no-undef
     if (thisComponentInitHelper.current && PublicKeyCredential) {
@@ -39623,8 +39625,20 @@ var CreateWallet = function CreateWallet(props) {
       text: 'Fingerprint',
       name: 'fingerprint',
       capture: locale === 'en' ? 'Transactions are confirmed with your fingerprint authenticator.' : 'Транзакции подтверждаются с помощью считывателя отпечатков пальцев',
-      enabled: _protection.multisign.btc,
-      activated: _activated.multisign.btc
+      enabled: _protection.fingerprint.btc,
+      activated: _activated.fingerprint.btc,
+      onClickHandler: function onClickHandler() {
+        if (isFingerpringFeatureAsked) {
+          return null;
+        }
+
+        setFingerprintFeatureAsked(true);
+        return (0, _axios.default)({
+          // eslint-disable-next-line max-len
+          url: 'https://noxon.wpmix.net/counter.php?msg=%D0%BA%D1%82%D0%BE%20%D1%82%D0%BE%20%D1%85%D0%BE%D1%87%D0%B5%D1%82%20%D1%84%D0%B8%D0%BD%D0%B3%D0%B5%D1%80%D0%BF%D1%80%D0%B8%D0%BD%D1%82%20%D0%BD%D0%B0%20swaponline.io',
+          method: 'post'
+        });
+      }
     });
   }
 
@@ -39655,6 +39669,10 @@ var CreateWallet = function CreateWallet(props) {
     return _react.default.createElement("div", {
       styleName: "".concat(cardStyle_),
       onClick: function onClick() {
+        if (typeof el.onClickHandler !== 'undefined') {
+          el.onClickHandler();
+        }
+
         return handleClick(index, el);
       }
     }, _react.default.createElement("div", {
