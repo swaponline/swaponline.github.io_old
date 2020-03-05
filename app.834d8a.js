@@ -6720,7 +6720,7 @@ var _default = function _default(currency) {
 
   if (_ethToken.default.isEthToken({
     name: key
-  })) key = 'eth';
+  })) return key;
   return key;
 };
 
@@ -17549,10 +17549,20 @@ var getText = function getText() {
 };
 
 var isOwner = function isOwner(addr, currency) {
+  if (_helpers.ethToken.isEthToken({
+    name: currency
+  })) {
+    var _getState3 = (0, _core.getState)(),
+        _address = _getState3.user.ethData.address;
+
+    return addr === _address;
+  }
+
+  if (_actions.default.btcmultisig.isBTCAddress(addr)) return true;
   var name = "".concat(currency.toLowerCase(), "Data");
 
-  var _getState3 = (0, _core.getState)(),
-      user = _getState3.user;
+  var _getState4 = (0, _core.getState)(),
+      user = _getState4.user;
 
   if (!user[name]) {
     return false;
@@ -17562,13 +17572,8 @@ var isOwner = function isOwner(addr, currency) {
 
   if (!address) {
     return false;
-  } // Where ETH !!!
-  // Where Tokens !!!
-  // Where Ltc !!
-  // Where Bch !!??
+  }
 
-
-  if (_actions.default.btcmultisig.isBTCAddress(addr)) return true;
   return addr === address;
 };
 
@@ -17595,8 +17600,8 @@ var downloadPrivateKeys = function downloadPrivateKeys() {
 window.downloadPrivateKeys = downloadPrivateKeys;
 
 var getAuthData = function getAuthData(name) {
-  var _getState4 = (0, _core.getState)(),
-      user = _getState4.user;
+  var _getState5 = (0, _core.getState)(),
+      user = _getState5.user;
 
   return user["".concat(name, "Data")];
 };
@@ -23758,7 +23763,7 @@ var fetchBalance = /*#__PURE__*/function () {
   };
 }();
 
-var getTransaction = function getTransaction(address, ownType) {
+var getTransaction = function getTransaction(ownAddress, ownType) {
   return new Promise(function (resolve) {
     var _getState2 = (0, _core.getState)(),
         tokensData = _getState2.user.tokensData;
@@ -23771,7 +23776,7 @@ var getTransaction = function getTransaction(address, ownType) {
         address = _tokensData$ownType$t.address,
         contractAddress = _tokensData$ownType$t.contractAddress;
     console.log('currency', address, contractAddress);
-    var url = ["?module=account&action=tokentx", "&contractaddress=".concat(contractAddress), "&address=".concat(address), "&startblock=0&endblock=99999999", "&sort=asc&apikey=RHHFPNMAZMD6I4ZWBZBF6FA11CMW9AXZNM"].join('');
+    var url = ["?module=account&action=tokentx", "&contractaddress=".concat(contractAddress), "&address=".concat(ownAddress ? ownAddress : address), "&startblock=0&endblock=99999999", "&sort=asc&apikey=RHHFPNMAZMD6I4ZWBZBF6FA11CMW9AXZNM"].join('');
     return _helpers.apiLooper.get('etherscan', url).then(function (res) {
       var transactions = res.result.filter(function (item) {
         return item.value > 0;
