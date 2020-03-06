@@ -46025,15 +46025,13 @@ var CreateInvoice = (_dec = (0, _redaction.connect)(function (_ref) {
                 _this$props = this.props, _this$props$match$par = _this$props.match.params, type = _this$props$match$par.type, wallet = _this$props$match$par.wallet, history = _this$props.history, pathname = _this$props.location.pathname, data = _this$props.data;
 
                 if (!(type && wallet && ['btc', 'eth'].includes(type) && data[type])) {
-                  _context.next = 8;
+                  _context.next = 10;
                   break;
                 }
 
                 address = data[type].address;
-                _context.next = 5;
-                return _actions.default.user.getInfoAboutCurrency([type.toUpperCase()]);
+                console.log(1);
 
-              case 5:
                 _actions.default.modals.open(_helpers.constants.modals.InvoiceModal, {
                   currency: type.toUpperCase(),
                   toAddress: wallet,
@@ -46041,13 +46039,18 @@ var CreateInvoice = (_dec = (0, _redaction.connect)(function (_ref) {
                   disableClose: true
                 });
 
-                _context.next = 9;
-                break;
+                console.log(type);
+                _context.next = 8;
+                return _actions.default.user.getInfoAboutCurrency([type.toUpperCase()]);
 
               case 8:
+                _context.next = 11;
+                break;
+
+              case 10:
                 this.props.history.push((0, _locale.localisedUrl)(_helpers.links.notFound));
 
-              case 9:
+              case 11:
               case "end":
                 return _context.stop();
             }
