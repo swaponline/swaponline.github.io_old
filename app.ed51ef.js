@@ -4657,7 +4657,7 @@ var _default = function _default(currency) {
 
   if (_ethToken.default.isEthToken({
     name: key
-  })) return key;
+  })) key = 'token';
   return key;
 };
 
@@ -10062,18 +10062,6 @@ var estimateFeeValue = /*#__PURE__*/function () {
   };
 }();
 
-var getTx = function getTx(txRaw) {
-  return txRaw.getId();
-};
-
-var getLinkToInfo = function getLinkToInfo(tx) {
-  if (!tx) {
-    return;
-  }
-
-  return "".concat(_appConfig.default.link.bitpay, "/tx/").concat(tx);
-};
-
 var estimateFeeRate = /*#__PURE__*/function () {
   var _ref5 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3() {
     var _ref6,
@@ -10147,9 +10135,7 @@ var _default = {
   calculateTxSize,
   estimateFeeValue,
   estimateFeeRate,
-  network,
-  getTx,
-  getLinkToInfo
+  network
 };
 exports.default = _default;
 
@@ -10333,18 +10319,6 @@ var estimateFeeValue = /*#__PURE__*/function () {
   };
 }();
 
-var getTx = function getTx(txRaw) {
-  return txRaw.transactionHash;
-};
-
-var getLinkToInfo = function getLinkToInfo(tx) {
-  if (!tx) {
-    return;
-  }
-
-  return "https://etherscan.io/tx/".concat(tx);
-};
-
 var estimateGasPrice = function estimateGasPrice() {
   var _ref5 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
       speed = _ref5.speed;
@@ -10358,9 +10332,7 @@ var _default = {
   estimateFeeValue,
   estimateGasPrice,
   isEthToken,
-  isEthOrEthToken,
-  getTx,
-  getLinkToInfo
+  isEthOrEthToken
 };
 exports.default = _default;
 
@@ -10427,18 +10399,6 @@ var estimateFeeValue = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
-
-var getTx = function getTx(txRaw) {
-  return txRaw.transactionHash;
-};
-
-var getLinkToInfo = function getLinkToInfo(tx) {
-  if (!tx) {
-    return;
-  }
-
-  return "https://etherscan.io/tx/".concat(tx);
-};
 
 var estimateGasPrice = /*#__PURE__*/function () {
   var _ref3 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
@@ -10511,9 +10471,7 @@ var estimateGasPrice = /*#__PURE__*/function () {
 
 var _default = {
   estimateFeeValue,
-  estimateGasPrice,
-  getTx,
-  getLinkToInfo
+  estimateGasPrice
 };
 exports.default = _default;
 
@@ -20170,6 +20128,18 @@ var loginWithKeychain = /*#__PURE__*/function () {
   };
 }();
 
+var getTx = function getTx(txRaw) {
+  return txRaw.getId();
+};
+
+var getLinkToInfo = function getLinkToInfo(tx) {
+  if (!tx) {
+    return;
+  }
+
+  return "".concat(config.link.bitpay, "/tx/").concat(tx);
+};
+
 var getBalance = function getBalance() {
   var _getState = (0, _core.getState)(),
       address = _getState.user.btcData.address;
@@ -20508,6 +20478,8 @@ var _default = {
   fetchBalance,
   signMessage,
   getReputation,
+  getTx,
+  getLinkToInfo,
   getInvoices,
   getWalletByWords,
   getRandomMnemonicWords,
@@ -22460,6 +22432,18 @@ var getBalance = function getBalance() {
   });
 };
 
+var getTx = function getTx(txRaw) {
+  return false;
+};
+
+var getLinkToInfo = function getLinkToInfo(tx) {
+  if (!tx) {
+    return;
+  }
+
+  return "https://www.blockchain.com/ru/btc/tx/".concat(tx);
+};
+
 var fetchBalance = function fetchBalance(address) {
   return _helpers.apiLooper.get('bch', "/address/details/".concat(address)).then(function (_ref2) {
     var balance = _ref2.balance;
@@ -22665,6 +22649,8 @@ var _default = {
   fetchTxInfo,
   fetchBalance,
   signMessage,
+  getTx,
+  getLinkToInfo,
   getReputation
 };
 exports.default = _default;
@@ -22889,6 +22875,18 @@ var getTransaction = function getTransaction(address) {
   });
 };
 
+var getTx = function getTx(txRaw) {
+  return txRaw.transactionHash;
+};
+
+var getLinkToInfo = function getLinkToInfo(tx) {
+  if (!tx) {
+    return;
+  }
+
+  return "https://etherscan.io/tx/".concat(tx);
+};
+
 var send = /*#__PURE__*/function () {
   var _ref5 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
     var _ref6,
@@ -23012,6 +23010,8 @@ var _default = {
   fetchUnspents,
   broadcastTx,
   fetchTx,
+  getTx,
+  getLinkToInfo,
   fetchTxInfo,
   fetchBalance,
   signMessage,
@@ -23237,6 +23237,18 @@ var getInvoices = function getInvoices() {
   });
 };
 
+var getTx = function getTx(txRaw) {
+  return txRaw.transactionHash;
+};
+
+var getLinkToInfo = function getLinkToInfo(tx) {
+  if (!tx) {
+    return;
+  }
+
+  return "https://etherscan.io/tx/".concat(tx);
+};
+
 var getTransaction = function getTransaction(address) {
   return new Promise(function (resolve) {
     var _getState4 = (0, _core.getState)(),
@@ -23353,6 +23365,8 @@ var _default = {
   getTransaction,
   getReputation,
   getInvoices,
+  getTx,
+  getLinkToInfo,
   isETHAddress,
   getWalletByWords,
   getRandomMnemonicWords,
@@ -23956,6 +23970,18 @@ var fetchFees = /*#__PURE__*/function () {
   };
 }();
 
+var getTx = function getTx(txRaw) {
+  return txRaw.transactionHash;
+};
+
+var getLinkToInfo = function getLinkToInfo(tx) {
+  if (!tx) {
+    return;
+  }
+
+  return "https://etherscan.io/tx/".concat(tx);
+};
+
 var sendTransaction = function sendTransaction(_ref5) {
   var contract = _ref5.contract,
       method = _ref5.method;
@@ -24188,6 +24214,8 @@ var _default = {
   getBalance,
   getTransaction,
   send,
+  getTx,
+  getLinkToInfo,
   approve,
   setAllowanceForToken,
   fetchBalance,
@@ -25266,18 +25294,6 @@ var estimateFeeValue = /*#__PURE__*/function () {
   };
 }();
 
-var getTx = function getTx(txRaw) {
-  return false;
-};
-
-var getLinkToInfo = function getLinkToInfo(tx) {
-  if (!tx) {
-    return;
-  }
-
-  return "https://www.blockchain.com/ru/btc/tx/".concat(tx);
-};
-
 var estimateFeeRate = /*#__PURE__*/function () {
   var _ref5 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3() {
     var _ref6,
@@ -25351,9 +25367,7 @@ var _default = {
   calculateTxSize,
   estimateFeeValue,
   estimateFeeRate,
-  network,
-  getTx,
-  getLinkToInfo
+  network
 };
 exports.default = _default;
 
@@ -25473,18 +25487,6 @@ var calculateTxSize = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
-
-var getTx = function getTx(txRaw) {
-  return txRaw.transactionHash;
-};
-
-var getLinkToInfo = function getLinkToInfo(tx) {
-  if (!tx) {
-    return;
-  }
-
-  return "https://etherscan.io/tx/".concat(tx);
-};
 
 var estimateFeeValue = /*#__PURE__*/function () {
   var _ref3 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
@@ -25638,9 +25640,7 @@ var _default = {
   calculateTxSize,
   estimateFeeValue,
   estimateFeeRate,
-  network,
-  getTx,
-  getLinkToInfo
+  network
 };
 exports.default = _default;
 
@@ -26253,11 +26253,13 @@ exports.default = void 0;
 
 var _helpers = _interopRequireDefault(__webpack_require__(17));
 
+var _actions = _interopRequireDefault(__webpack_require__(16));
+
 var getLink = function getLink(currency, txId) {
   var prefix = _helpers.default.getCurrencyKey(currency);
 
-  if (_helpers.default[prefix] && typeof _helpers.default[prefix].getLinkToInfo === 'function') {
-    return _helpers.default[prefix].getLinkToInfo(txId);
+  if (_actions.default[prefix] && typeof _actions.default[prefix].getLinkToInfo === 'function') {
+    return _actions.default[prefix].getLinkToInfo(txId);
   } else {
     console.warn("Function getLinkToInfo for ".concat(prefix, " not defined"));
   }
@@ -26266,8 +26268,8 @@ var getLink = function getLink(currency, txId) {
 var getInfo = function getInfo(currency, txRaw) {
   var prefix = _helpers.default.getCurrencyKey(currency);
 
-  if (_helpers.default[prefix] && typeof _helpers.default[prefix].getTx === 'function') {
-    var tx = _helpers.default[prefix].getTx(txRaw);
+  if (_actions.default[prefix] && typeof _actions.default[prefix].getTx === 'function') {
+    var tx = _actions.default[prefix].getTx(txRaw);
 
     var link = getLink(prefix, tx);
     return {
