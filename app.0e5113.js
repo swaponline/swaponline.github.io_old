@@ -13769,7 +13769,7 @@ function BalanceForm(_ref) {
     }
   }, currency))), _react.default.createElement("div", {
     styleName: "yourBalanceBottom"
-  }, showButtons ? _react.default.createElement("div", null, _react.default.createElement(_react.Fragment, null, _react.default.createElement(_Button.default, {
+  }, showButtons ? _react.default.createElement(_react.Fragment, null, _react.default.createElement(_Button.default, {
     blue: true,
     id: "depositBtn",
     onClick: function onClick() {
@@ -13778,7 +13778,7 @@ function BalanceForm(_ref) {
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "YourtotalbalanceDeposit",
     defaultMessage: "\u041F\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u044C"
-  }))), _react.default.createElement(_react.Fragment, null, _react.default.createElement(_Button.default, {
+  })), _react.default.createElement(_Button.default, {
     blue: true,
     disabled: !currencyBalance,
     id: "sendBtn",
@@ -13788,7 +13788,7 @@ function BalanceForm(_ref) {
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "YourtotalbalanceSend",
     defaultMessage: "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C"
-  }))), isWidgetBuild && !_appConfig.default.isFullBuild && _react.default.createElement(_Button.default, {
+  })), isWidgetBuild && !_appConfig.default.isFullBuild && _react.default.createElement(_Button.default, {
     brand: true,
     id: "exchangeBtn",
     onClick: function onClick() {
@@ -78587,7 +78587,7 @@ var InvoiceModal = (_dec = (0, _redaction.connect)(function (_ref) {
 
               currency = data.currency.toUpperCase();
               _context.t0 = data.currency;
-              _context.next = _context.t0 === 'BTC (SMS-Protected)' ? 9 : _context.t0 === 'BTC (Multisig)' ? 9 : 11;
+              _context.next = _context.t0 === 'BTC (SMS-PROTECTED)' ? 9 : _context.t0 === 'BTC (MULTISIG)' ? 9 : 11;
               break;
 
             case 9:
@@ -78772,8 +78772,8 @@ var InvoiceModal = (_dec = (0, _redaction.connect)(function (_ref) {
       var checkCurrency = currency.toUpperCase();
 
       switch (currency) {
-        case 'BTC (SMS-Protected)':
-        case 'BTC (Multisig)':
+        case 'BTC (SMS-PROTECTED)':
+        case 'BTC (MULTISIG)':
           checkCurrency = 'BTC';
           break;
       }
