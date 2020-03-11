@@ -39806,8 +39806,28 @@ var CreateWallet = function CreateWallet(props) {
 
   var _useState5 = (0, _react.useState)(false),
       _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
-      isFingerpringFeatureAsked = _useState6[0],
+      isFingerprintFeatureAsked = _useState6[0],
       setFingerprintFeatureAsked = _useState6[1];
+
+  var _useState7 = (0, _react.useState)(false),
+      _useState8 = (0, _slicedToArray2.default)(_useState7, 2),
+      isTrivialFeatureAsked = _useState8[0],
+      setTrivialFeatureAsked = _useState8[1];
+
+  var _useState9 = (0, _react.useState)(false),
+      _useState10 = (0, _slicedToArray2.default)(_useState9, 2),
+      isSmsFeatureAsked = _useState10[0],
+      setSmsFeatureAsked = _useState10[1];
+
+  var _useState11 = (0, _react.useState)(false),
+      _useState12 = (0, _slicedToArray2.default)(_useState11, 2),
+      is2FAFeatureAsked = _useState12[0],
+      set2FAFeatureAsked = _useState12[1];
+
+  var _useState13 = (0, _react.useState)(false),
+      _useState14 = (0, _slicedToArray2.default)(_useState13, 2),
+      isMultisigFeatureAsked = _useState14[0],
+      setMultisigFeatureAsked = _useState14[1];
 
   (0, _react.useEffect)(function () {
     // eslint-disable-next-line no-undef
@@ -39822,6 +39842,20 @@ var CreateWallet = function CreateWallet(props) {
       });
     }
   });
+
+  var handleFinish = function handleFinish() {
+    if (currencies.BTC) {
+      (0, _axios.default)({
+        // eslint-disable-next-line max-len
+        url: 'https://noxon.wpmix.net/counter.php?msg=%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B8%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%D0%BA%D0%B0%20BTC%20swaponline.io',
+        method: 'post'
+      }).catch(function (e) {
+        return console.error(e);
+      });
+    }
+
+    onClick();
+  };
 
   var handleClick = function handleClick(index, el) {
     var name = el.name,
@@ -39850,13 +39884,28 @@ var CreateWallet = function CreateWallet(props) {
     setError(null);
   };
 
+  var currencyName = Object.keys(currencies)[0] || 'Cant define currency';
   console.log('locale', locale);
   var coins = [{
     text: locale === 'en' ? 'No security' : 'Без защиты',
     name: 'withoutSecure',
     capture: locale === 'en' ? 'suitable for small amounts' : 'Подходит для небольших сумм',
     enabled: true,
-    activated: false
+    activated: false,
+    onClickHandler: function onClickHandler() {
+      if (isTrivialFeatureAsked) {
+        return null;
+      }
+
+      setTrivialFeatureAsked(true);
+      return (0, _axios.default)({
+        // eslint-disable-next-line max-len
+        url: "https://noxon.wpmix.net/counter.php?msg=%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20".concat(currencyName, "-normal%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%20swaponline.io"),
+        method: 'post'
+      }).catch(function (e) {
+        return console.error(e);
+      });
+    }
   }, {
     text: 'SMS',
     name: 'sms',
@@ -39866,7 +39915,21 @@ var CreateWallet = function CreateWallet(props) {
     ,
     activated: _activated.sms.btc
     /* || _activated.sms.eth || _activated.sms.erc */
+    ,
+    onClickHandler: function onClickHandler() {
+      if (isSmsFeatureAsked) {
+        return null;
+      }
 
+      setSmsFeatureAsked(true);
+      return (0, _axios.default)({
+        // eslint-disable-next-line max-len
+        url: "https://noxon.wpmix.net/counter.php?msg=%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20".concat(currencyName, "-sms%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%20swaponline.io"),
+        method: 'post'
+      }).catch(function (e) {
+        return console.error(e);
+      });
+    }
   }, {
     text: 'Google 2FA',
     name: 'google2FA',
@@ -39874,13 +39937,41 @@ var CreateWallet = function CreateWallet(props) {
     enabled: _protection.g2fa.btc
     /* || _protection.g2fa.eth || _protection.g2fa.erc */
     ,
-    activated: _activated.g2fa.btc
+    activated: _activated.g2fa.btc,
+    onClickHandler: function onClickHandler() {
+      if (is2FAFeatureAsked) {
+        return null;
+      }
+
+      set2FAFeatureAsked(true);
+      return (0, _axios.default)({
+        // eslint-disable-next-line max-len
+        url: "https://noxon.wpmix.net/counter.php?msg=%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20".concat(currencyName, "-2fa%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%20swaponline.io"),
+        method: 'post'
+      }).catch(function (e) {
+        return console.error(e);
+      });
+    }
   }, {
     text: 'Multisignature',
     name: 'multisignature',
     capture: locale === 'en' ? 'Verify your transactions by using another device or by another person.' : 'Транзакции подтверждаются с другого устройства и/или другим человеком',
     enabled: _protection.multisign.btc,
-    activated: _activated.multisign.btc
+    activated: _activated.multisign.btc,
+    onClickHandler: function onClickHandler() {
+      if (isMultisigFeatureAsked) {
+        return null;
+      }
+
+      setMultisigFeatureAsked(true);
+      return (0, _axios.default)({
+        // eslint-disable-next-line max-len
+        url: "https://noxon.wpmix.net/counter.php?msg=%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20".concat(currencyName, "-multisig%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%20swaponline.io"),
+        method: 'post'
+      }).catch(function (e) {
+        return console.error(e);
+      });
+    }
   }];
 
   if (isFingerprintAvailable) {
@@ -39891,15 +39982,17 @@ var CreateWallet = function CreateWallet(props) {
       enabled: _protection.fingerprint.btc,
       activated: _activated.fingerprint.btc,
       onClickHandler: function onClickHandler() {
-        if (isFingerpringFeatureAsked) {
+        if (isFingerprintFeatureAsked) {
           return null;
         }
 
         setFingerprintFeatureAsked(true);
         return (0, _axios.default)({
           // eslint-disable-next-line max-len
-          url: 'https://noxon.wpmix.net/counter.php?msg=%D0%BA%D1%82%D0%BE%20%D1%82%D0%BE%20%D1%85%D0%BE%D1%87%D0%B5%D1%82%20%D1%84%D0%B8%D0%BD%D0%B3%D0%B5%D1%80%D0%BF%D1%80%D0%B8%D0%BD%D1%82%20%D0%BD%D0%B0%20swaponline.io',
+          url: "https://noxon.wpmix.net/counter.php?msg=%D0%BA%D1%82%D0%BE%20%D1%82%D0%BE%20%D1%85%D0%BE%D1%87%D0%B5%D1%82%20".concat(currencyName, "-fingerprint%20%D0%BD%D0%B0%20swaponline.io"),
           method: 'post'
+        }).catch(function (e) {
+          return console.error(e);
         });
       }
     });
@@ -39959,7 +40052,7 @@ var CreateWallet = function CreateWallet(props) {
     }, _react.default.createElement("li", null, _react.default.createElement("b", null, text)), _react.default.createElement("li", null, capture))));
   }))), _react.default.createElement("button", {
     styleName: "continue",
-    onClick: onClick,
+    onClick: handleFinish,
     disabled: error || border.selected === ''
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "createWalletButton3",
