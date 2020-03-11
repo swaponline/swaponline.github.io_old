@@ -17150,6 +17150,8 @@ exports.default = exports.isOwner = void 0;
 
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(34));
 
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(10));
+
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(44));
 
 var _regenerator = _interopRequireDefault(__webpack_require__(22));
@@ -17169,6 +17171,10 @@ var _core = __webpack_require__(80);
 var _reducers = _interopRequireDefault(__webpack_require__(60));
 
 var bip39 = _interopRequireWildcard(__webpack_require__(525));
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var sign = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
@@ -17420,41 +17426,108 @@ var getInfoAboutCurrency = function getInfoAboutCurrency(currencyNames) {
     _helpers.request.get(url, {
       cacheResponse: 60 * 60 * 1000 // кеш 1 час
 
-    }).then(function (data) {
-      data.map(function (currencyInfoItem) {
+    }).then(function (answer) {
+      var infoAboutBTC = answer.data.filter(function (currencyInfo) {
+        if (currencyInfo.symbol.toLowerCase() === 'btc') return true;
+      });
+      var btcPrice = infoAboutBTC && infoAboutBTC.length && infoAboutBTC[0].quote && infoAboutBTC[0].quote.USD && infoAboutBTC[0].quote.USD.price ? infoAboutBTC[0].quote.USD.price : 7000;
+      answer.data.map(function (currencyInfoItem) {
         if (currencyNames.includes(currencyInfoItem.symbol)) {
-          switch (currencyInfoItem.symbol) {
-            case 'BTC':
-              {
+          if (currencyInfoItem.quote && currencyInfoItem.quote.USD) {
+            var priceInBtc = currencyInfoItem.quote.USD.price / btcPrice;
+
+            var currencyInfo = _objectSpread({}, currencyInfoItem.quote.USD, {
+              price_usd: currencyInfoItem.quote.USD.price,
+              price_btc: priceInBtc
+            });
+
+            switch (currencyInfoItem.symbol) {
+              case 'BTC':
+                {
+                  _reducers.default.user.setInfoAboutCurrency({
+                    name: 'btcData',
+                    infoAboutCurrency: currencyInfo
+                  });
+
+                  _reducers.default.user.setInfoAboutCurrency({
+                    name: 'btcMnemonicData',
+                    infoAboutCurrency: currencyInfo
+                  }); // Sweep (for future)
+
+
+                  _reducers.default.user.setInfoAboutCurrency({
+                    name: 'btcMultisigSMSData',
+                    infoAboutCurrency: currencyInfo
+                  });
+
+                  _reducers.default.user.setInfoAboutCurrency({
+                    name: 'btcMultisigUserData',
+                    infoAboutCurrency: currencyInfo
+                  });
+
+                  _reducers.default.user.setInfoAboutCurrency({
+                    name: 'btcMultisigG2FAData',
+                    infoAboutCurrency: currencyInfo
+                  });
+
+                  break;
+                }
+
+              case 'ETH':
+                {
+                  _reducers.default.user.setInfoAboutCurrency({
+                    name: 'ethData',
+                    infoAboutCurrency: currencyInfo
+                  });
+
+                  _reducers.default.user.setInfoAboutCurrency({
+                    name: 'ethMnemonicData',
+                    infoAboutCurrency: currencyInfo
+                  }); // Sweep (for future)
+
+
+                  break;
+                }
+
+              case 'LTC':
+                {
+                  _reducers.default.user.setInfoAboutCurrency({
+                    name: 'ltcData',
+                    infoAboutCurrency: currencyInfo
+                  });
+
+                  _reducers.default.user.setInfoAboutCurrency({
+                    name: 'ltcMnemonicData',
+                    infoAboutCurrency: currencyInfo
+                  }); // Sweep (for future)
+
+
+                  break;
+                }
+
+              case 'BCH':
+                {
+                  _reducers.default.user.setInfoAboutCurrency({
+                    name: 'bchData',
+                    infoAboutCurrency: currencyInfo
+                  });
+
+                  _reducers.default.user.setInfoAboutCurrency({
+                    name: 'bchMnemonicData',
+                    infoAboutCurrency: currencyInfo
+                  }); // Sweep (for future)
+
+
+                  break;
+                }
+
+              default:
                 _reducers.default.user.setInfoAboutCurrency({
-                  name: 'btcData',
-                  infoAboutCurrency: currencyInfoItem
+                  name: "".concat(currencyInfoItem.symbol.toLowerCase(), "Data"),
+                  infoAboutCurrency: currencyInfo
                 });
 
-                _reducers.default.user.setInfoAboutCurrency({
-                  name: 'btcMultisigSMSData',
-                  infoAboutCurrency: currencyInfoItem
-                });
-
-                _reducers.default.user.setInfoAboutCurrency({
-                  name: 'btcMultisigUserData',
-                  infoAboutCurrency: currencyInfoItem
-                });
-
-                _reducers.default.user.setInfoAboutCurrency({
-                  name: 'btcMultisigG2FAData',
-                  infoAboutCurrency: currencyInfoItem
-                });
-
-                break;
-              }
-
-            default:
-              _reducers.default.user.setInfoAboutCurrency({
-                name: "".concat(currencyInfoItem.symbol.toLowerCase(), "Data"),
-                infoAboutCurrency: currencyInfoItem
-              });
-
+            }
           }
         }
       });
