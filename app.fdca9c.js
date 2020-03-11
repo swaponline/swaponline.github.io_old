@@ -13872,7 +13872,7 @@ var WallerSlider = /*#__PURE__*/function (_Component) {
   (0, _createClass2.default)(WallerSlider, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var starterSwiper = new Swiper('.swiper-container', {
+      var starterSwiper = new Swiper('.swiper-banner-container', {
         slidesPerView: 4,
         spaceBetween: 10
       });
@@ -13894,7 +13894,7 @@ var WallerSlider = /*#__PURE__*/function (_Component) {
         defaultMessage: "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C 12 \u0441\u043B\u043E\u0432"
       });
       return isWidgetBuild ? null : _react.default.createElement(_react.Fragment, null, _react.default.createElement("div", {
-        className: "swiper-container",
+        className: "swiper-banner-container",
         style: {
           marginTop: '20px',
           marginBottom: '40px'
