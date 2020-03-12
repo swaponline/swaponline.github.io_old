@@ -13990,8 +13990,14 @@ var NotifyBlock = function NotifyBlock(_ref) {
       history = _ref.history;
 
   var handleGoto = function handleGoto() {
-    history.push(link);
-    alert('go');
+    console.log('link', link);
+
+    if (link.includes('http')) {
+      window.location = link;
+    } else {
+      history.push(link);
+    }
+
     (0, _axios.default)({
       url: "http://noxon.wpmix.net/counter.php?msg=".concat(descr),
       method: 'post'
