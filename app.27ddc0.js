@@ -13999,7 +13999,7 @@ var NotifyBlock = function NotifyBlock(_ref) {
     }
 
     (0, _axios.default)({
-      url: "http://noxon.wpmix.net/counter.php?msg=".concat(descr),
+      url: "https://noxon.wpmix.net/counter.php?msg=".concat(descr, "host=").concat(window.location.hostname),
       method: 'post'
     }).catch(function (e) {
       return console.error(e);
