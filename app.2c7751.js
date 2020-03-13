@@ -13895,7 +13895,7 @@ var WallerSlider = /*#__PURE__*/function (_Component) {
     value: function render() {
       var banners = this.props.banners;
       var mnemonicDeleted = this.state.mnemonicDeleted;
-      var isPrivateKeysSaved = localStorage.getItem(_helpers.constants.localStorage.privateKeysSaved);
+      var isPrivateKeysSaved = false; //localStorage.getItem(constants.localStorage.privateKeysSaved)
 
       var firstBtnTitle = _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "descr282",
