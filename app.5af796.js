@@ -13880,7 +13880,7 @@ var WallerSlider = /*#__PURE__*/function (_Component) {
         // Responsive breakpoints
         breakpoints: {
           480: {
-            slidesPerView: 2
+            slidesPerView: 3
           },
           // when window width is >= 640px
           640: {
