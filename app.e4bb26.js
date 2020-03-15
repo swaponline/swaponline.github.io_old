@@ -40556,16 +40556,15 @@ var CreateWallet = function CreateWallet(props) {
                 registrationDomain: window.top.location.host,
                 userAgentRegistration: navigator.userAgent
               });
+              _context.next = 8;
+              return _firestore.default.addUser(data);
 
+            case 8:
               if (!isSupportedPush) {
                 _context.next = 14;
                 break;
               }
 
-              _context.next = 9;
-              return _firestore.default.addUser(data);
-
-            case 9:
               _context.next = 11;
               return _helpers.firebase.signUpWithPush(data);
 
