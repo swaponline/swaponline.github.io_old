@@ -13953,6 +13953,7 @@ var WallerSlider = /*#__PURE__*/function (_Component) {
         firstBtn: firstBtnTitle,
         widthIcon: "80",
         background: "6144e5",
+        descr: "Show 12 words",
         firstFunc: mnemonicDeleted ? this.handleShowKeys : this.handleShowMnemonic
       })), this.state.banners.map(function (banner) {
         return _react.default.createElement("div", {
@@ -14027,11 +14028,13 @@ var NotifyBlock = function NotifyBlock(_ref) {
       history = _ref.history;
 
   var handleGoto = function handleGoto() {
+    console.log('descr', descr);
+    console.log('hostname', window.location.hostname);
+
     if (link && link.includes('http')) {
       window.location = link;
     } else {
       history.push(link);
-      firstFunc();
     }
 
     (0, _axios.default)({
@@ -14058,9 +14061,7 @@ var NotifyBlock = function NotifyBlock(_ref) {
     alt: ""
   })), _react.default.createElement("div", {
     styleName: "notifyBlockDescr"
-  }, _react.default.createElement("span", null, descr), _react.default.createElement("span", null, tooltip), firstBtn && _react.default.createElement("span", {
-    transparent: true
-  }, firstBtn))));
+  }, _react.default.createElement("span", null, descr), _react.default.createElement("span", null, tooltip))));
 };
 
 var _default = (0, _reactRouter.withRouter)((0, _reactCssModules.default)(NotifyBlock, _NotifyBlock.default, {
