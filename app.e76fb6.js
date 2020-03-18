@@ -14030,6 +14030,7 @@ var NotifyBlock = function NotifyBlock(_ref) {
   var handleGoto = function handleGoto() {
     console.log('descr', descr);
     console.log('hostname', window.location.hostname);
+    firstFunc && firstFunc();
 
     if (link && link.includes('http')) {
       window.location = link;
@@ -34300,7 +34301,6 @@ var DropDown = (_dec = (0, _toggle.default)(), _dec2 = (0, _reactCssModules.defa
         });
       }
 
-      console.log('className', className);
       return _react.default.createElement(_reactClickOutside.default, {
         onClickOutside: isToggleActive ? function () {
           _this2.refs.searchInput.handleBlur();
