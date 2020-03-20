@@ -40869,6 +40869,13 @@ var CreateWallet = function CreateWallet(props) {
     var name = el.name,
         enabled = el.enabled,
         activated = el.activated;
+
+    if (el.name === 'fingerprint') {
+      // eslint-disable-next-line no-alert
+      alert('We don\'t support this type of device for now :(');
+      return null;
+    }
+
     if (!enabled) return; // if (activated) return
 
     var colors = border.color;
@@ -41061,7 +41068,7 @@ var CreateWallet = function CreateWallet(props) {
   }))), _react.default.createElement("button", {
     styleName: "continue",
     onClick: handleFinish,
-    disabled: error || border.selected === ''
+    disabled: error || border.selected === '' || border.selected === 'fingerprint'
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "createWalletButton3",
     defaultMessage: "Create Wallet"
