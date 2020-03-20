@@ -10244,9 +10244,10 @@ var estimateFeeValue = /*#__PURE__*/function () {
 
             calculatedFeeValue.plus(20);
             finalFeeValue = inSatoshis ? calculatedFeeValue.toString() : calculatedFeeValue.multipliedBy(1e-8).toString();
+            console.log("Btc withdraw fee speed(".concat(speed, ") method (").concat(method, ") ").concat(finalFeeValue));
             return _context2.abrupt("return", finalFeeValue);
 
-          case 19:
+          case 20:
           case "end":
             return _context2.stop();
         }
