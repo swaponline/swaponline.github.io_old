@@ -10098,6 +10098,8 @@ var calculateTxSize = /*#__PURE__*/function () {
         defaultTxSize,
         txIn,
         txSize,
+        msuSize,
+        msutxSize,
         msSize,
         mstxSize,
         _args = arguments;
@@ -10135,23 +10137,37 @@ var calculateTxSize = /*#__PURE__*/function () {
             txIn = unspents.length;
             txSize = txIn > 0 ? txIn * 146 + txOut * 33 + (15 + txIn - txOut) : defaultTxSize;
 
-            if (!(method === 'send_2fa')) {
+            if (!(method === 'send_multisig')) {
               _context.next = 16;
               break;
             }
 
+            msuSize = getByteCount({
+              'MULTISIG-P2SH-P2WSH:2-2': 1
+            }, {
+              'P2PKH': 2
+            });
+            msutxSize = txIn > 0 ? txIn * msuSize + txOut * 33 + (15 + txIn - txOut) : defaultTxSize;
+            return _context.abrupt("return", msutxSize);
+
+          case 16:
+            if (!(method === 'send_2fa')) {
+              _context.next = 20;
+              break;
+            }
+
             msSize = getByteCount({
-              'MULTISIG-P2SH-P2WSH:2-3': txIn
+              'MULTISIG-P2SH-P2WSH:2-3': 1
             }, {
               'P2PKH': 2
             });
             mstxSize = txIn > 0 ? txIn * msSize + txOut * 33 + (15 + txIn - txOut) : defaultTxSize;
             return _context.abrupt("return", mstxSize);
 
-          case 16:
+          case 20:
             return _context.abrupt("return", txSize);
 
-          case 17:
+          case 21:
           case "end":
             return _context.stop();
         }
@@ -22639,7 +22655,8 @@ var send = /*#__PURE__*/function () {
             _context11.next = 5;
             return _btc.default.estimateFeeValue({
               inSatoshis: true,
-              speed
+              speed,
+              method: 'send_multisig'
             });
 
           case 5:
@@ -75547,20 +75564,21 @@ var WithdrawModalMultisigUser = (_dec = (0, _redaction.connect)(function (_ref) 
           switch (_context.prev = _context.next) {
             case 0:
               if (!_helpers.constants.coinsWithDynamicFee.includes('btc')) {
-                _context.next = 4;
+                _context.next = 5;
                 break;
               }
 
               _context.next = 3;
               return _helpers.default['btc'].estimateFeeValue({
-                method: 'send',
+                method: 'send_multisig',
                 speed: 'fast'
               });
 
             case 3:
               _minAmount.default['btc'] = _context.sent;
+              console.log('minAmount', _minAmount.default['btc']);
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }
