@@ -18076,12 +18076,9 @@ var getText = function getText() {
 };
 
 var isOwner = function isOwner(addr, currency) {
-  console.log('isOwner', addr, currency);
-
   if (_helpers.ethToken.isEthToken({
     name: currency
   })) {
-    console.log('isToken');
     if (_actions.default.eth.getAllMyAddresses().indexOf(addr.toLowerCase()) !== -1) return true;
 
     var _getState4 = (0, _core.getState)(),
@@ -18090,8 +18087,8 @@ var isOwner = function isOwner(addr, currency) {
     return addr === _address;
   }
 
-  if (currency.toLowerCase() === "btc" && _actions.default.btc.getAllMyAddresses().indexOf(addr.toLowerCase()) !== -1) return true;
-  if (currency.toLowerCase() === "eth" && _actions.default.eth.getAllMyAddresses().indexOf(addr.toLowerCase()) !== -1) return true;
+  if (_actions.default.btc.getAllMyAddresses().indexOf(addr.toLowerCase()) !== -1) return true;
+  if (_actions.default.eth.getAllMyAddresses().indexOf(addr.toLowerCase()) !== -1) return true;
   var name = "".concat(currency.toLowerCase(), "Data");
 
   var _getState5 = (0, _core.getState)(),
@@ -19923,9 +19920,8 @@ var getWallets = function getWallets() {
       bchData = _getState$user.bchData,
       ltcData = _getState$user.ltcData,
       tokensData = _getState$user.tokensData,
-      isTokenSigned = _getState$user.isTokenSigned;
+      isTokenSigned = _getState$user.isTokenSigned; // Sweep
 
-  btcMultisigUserData.wallets; // Sweep
 
   var _getState2 = (0, _core.getState)(),
       _getState2$user = _getState2.user,
@@ -19933,7 +19929,7 @@ var getWallets = function getWallets() {
       ethMnemonicData = _getState2$user.ethMnemonicData;
 
   var allData = [].concat((0, _toConsumableArray2.default)(btcMnemonicData && !btcData.isMnemonic ? [btcMnemonicData] : []), (0, _toConsumableArray2.default)(ethMnemonicData && !ethData.isMnemonic ? [ethMnemonicData] : []), [// Sweep
-  btcData, btcMultisigSMSData, btcMultisigUserData], (0, _toConsumableArray2.default)(btcMultisigUserData && btcMultisigUserData.wallets ? [btcMultisigUserData.wallets] : []), [ethData], (0, _toConsumableArray2.default)(bchData ? [bchData] : []), [ltcData], (0, _toConsumableArray2.default)(Object.keys(tokensData).map(function (k) {
+  btcData, btcMultisigSMSData, btcMultisigUserData], (0, _toConsumableArray2.default)(btcMultisigUserData && btcMultisigUserData.wallets ? btcMultisigUserData.wallets : []), [ethData], (0, _toConsumableArray2.default)(bchData ? [bchData] : []), [ltcData], (0, _toConsumableArray2.default)(Object.keys(tokensData).map(function (k) {
     return tokensData[k];
   }))).map(function (_ref3) {
     var account = _ref3.account,
