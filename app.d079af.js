@@ -70432,7 +70432,7 @@ var Footer = function Footer(props) {
     styleName: "footer"
   }, /*#__PURE__*/_react.default.createElement(_WidthContainer.default, {
     styleName: "container"
-  }, /*#__PURE__*/_react.default.createElement(_SwitchLang.default, props), !_appConfig.default.isWidget && /*#__PURE__*/_react.default.createElement(_SocialMenu.default, null), !_reactDeviceDetect.isMobile && 0 && /*#__PURE__*/_react.default.createElement(_Info.default, props), /*#__PURE__*/_react.default.createElement("span", {
+  }, /*#__PURE__*/_react.default.createElement(_SwitchLang.default, props), !_appConfig.default.isWidget && /*#__PURE__*/_react.default.createElement(_SocialMenu.default, null), /*#__PURE__*/_react.default.createElement(_Info.default, props), /*#__PURE__*/_react.default.createElement("span", {
     styleName: "date"
   }, _appConfig.default.time))));
 };
@@ -70539,12 +70539,12 @@ var Info = /*#__PURE__*/function (_React$Component) {
       var isVisibleProgressBar = this.state.isVisibleProgressBar;
       var onlinePeersHack = onlineUsers >= 0 ? onlineUsers : 1;
       return /*#__PURE__*/_react.default.createElement("div", {
-        styleName: "title"
-      }, "libp2p network status:", ' ', /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("span", {
+        styleName: "title ".concat(isOnline ? 'online' : 'offline')
+      }, /*#__PURE__*/_react.default.createElement("em", null), /*#__PURE__*/_react.default.createElement("div", null, "libp2p network status:", ' ', /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("span", {
         styleName: isOnline ? 'connect' : 'disconnect'
       }, isOnline ? 'Connected' : 'Disconnected. You cannot make exchanges until you are disconnected. Turn off VPN or try another network or browser'), ' ', isOnline && "/ peers online: ".concat(onlinePeersHack)), isVisibleProgressBar && /*#__PURE__*/_react.default.createElement(_ProgressBar.default, {
         handleClick: this.hideProgressBar
-      }));
+      })));
     }
   }]);
   return Info;
@@ -70572,7 +70572,7 @@ exports.default = _default;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"title":"_1C587YFFLMewC02vG12EkC","connect":"_34nV3EEugZ2VP7eL4TrdjZ","disconnect":"_2UdlK93WaM1J4q0RvRr6P-","copyright":"_12uT1GvSzU8H9NsrkJu33H","copyright-text":"_2_iz0_TwCJIZoA-hb4RCNG"};
+module.exports = {"title":"_1C587YFFLMewC02vG12EkC","online":"QTJ9RtsjDP8K705f0UCDG","offline":"_31etSX0M8vOLlmHfBwAXk1","connect":"_34nV3EEugZ2VP7eL4TrdjZ","disconnect":"_2UdlK93WaM1J4q0RvRr6P-","copyright":"_12uT1GvSzU8H9NsrkJu33H","copyright-text":"_2_iz0_TwCJIZoA-hb4RCNG"};
 
 /***/ }),
 /* 3589 */
