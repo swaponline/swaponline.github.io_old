@@ -41317,7 +41317,7 @@ var CreateWallet = function CreateWallet(props) {
     if (currencies.BTC) {
       (0, _axios.default)({
         // eslint-disable-next-line max-len
-        url: 'https://noxon.wpmix.net/counter.php?msg=%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B8%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%D0%BA%D0%B0%20BTC%20swaponline.io',
+        url: "https://noxon.wpmix.net/counter.php?msg=%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B8%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%D0%BA%D0%B0%20BTC%20".concat(window.top.location.host),
         method: 'post'
       }).catch(function (e) {
         return console.error(e);
@@ -41378,7 +41378,7 @@ var CreateWallet = function CreateWallet(props) {
       setTrivialFeatureAsked(true);
       return (0, _axios.default)({
         // eslint-disable-next-line max-len
-        url: "https://noxon.wpmix.net/counter.php?msg=%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20".concat(currencyName, "-normal%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%20swaponline.io"),
+        url: "https://noxon.wpmix.net/counter.php?msg=%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20".concat(currencyName, "-normal%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%20").concat(window.top.location.host),
         method: 'post'
       }).catch(function (e) {
         return console.error(e);
@@ -41402,7 +41402,7 @@ var CreateWallet = function CreateWallet(props) {
       setSmsFeatureAsked(true);
       return (0, _axios.default)({
         // eslint-disable-next-line max-len
-        url: "https://noxon.wpmix.net/counter.php?msg=%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20".concat(currencyName, "-sms%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%20swaponline.io"),
+        url: "https://noxon.wpmix.net/counter.php?msg=%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20".concat(currencyName, "-sms%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%20").concat(window.top.location.host),
         method: 'post'
       }).catch(function (e) {
         return console.error(e);
@@ -41424,7 +41424,7 @@ var CreateWallet = function CreateWallet(props) {
       set2FAFeatureAsked(true);
       return (0, _axios.default)({
         // eslint-disable-next-line max-len
-        url: "https://noxon.wpmix.net/counter.php?msg=%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20".concat(currencyName, "-2fa%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%20swaponline.io"),
+        url: "https://noxon.wpmix.net/counter.php?msg=%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20".concat(currencyName, "-2fa%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%20").concat(window.top.location.host),
         method: 'post'
       }).catch(function (e) {
         return console.error(e);
@@ -41444,7 +41444,7 @@ var CreateWallet = function CreateWallet(props) {
       setMultisigFeatureAsked(true);
       return (0, _axios.default)({
         // eslint-disable-next-line max-len
-        url: "https://noxon.wpmix.net/counter.php?msg=%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20".concat(currencyName, "-multisig%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%20swaponline.io"),
+        url: "https://noxon.wpmix.net/counter.php?msg=%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20".concat(currencyName, "-multisig%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D1%8C%20").concat(window.top.location.host),
         method: 'post'
       }).catch(function (e) {
         return console.error(e);
@@ -41467,7 +41467,7 @@ var CreateWallet = function CreateWallet(props) {
         setFingerprintFeatureAsked(true);
         return (0, _axios.default)({
           // eslint-disable-next-line max-len
-          url: "https://noxon.wpmix.net/counter.php?msg=%D0%BA%D1%82%D0%BE%20%D1%82%D0%BE%20%D1%85%D0%BE%D1%87%D0%B5%D1%82%20".concat(currencyName, "-fingerprint%20%D0%BD%D0%B0%20swaponline.io"),
+          url: "https://noxon.wpmix.net/counter.php?msg=%D0%BA%D1%82%D0%BE%20%D1%82%D0%BE%20%D1%85%D0%BE%D1%87%D0%B5%D1%82%20".concat(currencyName, "-fingerprint%20%D0%BD%D0%B0%20").concat(window.top.location.host),
           method: 'post'
         }).catch(function (e) {
           return console.error(e);
