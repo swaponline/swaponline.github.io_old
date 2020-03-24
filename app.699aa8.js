@@ -70428,11 +70428,13 @@ var _WidthContainer = _interopRequireDefault(__webpack_require__(196));
 var _SwitchLang = _interopRequireDefault(__webpack_require__(3595));
 
 var Footer = function Footer(props) {
+  var showInfo = false;
+  if (window.location.hash.includes('/exchange') || window.location.hash.includes('/buy')) showInfo = true;
   return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, (!_appConfig.default.isWidget || _appConfig.default.isFullBuild) && /*#__PURE__*/_react.default.createElement("div", {
     styleName: "footer"
   }, /*#__PURE__*/_react.default.createElement(_WidthContainer.default, {
     styleName: "container"
-  }, /*#__PURE__*/_react.default.createElement(_SwitchLang.default, props), !_appConfig.default.isWidget && /*#__PURE__*/_react.default.createElement(_SocialMenu.default, null), /*#__PURE__*/_react.default.createElement(_Info.default, props), /*#__PURE__*/_react.default.createElement("span", {
+  }, showInfo && /*#__PURE__*/_react.default.createElement(_Info.default, props), /*#__PURE__*/_react.default.createElement(_SwitchLang.default, props), !_appConfig.default.isWidget && /*#__PURE__*/_react.default.createElement(_SocialMenu.default, null), /*#__PURE__*/_react.default.createElement("span", {
     styleName: "date"
   }, _appConfig.default.time))));
 };
@@ -70540,7 +70542,7 @@ var Info = /*#__PURE__*/function (_React$Component) {
       var onlinePeersHack = onlineUsers >= 0 ? onlineUsers : 1;
       return /*#__PURE__*/_react.default.createElement("div", {
         styleName: "title ".concat(isOnline ? 'online' : 'offline')
-      }, /*#__PURE__*/_react.default.createElement("em", null), /*#__PURE__*/_react.default.createElement("div", null, "libp2p network status:", ' ', /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("em", null), /*#__PURE__*/_react.default.createElement("span", null, isOnline ? 'Online' : 'Offline'), /*#__PURE__*/_react.default.createElement("div", null, "libp2p network status:", ' ', /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("span", {
         styleName: isOnline ? 'connect' : 'disconnect'
       }, isOnline ? 'Connected' : 'Disconnected. You cannot make exchanges until you are disconnected. Turn off VPN or try another network or browser'), ' ', isOnline && "/ peers online: ".concat(onlinePeersHack)), isVisibleProgressBar && /*#__PURE__*/_react.default.createElement(_ProgressBar.default, {
         handleClick: this.hideProgressBar
