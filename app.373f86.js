@@ -21027,13 +21027,6 @@ var getDataByAddress = function getDataByAddress(address) {
   var founded = [btcData, btcMnemonicData, btcMultisigSMSData, btcMultisigUserData].concat((0, _toConsumableArray2.default)(btcMultisigUserData && btcMultisigUserData.wallets && btcMultisigUserData.wallets.length ? btcMultisigUserData.wallets : []), [btcMultisigG2FAData]).filter(function (data) {
     return data && data.address && data.address.toLowerCase() === address.toLowerCase();
   });
-
-  if (btcMultisigUserData && btcMultisigUserData.wallets && btcMultisigUserData.wallets.length) {
-    btcMultisigUserData.wallets.map(function (wallet) {
-      retData.push(wallet.address.toLowerCase());
-    });
-  }
-
   return founded.length ? founded[0] : false;
 };
 
