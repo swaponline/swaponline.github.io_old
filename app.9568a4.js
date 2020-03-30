@@ -19947,7 +19947,9 @@ var getWallets = function getWallets() {
       ethMnemonicData = _getState2$user.ethMnemonicData;
 
   var allData = [].concat((0, _toConsumableArray2.default)(btcMnemonicData && !btcData.isMnemonic ? [btcMnemonicData] : []), (0, _toConsumableArray2.default)(ethMnemonicData && !ethData.isMnemonic ? [ethMnemonicData] : []), [// Sweep
-  btcData, btcMultisigSMSData, btcMultisigUserData], (0, _toConsumableArray2.default)(btcMultisigUserData && btcMultisigUserData.wallets ? btcMultisigUserData.wallets : []), [ethData], (0, _toConsumableArray2.default)(bchData ? [bchData] : []), [ltcData], (0, _toConsumableArray2.default)(Object.keys(tokensData).map(function (k) {
+  btcData, btcMultisigSMSData, btcMultisigUserData], (0, _toConsumableArray2.default)(btcMultisigUserData && btcMultisigUserData.wallets ? btcMultisigUserData.wallets : []), [ethData], (0, _toConsumableArray2.default)(bchData ? [bchData] : []), [ltcData], (0, _toConsumableArray2.default)(Object.keys(tokensData).filter(function (k) {
+    return !tokensData[k].reducerDataTarget;
+  }).map(function (k) {
     return tokensData[k];
   }))).map(function (_ref3) {
     var account = _ref3.account,
@@ -42093,18 +42095,32 @@ var Wallet = (_dec = (0, _redaction.connect)(function (_ref) {
       localStorage.setItem(_helpers.constants.localStorage.walletTitle, e.target.value);
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleModalOpen", function (context) {
-      /*
-      const { enabledCurrencies } = this.state
-      const { items, tokensData, tokensItems, tokens, hiddenCoinsList } = this.props
-       const currencyTokenData = [...Object.keys(tokensData).map(k => tokensData[k]), ...tokensItems]
-       const tableRows = [...items, ...tokens]
-        .filter(currency => !hiddenCoinsList.includes(currency))
-        .filter(currency => enabledCurrencies.includes(currency))
-       const currencies = tableRows.map(currency => {
-        return currencyTokenData.find(item => item.currency === currency)
-      })
-      */
-      var currencies = _actions.default.core.getWallets();
+      var enabledCurrencies = _this.state.enabledCurrencies;
+      var hiddenCoinsList = _this.props.hiddenCoinsList;
+      /* @ToDo Вынести отдельно */
+      // Набор валют для виджета
+
+      var widgetCurrencies = ['BTC'];
+      if (!hiddenCoinsList.includes('BTC (SMS-Protected)')) widgetCurrencies.push('BTC (SMS-Protected)');
+      if (!hiddenCoinsList.includes('BTC (Multisig)')) widgetCurrencies.push('BTC (Multisig)');
+      widgetCurrencies.push('ETH');
+
+      if (isWidgetBuild) {
+        if (window.widgetERC20Tokens && Object.keys(window.widgetERC20Tokens).length) {
+          // Multi token widget build
+          Object.keys(window.widgetERC20Tokens).forEach(function (key) {
+            widgetCurrencies.push(key.toUpperCase());
+          });
+        } else {
+          widgetCurrencies.push(_appConfig.default.erc20token.toUpperCase());
+        }
+      }
+
+      var currencies = _actions.default.core.getWallets().filter(function (_ref8) {
+        var currency = _ref8.currency,
+            balance = _ref8.balance;
+        return (context === 'Send' ? balance : true) && !hiddenCoinsList.includes(currency) && enabledCurrencies.includes(currency) && (isWidgetBuild ? widgetCurrencies.includes(currency) : true);
+      });
 
       _actions.default.modals.open(_helpers.constants.modals.CurrencyAction, {
         currencies,
@@ -42230,28 +42246,28 @@ var Wallet = (_dec = (0, _redaction.connect)(function (_ref) {
         }
       }
 
-      var tableRows = allData.filter(function (_ref8) {
-        var currency = _ref8.currency,
-            balance = _ref8.balance;
+      var tableRows = allData.filter(function (_ref9) {
+        var currency = _ref9.currency,
+            balance = _ref9.balance;
         return !hiddenCoinsList.includes(currency) || balance > 0;
       });
 
       if (isWidgetBuild) {
         //tableRows = allData.filter(({ currency }) => widgetCurrencies.includes(currency))
-        tableRows = allData.filter(function (_ref9) {
-          var currency = _ref9.currency,
-              balance = _ref9.balance;
+        tableRows = allData.filter(function (_ref10) {
+          var currency = _ref10.currency,
+              balance = _ref10.balance;
           return !hiddenCoinsList.includes(currency);
         }); // Отфильтруем валюты, исключив те, которые не используются в этом билде
 
-        tableRows = tableRows.filter(function (_ref10) {
-          var currency = _ref10.currency;
+        tableRows = tableRows.filter(function (_ref11) {
+          var currency = _ref11.currency;
           return widgetCurrencies.includes(currency);
         });
       }
 
-      tableRows = tableRows.filter(function (_ref11) {
-        var currency = _ref11.currency;
+      tableRows = tableRows.filter(function (_ref12) {
+        var currency = _ref12.currency;
         return enabledCurrencies.includes(currency);
       }); //console.log('render', tableRows)
 
@@ -42272,9 +42288,9 @@ var Wallet = (_dec = (0, _redaction.connect)(function (_ref) {
         styleName: isWidgetBuild && !_appConfig.default.isFullBuild ? 'wallet widgetBuild' : 'wallet'
       }, /*#__PURE__*/_react.default.createElement("ul", {
         styleName: "walletNav"
-      }, walletNav.map(function (_ref12, index) {
-        var key = _ref12.key,
-            text = _ref12.text;
+      }, walletNav.map(function (_ref13, index) {
+        var key = _ref13.key,
+            text = _ref13.text;
         return /*#__PURE__*/_react.default.createElement("li", {
           key: key,
           styleName: "walletNavItem ".concat(activeView === index ? 'active' : ''),
